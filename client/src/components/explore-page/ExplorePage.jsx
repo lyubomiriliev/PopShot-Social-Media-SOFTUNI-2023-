@@ -9,6 +9,7 @@ export default function ExplorePage() {
                 <h3>Search Posts:</h3>
                 <input type="text" placeholder="Search" />
                 <h4>Popular Today</h4>
+                <button>Sort By:</button>
                 <ExplorePagePost />
                 <ExplorePagePost />
                 <ExplorePagePost />

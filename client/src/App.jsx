@@ -2,6 +2,8 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css'
 import HomePage from './components/home-page/HomePage';
 import ExplorePage from './components/explore-page/ExplorePage';
+import PeoplePage from './components/people-page/PeoplePage';
+import SavedPosts from './components/saved-posts/SavedPosts';
 
 function App() {
 
@@ -10,7 +12,9 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path='/explore' element={<ExplorePage />} />
+        <Route path="/explore" element={<ExplorePage />} />
+        <Route path="/people" element={<PeoplePage />} />
+        <Route path="/saved" element={<SavedPosts />} />
       </Routes>
     </div>
   );
