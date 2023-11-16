@@ -1,19 +1,28 @@
+import NavBar from "../navbar/NavBar";
 import NewPost from "./NewPost";
+import SuggestedPeople from "./SuggestedPeople";
 
 export default function HomePage() {
     return(
-        <section>
-            <div className="left-bar">
-            <img src="#" alt="logo" />
-            <button>Home</button>
-            <button>Explore</button>
-            <button>People</button>
-            <button>Saved</button>
-            <button>Create Post</button>
-            <a href="#">Log out</a>
+        <section className="main-section">
+
+            <NavBar />
+
+            <div className="scroller">
+            <NewPost />
+            <NewPost />
             </div>
 
-            <NewPost />
+            <div className="right-col">
+                <img src="#" alt="profilePic" />
+                <p>Your profile</p>
+                <p>@username</p>
+                <h3>People you may know</h3>
+                <SuggestedPeople />
+                <SuggestedPeople />
+                <SuggestedPeople />
+                <SuggestedPeople />
+            </div>
         </section>
     );
 }
