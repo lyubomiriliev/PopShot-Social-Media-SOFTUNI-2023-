@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import './App.css'
+
 import HomePage from './components/home-page/HomePage';
 import ExplorePage from './components/explore-page/ExplorePage';
 import PeoplePage from './components/people-page/PeoplePage';
@@ -9,7 +9,6 @@ function App() {
 
   return (
     <div>
-
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/explore" element={<ExplorePage />} />
