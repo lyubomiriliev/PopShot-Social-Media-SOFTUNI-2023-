@@ -1,0 +1,13 @@
+.main-section {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.right-col {
+    text-align: right;
+}
+
+.infinite-scroll {
+    display: contents
+}

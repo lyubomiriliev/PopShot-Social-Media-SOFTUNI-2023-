@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 export default function NavBar() {
 
     return (
-        <div className="navigation">
-            <div className="nav-bar">
-                <img src="./images/popshot-logo.png" alt="logo" />
-                <Link to="/">Home</Link>
+        <div className="wrapper">
+            <div>
+                <img className="logo" src="./images/popshot-logo.png" alt="logo" />
+            </div>
+            <div className="links">
+                <Link className="home" to="/">Home</Link>
                 <Link to="/explore">Explore</Link>
                 <Link to="/people">People</Link>
                 <Link to="/saved">Saved</Link>

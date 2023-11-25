@@ -1,0 +1,25 @@
+.wrapper {
+    margin: 0;
+    padding: 0;
+    
+}
+
+.logo {
+    width: 20vw;
+    height: 15vh;
+    margin-left: 0;
+}
+
+.links a {
+    font-size: 32px;
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    display: block;
+    
+}
+
+.links a:hover {
+    background-color: rgb(138, 36, 97);
+    color: black;
+}

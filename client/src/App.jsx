@@ -8,7 +8,7 @@ import SavedPosts from './components/saved-posts/SavedPosts';
 function App() {
 
   return (
-    <div>
+    <div className='bg'>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/explore" element={<ExplorePage />} />
