@@ -13,6 +13,7 @@ export default function NavBar() {
                 <Link to="/people">People</Link>
                 <Link to="/saved">Saved</Link>
                 <Link to="/create/post">Create Post</Link>
+                <Link to="/login">Login</Link>
                 <Link to="#">Log out</Link>
             </div>
         </div>

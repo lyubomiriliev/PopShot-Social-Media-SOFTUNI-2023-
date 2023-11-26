@@ -1,31 +1,41 @@
-import NavBar from "../navbar/NavBar";
-import NewPost from "./NewPost";
-import SuggestedPeople from "./SuggestedPeople";
+import { Outlet } from "react-router-dom";
+import LeftBar from "../navbar-components/LeftBar";
+import Navbar from "../navbar-components/Navbar";
+import RightBar from "../navbar-components/RightBar";
 
 export default function HomePage() {
     return (
-        <>
-            <NavBar />
-
-            <section className="main-section">
-
-
-                <div className="scroller">
-                    <NewPost />
-                    <NewPost />
+        <div>
+            <Navbar />
+            <div style={{ display: "flex" }}>
+                <LeftBar />
+                <div style={{ flex: 6 }}>
+                    <h1>Home</h1>
+                    <h1>Home</h1>
+                    <h1>Home</h1>
+                    <h1>Home</h1>
+                    <h1>Home</h1>
+                    <h1>Home</h1>
+                    <h1>Home</h1>
+                    <h1>Home</h1>
+                    <h1>Home</h1>
+                    <h1>Home</h1>
+                    <h1>Home</h1>
+                    <h1>Home</h1>
+                    <h1>Home</h1>
+                    <h1>Home</h1>
+                    <h1>Home</h1>
+                    <h1>Home</h1>
+                    <h1>Home</h1>
+                    <h1>Home</h1>
+                    <h1>Home</h1>
+                    <h1>Home</h1>
+                    <h1>Home</h1>
+                    <h1>Home</h1>
                 </div>
+                <RightBar />
 
-                <div className="right-col">
-                    <img src="#" alt="profilePic" />
-                    <p>Your profile</p>
-                    <p>@username</p>
-                    <h3>People you may know</h3>
-                    <SuggestedPeople />
-                    <SuggestedPeople />
-                    <SuggestedPeople />
-                    <SuggestedPeople />
-                </div>
-            </section>
-        </>
+            </div>
+        </div>
     );
 }

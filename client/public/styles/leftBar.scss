@@ -1,0 +1,87 @@
+.leftBar {
+    flex: 2;
+    position: sticky;
+    top: 70px;
+    height: calc(100vh - 70px);
+
+
+    .container {
+        padding: 30px;
+        
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 70px;
+            .user {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 18px;
+
+                img {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+
+                span {
+
+                }
+
+            }
+
+            .explore {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 18px;
+
+                span {
+
+                }
+            }
+            .people {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 18px;
+
+                span {
+                    
+                }
+            }
+            .saved {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 18px;
+
+                span {
+                    
+                }
+            }
+            .createPost {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 18px;
+                
+                span {
+                    
+                }
+            }
+            .logout {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 18px;
+                margin-top: 240px;
+                span {
+                    
+                }
+            }
+        }
+ 
+    }
+}

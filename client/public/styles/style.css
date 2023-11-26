@@ -1,3 +1,5 @@
-@import "navigation.css";
-@import "navbar.css";
-@import "homepage.css";
+@import "login.scss";
+@import "register.scss";
+@import "navBar.scss";
+@import "leftBar.scss";
+@import "rightBar.scss";
