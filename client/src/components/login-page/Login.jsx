@@ -1,3 +1,5 @@
+import '../../assets/styles/login.scss';
+
 import { Link } from "react-router-dom"
 
 export default function Login() {

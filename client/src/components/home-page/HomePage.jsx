@@ -1,7 +1,8 @@
-import { Outlet } from "react-router-dom";
 import LeftBar from "../navbar-components/LeftBar";
 import Navbar from "../navbar-components/Navbar";
 import RightBar from "../navbar-components/RightBar";
+import Stories from "../stories/Stories";
+import Posts from "../posts/Posts";
 
 export default function HomePage() {
     return (
@@ -10,28 +11,8 @@ export default function HomePage() {
             <div style={{ display: "flex" }}>
                 <LeftBar />
                 <div style={{ flex: 6 }}>
-                    <h1>Home</h1>
-                    <h1>Home</h1>
-                    <h1>Home</h1>
-                    <h1>Home</h1>
-                    <h1>Home</h1>
-                    <h1>Home</h1>
-                    <h1>Home</h1>
-                    <h1>Home</h1>
-                    <h1>Home</h1>
-                    <h1>Home</h1>
-                    <h1>Home</h1>
-                    <h1>Home</h1>
-                    <h1>Home</h1>
-                    <h1>Home</h1>
-                    <h1>Home</h1>
-                    <h1>Home</h1>
-                    <h1>Home</h1>
-                    <h1>Home</h1>
-                    <h1>Home</h1>
-                    <h1>Home</h1>
-                    <h1>Home</h1>
-                    <h1>Home</h1>
+                    <Stories />
+                    <Posts />
                 </div>
                 <RightBar />
 

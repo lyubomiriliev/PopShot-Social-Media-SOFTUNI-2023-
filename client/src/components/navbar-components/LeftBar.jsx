@@ -3,7 +3,8 @@ import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
-
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import '../../assets/styles/leftBar.scss';
 
 
 export default function LeftBar() {
@@ -11,10 +12,6 @@ export default function LeftBar() {
         <div className="leftBar">
             <div className="container">
                 <div className="menu">
-                    <div className="user">
-                        <img src="https://imgv3.fotor.com/images/blog-cover-image/10-profile-picture-ideas-to-make-you-stand-out.jpg" alt="profilePic" />
-                        <span>Lyubomir</span>
-                    </div>
                     <div className="explore">
                         <CollectionsOutlinedIcon />
                         <span>Explore</span>
@@ -31,10 +28,16 @@ export default function LeftBar() {
                         <AddCircleOutlineOutlinedIcon />
                         <span>Create Post</span>
                     </div>
+                    <div className="user">
+                        <SettingsOutlinedIcon />
+                        <span>Settings</span>
+                    </div>
+
                     <div className="logout">
                         <ExitToAppOutlinedIcon />
                         <span>Logout</span>
                     </div>
+
                 </div>
 
             </div>
