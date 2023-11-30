@@ -1,8 +1,8 @@
-import NavBar from "../navbar/NavBar";
+import NavBar from "../navbar-components/NavBar";
 import ExplorePagePost from "./ExplorePagePost";
 
 export default function ExplorePage() {
-    return(
+    return (
         <section id="explore-main">
             <NavBar />
             <div className="explore-scroller">

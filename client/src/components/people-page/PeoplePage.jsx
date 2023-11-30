@@ -1,8 +1,9 @@
 import SuggestedPeople from "../home-page/SuggestedPeople";
-import NavBar from "../navbar/NavBar";
+import NavBar from "../navbar-components/NavBar";
+
 
 export default function PeoplePage() {
-    return(
+    return (
         <section id="people-main">
             <NavBar />
             <div className="people-scroller">
