@@ -4,10 +4,21 @@ import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlin
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+
 import '../../assets/styles/leftBar.scss';
+
+import { signOut } from 'firebase/auth'
+import { auth } from '../../config/firebase';
+
+
 
 
 export default function LeftBar() {
+
+    const signOutUser = async () => {
+        await signOut(auth);
+    }
+
     return (
         <div className="leftBar">
             <div className="container">
@@ -35,7 +46,7 @@ export default function LeftBar() {
 
                     <div className="logout">
                         <ExitToAppOutlinedIcon />
-                        <span>Logout</span>
+                        <button onClick={signOutUser} >Logout</button>
                     </div>
 
                 </div>
