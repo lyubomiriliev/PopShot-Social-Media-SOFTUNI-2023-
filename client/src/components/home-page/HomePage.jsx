@@ -4,7 +4,13 @@ import RightBar from "../navbar-components/RightBar";
 import Stories from "../stories/Stories";
 import Posts from "../posts-page/Posts";
 
+import { getDocs, collection } from 'firebase/firestore'
+import { db } from '../../config/firebase';
+
 export default function HomePage() {
+
+    const postsRef = collection(db, "posts");
+
     return (
         <div>
             <NavBar />
