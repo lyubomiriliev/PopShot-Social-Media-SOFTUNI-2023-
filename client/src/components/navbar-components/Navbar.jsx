@@ -31,7 +31,9 @@ export default function NavBar() {
             </div>
             <div className="right">
                 <NotificationsNoneOutlinedIcon />
-                <PersonOutlineOutlinedIcon />
+                <Link to="/profile">
+                    <PersonOutlineOutlinedIcon />
+                </Link>
                 <div className="user">
                     {user && (
                         <>

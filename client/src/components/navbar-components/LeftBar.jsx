@@ -6,7 +6,7 @@ import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
 import '../../assets/styles/leftBar.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { signOut } from 'firebase/auth'
 import { auth } from '../../config/firebase';
@@ -16,8 +16,11 @@ import { auth } from '../../config/firebase';
 
 export default function LeftBar() {
 
+    const navigate = useNavigate();
+
     const signOutUser = async () => {
         await signOut(auth);
+        navigate('/login')
     }
 
     return (
@@ -26,15 +29,21 @@ export default function LeftBar() {
                 <div className="menu">
                     <div className="explore">
                         <CollectionsOutlinedIcon />
-                        <span>Explore</span>
+                        <Link to="/explore">
+                            <button>Explore</button>
+                        </Link>
                     </div>
                     <div className="people">
                         <PeopleAltOutlinedIcon />
-                        <span>People</span>
+                        <Link to="/people">
+                            <button>People</button>
+                        </Link>
                     </div>
                     <div className="saved">
                         <BookmarkBorderOutlinedIcon />
-                        <span>Saved</span>
+                        <Link to="/saved">
+                            <button>Saved</button>
+                        </Link>
                     </div>
                     <div className="createPost">
                         <AddCircleOutlineOutlinedIcon />
@@ -44,7 +53,9 @@ export default function LeftBar() {
                     </div>
                     <div className="user">
                         <SettingsOutlinedIcon />
-                        <span>Settings</span>
+                        <Link to="/settings">
+                            <button>Settings</button>
+                        </Link>
                     </div>
 
                     <div className="logout">

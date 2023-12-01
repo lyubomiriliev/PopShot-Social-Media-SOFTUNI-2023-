@@ -11,6 +11,7 @@ import Profile from './components/profile-page/Profile';
 import NavBar from './components/navbar-components/NavBar';
 import LeftBar from './components/navbar-components/LeftBar';
 import RightBar from './components/navbar-components/RightBar';
+import MyProfile from './components/profile-page/MyProfile';
 
 
 
@@ -38,7 +39,7 @@ function App() {
 
                 {/* private routes */}
                 <Route path="/" element={<HomePage />} />
-                <Route path="/profile" element={<Layout />} />
+                <Route path="/profile" element={<MyProfile />} />
                 <Route path="/profile/:id" element={<Layout />} />
                 <Route path="/explore" element={<ExplorePage />} />
                 <Route path="/people" element={<PeoplePage />} />

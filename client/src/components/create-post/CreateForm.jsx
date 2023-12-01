@@ -7,6 +7,8 @@ import { v4 } from "uuid"
 
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import "../../assets/styles/createForm.scss";
+import AddAPhotoOutlinedIcon from '@mui/icons-material/AddAPhotoOutlined';
 
 
 export default function CreateForm() {
@@ -74,23 +76,27 @@ export default function CreateForm() {
 
 
     return (
-        <form onSubmit={submitHandler} >
-            <div className="title">
-                <h3>Create a new post</h3>
-                <input onChange={titileInputHandler} type="text" placeholder='Title...' value={input} />
-            </div>
-            <div className="contents">
-                <textarea onChange={contentInputHandler} placeholder='Description...' value={content} />
-                <input onChange={imageInputHandler} type="file" />
-            </div>
-            <div className="submit">
-                <button onClick={imageSubmitHandler}>Submit</button>
-            </div>
+        <div className="wrapper">
+            <form onSubmit={submitHandler} >
+                <div className="title">
+                    <AddAPhotoOutlinedIcon />
+                    <h3>Create post</h3>
+                </div>
+                <div className="inputBoxes">
+                    <input onChange={titileInputHandler} type="text" placeholder='Title...' value={input} required="required" />
+                    <textarea onChange={contentInputHandler} placeholder='Description...' value={content} required="required" />
+                </div>
+                <div className="contents">
+                    <input onChange={imageInputHandler} type="file" required="required" />
+                </div>
+                <div className="submit">
+                    <button onClick={imageSubmitHandler}>Submit</button>
+                </div>
 
-            {imageList.map((url) => {
-                return <img src={url} />
-            })}
-
-        </form>
+                {imageList.map((url) => {
+                    return <img src={url} />
+                })}
+            </form >
+        </div>
     );
 }

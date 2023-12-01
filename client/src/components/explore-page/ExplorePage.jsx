@@ -1,5 +1,6 @@
 import NavBar from "../navbar-components/NavBar";
 import ExplorePagePost from "./ExplorePagePost";
+import "../../assets/styles/explore.scss";
 
 export default function ExplorePage() {
     return (

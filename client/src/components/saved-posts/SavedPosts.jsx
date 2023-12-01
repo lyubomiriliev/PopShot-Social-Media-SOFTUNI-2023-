@@ -8,10 +8,7 @@ export default function SavedPosts() {
             <h3>Saved Posts</h3>
 
             <SavedPostCard />
-            <SavedPostCard />
-            <SavedPostCard />
-            <SavedPostCard />
-            <SavedPostCard />
+
         </>
 
     );
