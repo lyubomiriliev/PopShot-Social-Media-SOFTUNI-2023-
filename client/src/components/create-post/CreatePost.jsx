@@ -1,5 +1,9 @@
+import CreateForm from "./CreateForm";
+
 export default function CreatePost() {
     return (
-        <h1>Create a post.</h1>
+        <div>
+            <CreateForm />
+        </div>
     );
 }

@@ -6,6 +6,7 @@ import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
 import '../../assets/styles/leftBar.scss';
+import { Link } from 'react-router-dom';
 
 import { signOut } from 'firebase/auth'
 import { auth } from '../../config/firebase';
@@ -37,7 +38,9 @@ export default function LeftBar() {
                     </div>
                     <div className="createPost">
                         <AddCircleOutlineOutlinedIcon />
-                        <span>Create Post</span>
+                        <Link to="/create">
+                            <button>Create Post</button>
+                        </Link>
                     </div>
                     <div className="user">
                         <SettingsOutlinedIcon />
