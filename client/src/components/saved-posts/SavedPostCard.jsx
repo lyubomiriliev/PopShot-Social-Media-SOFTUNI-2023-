@@ -1,6 +1,7 @@
 import '../../assets/styles/savedPostCard.scss';
 import { db } from '../../config/firebase';
 import { collection, getDocs } from "firebase/firestore"
+import LeftBar from '../navbar-components/LeftBar';
 
 
 
@@ -29,9 +30,12 @@ export default function SavedPostCard() {
 
 
     return (
-        <div>
-            <h1>Saved Posts</h1>
+        <div className='page-container'>
+            <LeftBar />
             <div className="saved-posts-container">
+                <div className="content">
+                    <h1>Saved Posts</h1>
+                </div>
                 {posts.map((post) => (
                     <div key={post.id} className="post-card">
                         <img src={post.imageURL} alt={post.title} />

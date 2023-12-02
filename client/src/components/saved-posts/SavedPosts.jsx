@@ -5,10 +5,7 @@ export default function SavedPosts() {
     return (
         <>
             <NavBar />
-            <h3>Saved Posts</h3>
-
             <SavedPostCard />
-
         </>
 
     );
