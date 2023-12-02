@@ -1,0 +1,55 @@
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    .title {
+        margin-bottom: 20px;
+    }
+
+    .contents {
+        margin-bottom: 20px;
+
+        textarea,
+        input[type='text'],
+        input[type='file'] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #0056b3;
+        }
+    }
+
+    
+    div > h4 {
+        margin-top: 20px;
+    }
+
+    div > p {
+        margin-bottom: 20px;
+    }
+
+    div > img {
+        max-width: 50%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+}

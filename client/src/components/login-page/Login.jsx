@@ -38,7 +38,7 @@ export default function Login() {
             <div className="card">
                 <div className="left">
                     <h1>Welcome to Popshot !</h1>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio quisquam id laboriosam tempora quia harum magni ipsum sequi, corrupti voluptatem.</p>
+                    <p>Where every shot tells a story and spreads happiness! Get ready to paint the world with your picture-perfect experiences!</p>
                     <span>You dont have an account?</span>
                     <Link to="/register">
                         <button>Register</button>

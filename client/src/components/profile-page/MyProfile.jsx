@@ -2,6 +2,7 @@ import "../../assets/styles/myProfile.scss";
 import { auth } from '../../config/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth'
 import Posts from "../posts-page/Posts";
+import MyPosts from "./MyPosts";
 
 
 export default function MyProfile() {
@@ -27,14 +28,13 @@ export default function MyProfile() {
                         <span>{user?.displayName}</span>
                         <div className="info">
                             <p>About me: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, sit.</p>
-                            <span>Edit</span>
                         </div>
                     </div>
                     <div className="right">
-                        <button>Follow</button>
+                        <button>Edit Profile</button>
                     </div>
                 </div>
-                <Posts />
+                <MyPosts />
             </div>
         </div>
     );
