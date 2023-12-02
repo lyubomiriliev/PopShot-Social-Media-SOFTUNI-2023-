@@ -10,6 +10,9 @@ export default function SinglePost({ post }) {
             <div className="content">
                 <p>{post.content}</p>
             </div>
+            <div className="image">
+                <img src={post.imageUrl} alt="" />
+            </div>
 
             <div className="username">
                 <p>@{post.username}</p>
