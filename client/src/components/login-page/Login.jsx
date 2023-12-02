@@ -1,15 +1,36 @@
 import '../../assets/styles/login.scss';
 import { auth, provider } from '../../config/firebase';
 import { signInWithPopup } from 'firebase/auth'
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 import { Link, useNavigate } from "react-router-dom"
+import { useState } from 'react';
 
 export default function Login() {
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const navigate = useNavigate();
     const signInWithGoogle = async () => {
         const result = await signInWithPopup(auth, provider)
         navigate('/');
+    }
+
+    const signIn = () => {
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user);
+                alert('Log in successful');
+                navigate('/');
+
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                alert(errorCode);
+            });
+
     }
 
     return (
@@ -26,10 +47,10 @@ export default function Login() {
                 <div className="right">
                     <h1>Login</h1>
                     <form >
-                        <input type="text" placeholder="Username" />
-                        <input type="password" placeholder="Password" />
+                        <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+                        <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                     </form>
-                    <button>Login</button>
+                    <button onClick={signIn}>Login</button>
                     <button onClick={signInWithGoogle} >Sign in with Google</button>
 
                 </div>
