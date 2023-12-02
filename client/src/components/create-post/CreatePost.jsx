@@ -1,11 +1,12 @@
 import CreateForm from "./CreateForm";
-import NewCreateForm from "./NewCreateForm";
+import NewCreateForm from "./CreatePostPage";
+import SubmitPost from "./SubmitPost";
 
 
 export default function CreatePost() {
     return (
         <div>
-            <NewCreateForm />
+            <SubmitPost />
         </div>
     );
 }

@@ -14,6 +14,7 @@ import LeftBar from './components/navbar-components/LeftBar';
 import RightBar from './components/navbar-components/RightBar';
 import MyProfile from './components/profile-page/MyProfile';
 import MyProfileEdit from './components/profile-page/MyProfileEdit';
+import CreatePostPage from './components/create-post/CreatePostPage';
 
 
 
@@ -49,7 +50,7 @@ function App() {
                     <Route path="/explore" element={<ExplorePage />} />
                     <Route path="/people" element={<PeoplePage />} />
                     <Route path="/saved" element={<SavedPosts />} />
-                    <Route path="/create" element={<CreatePost />} />
+                    <Route path="/create" element={<CreatePostPage />} />
                 </Routes>
             </div >
         </PostDataProvider>
