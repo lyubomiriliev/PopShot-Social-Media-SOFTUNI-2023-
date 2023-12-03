@@ -13,7 +13,8 @@ export default function SubmitPost() {
 
     const getPosts = async () => {
         const data = await getDocs(postsRef)
-        setPostsList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        setPostsList(
+            data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     }
 
     useEffect(() => {

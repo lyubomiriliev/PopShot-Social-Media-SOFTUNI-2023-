@@ -29,7 +29,7 @@ export default function CreatePostPage() {
     const postsRef = collection(db, "posts")
     const storage = getStorage();
 
-    const onCreatPost = async (data) => {
+    const onCreatePost = async (data) => {
         const imageRef = ref(storage, `images/${image.name}`);
         await uploadImage(imageRef);
         const imageUrl = await getImageUrl(imageRef);
@@ -42,7 +42,7 @@ export default function CreatePostPage() {
         });
 
         navigate('/');
-    }
+    };
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -59,7 +59,7 @@ export default function CreatePostPage() {
 
     return (
         <div>
-            <form onSubmit={handleSubmit(onCreatPost)}>
+            <form onSubmit={handleSubmit(onCreatePost)}>
                 <div className="title">
                     <h3>Create a new post</h3>
                     <input type="text" placeholder='Title...' {...register("title")} />
