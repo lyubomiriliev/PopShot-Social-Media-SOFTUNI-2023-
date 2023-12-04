@@ -1,4 +1,3 @@
-import '../../assets/styles/savedPostCard.scss';
 import { db } from '../../config/firebase';
 import { collection, getDocs } from "firebase/firestore"
 

@@ -1,5 +1,5 @@
-import '../../assets/styles/comments.scss';
 import comments from '../../utils/CommentsUtil';
+import "../../assets/styles/comments.scss";
 
 import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
 

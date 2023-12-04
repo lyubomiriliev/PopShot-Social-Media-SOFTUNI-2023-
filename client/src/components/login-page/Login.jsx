@@ -1,10 +1,10 @@
-import '../../assets/styles/login.scss';
 import { auth, provider } from '../../config/firebase';
 import { signInWithPopup } from 'firebase/auth'
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from 'react';
+import "../../assets/styles/login.scss";
 
 export default function Login() {
 

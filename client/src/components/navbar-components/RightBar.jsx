@@ -1,5 +1,4 @@
-import '../../assets/styles/rightBar.scss';
-
+import "../../assets/styles/rightBar.scss";
 
 export default function RightBar() {
     return (

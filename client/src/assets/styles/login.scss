@@ -47,6 +47,7 @@ justify-content: center;
                 font-size: 24px;
                 font-weight: bold;
                 cursor: pointer;
+                border-radius: 5px;
             }
         }
 
@@ -58,16 +59,21 @@ justify-content: center;
             gap: 50px;
             justify-content: center;
 
+            form {
+                display: flex;
+                flex-direction: column;
+                max-width: 600px;
+                margin: 0;
+                padding: 0px;
+                border-radius: 5px;
+            }
+
             h1{
             font-size: 50px;
             color: #5c0e3a;
 
             }
-            form{
-                display: flex;
-                flex-direction: column;
-                gap: 40px;
-            }
+            
             input {
                 border: none;
                 border-bottom: 1px solid lightgray;
@@ -81,8 +87,9 @@ justify-content: center;
                 background-color: #9d1b65;
                 color: white;
                 font-weight: bold;
-                font-size: 24px;
+                font-size: 20px;
                 cursor: pointer;
+                border-radius: 5px;
             }
         }
     }

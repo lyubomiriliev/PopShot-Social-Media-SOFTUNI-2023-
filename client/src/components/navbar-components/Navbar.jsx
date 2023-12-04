@@ -1,5 +1,4 @@
-import '../../assets/styles/navBar.scss';
-
+import "../../assets/styles/navBar.scss";
 import { Link } from 'react-router-dom';
 import { auth } from '../../config/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth'
@@ -22,7 +21,11 @@ export default function NavBar() {
                 <Link to="/">
                     <img src="../../public/images/popshot-logo.png" alt="" />
                 </Link>
-                <HomeOutlinedIcon />
+                <div className="homeIcon">
+                    <Link to="/">
+                        <HomeOutlinedIcon />
+                    </Link>
+                </div>
                 <GridViewOutlinedIcon />
                 <div className="search">
                     <SearchOutlinedIcon />
@@ -30,8 +33,12 @@ export default function NavBar() {
                 </div>
             </div>
             <div className="right">
-                <NotificationsNoneOutlinedIcon />
-                <Link to="/profile">
+                <div className="notifications">
+                    <Link to="/notifications">
+                        <NotificationsNoneOutlinedIcon />
+                    </Link>
+                </div>
+                <Link to="/profile" style={{ textDecoration: "none", color: "inherit" }}>
                     <PersonOutlineOutlinedIcon />
                 </Link>
                 <div className="user">

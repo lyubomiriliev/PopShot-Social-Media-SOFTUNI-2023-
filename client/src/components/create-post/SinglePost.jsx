@@ -1,22 +1,20 @@
 import { addDoc, getDocs, collection, query, where, deleteDoc, doc } from "firebase/firestore";
-import "../../assets/styles/singlePost.scss";
 import { auth, db } from "../../config/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useEffect, useState } from "react";
+import "../../assets/styles/singlePost.scss";
 
 export default function SinglePost({ post }) {
 
-    const [user] = useAuthState(auth)
 
-    const likeArr = { userId: "", likeId: "" }
-
-    const [likes, setLikes] = useState(likeArr[""]);
-
+    const likeArr = [{ userId: "", likeId: "" }]
     const likesRef = collection(db, "likes")
+    const likesDoc = query(likesRef, where("postId", "==", post.id));
 
+    const [user] = useAuthState(auth)
+    const [likes, setLikes] = useState(likeArr);
 
     const getLikes = async () => {
-        const likesDoc = query(likesRef, where("postId", "==", post.id));
         const data = await getDocs(likesDoc)
         setLikes(data.docs.map((doc) => ({ userId: doc.data().userId, likeId: doc.id })));
     }
@@ -40,8 +38,13 @@ export default function SinglePost({ post }) {
                 where("userId", "===", user.uid));
 
             const likeToDeleteData = await getDocs(likeToDeleteQuery);
+
             const likeId = likeToDeleteData.docs[0].id
+
             const likeToDelete = doc(db, "likes", likeId);
+
+            console.log(likeToDelete);
+
             await deleteDoc(likeToDelete);
 
             if (user) {
@@ -57,7 +60,7 @@ export default function SinglePost({ post }) {
 
     useEffect(() => {
         getLikes();
-    }, [])
+    }, [likesDoc])
 
     return (
         <div className="single-post">

@@ -5,8 +5,8 @@ import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOu
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
-import '../../assets/styles/leftBar.scss';
 import { Link, useNavigate } from 'react-router-dom';
+import "../../assets/styles/leftBar.scss";
 
 import { signOut } from 'firebase/auth'
 import { auth } from '../../config/firebase';
@@ -29,33 +29,43 @@ export default function LeftBar() {
                 <div className="menu">
                     <div className="explore">
                         <CollectionsOutlinedIcon />
-                        <Link to="/explore">
-                            <button>Explore</button>
-                        </Link>
+                        <div className="exploreBtn">
+                            <Link to="/explore">
+                                <button>Explore</button>
+                            </Link>
+                        </div>
                     </div>
                     <div className="people">
                         <PeopleAltOutlinedIcon />
-                        <Link to="/people">
-                            <button>People</button>
-                        </Link>
+                        <div className="peopleBtn">
+                            <Link to="/people">
+                                <button>People</button>
+                            </Link>
+                        </div>
                     </div>
                     <div className="saved">
                         <BookmarkBorderOutlinedIcon />
-                        <Link to="/saved">
-                            <button>Saved</button>
-                        </Link>
+                        <div className="savedBtn">
+                            <Link to="/saved">
+                                <button>Saved</button>
+                            </Link>
+                        </div>
                     </div>
                     <div className="createPost">
                         <AddCircleOutlineOutlinedIcon />
-                        <Link to="/create">
-                            <button>Create Post</button>
-                        </Link>
+                        <div className="createBtn">
+                            <Link to="/create">
+                                <button>Create Post</button>
+                            </Link>
+                        </div>
                     </div>
                     <div className="user">
                         <SettingsOutlinedIcon />
-                        <Link to="/settings">
-                            <button>Settings</button>
-                        </Link>
+                        <div className="settingsBtn">
+                            <Link to="/settings">
+                                <button>Settings</button>
+                            </Link>
+                        </div>
                     </div>
 
                     <div className="logout">

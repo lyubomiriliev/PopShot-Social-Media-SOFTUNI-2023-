@@ -2,12 +2,10 @@ import { Routes, Route } from 'react-router-dom';
 import { PostDataProvider } from '../src/context/useContext';
 
 import HomePage from './components/home-page/HomePage';
-import ExplorePage from './components/explore-page/ExplorePage';
 import PeoplePage from './components/people-page/PeoplePage';
 import SavedPosts from './components/saved-posts/SavedPosts';
 import Login from './components/login-page/Login';
 import Register from './components/register-page/Register';
-import CreatePost from './components/create-post/CreatePost';
 import Profile from './components/profile-page/Profile';
 import NavBar from './components/navbar-components/NavBar';
 import LeftBar from './components/navbar-components/LeftBar';
@@ -15,6 +13,9 @@ import RightBar from './components/navbar-components/RightBar';
 import MyProfile from './components/profile-page/MyProfile';
 import MyProfileEdit from './components/profile-page/MyProfileEdit';
 import CreatePostPage from './components/create-post/CreatePostPage';
+import GetPeople from './components/create-post/GetPeople';
+import ExplorePage from './components/explore-page/ExplorePage';
+
 
 
 
@@ -51,6 +52,7 @@ function App() {
                     <Route path="/people" element={<PeoplePage />} />
                     <Route path="/saved" element={<SavedPosts />} />
                     <Route path="/create" element={<CreatePostPage />} />
+                    <Route path='/getpeople' element={<GetPeople />} />
                 </Routes>
             </div >
         </PostDataProvider>

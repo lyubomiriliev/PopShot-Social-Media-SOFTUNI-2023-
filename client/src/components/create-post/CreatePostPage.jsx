@@ -1,6 +1,3 @@
-// working code title and contents store in db and displaying in home page
-
-import "../../assets/styles/createPostPage.scss";
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -10,6 +7,10 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import "../../assets/styles/CreatePostPage.scss";
+
+// working code title and contents store in db and displaying in home page
+
 
 export default function CreatePostPage() {
 

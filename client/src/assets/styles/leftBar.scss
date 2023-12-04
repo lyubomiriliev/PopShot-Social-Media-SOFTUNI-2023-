@@ -1,5 +1,5 @@
 .leftBar {
-    width: 300px;
+    width: 20%;
     position: sticky;
     top: 70px;
     height: calc(100vh - 70px);
@@ -17,71 +17,158 @@
             display: flex;
             flex-direction: column;
             gap: 70px;
+            
             .user {
+                background-color: #9d1b65;
+                border-radius: 20px;
+                padding: 5px;
+                width: 70%;
                 display: flex;
                 align-items: center;
                 gap: 10px;
+                color: white;
                 font-size: 18px;
-
-                img {
-                    width: 30px;
-                    height: 30px;
-                    border-radius: 50%;
-                    object-fit: cover;
+                
+                button {
+                    width: 100%;
+                    padding: 5px;
+                    border: none;
+                    background-color: transparent;
+                    display: flex;
+                    justify-content: center;
+                    color: white;
+                    font-size: 18px;
+                    text-decoration: none;
+                    cursor: pointer;
                 }
 
-                span {
-
+                .settingsBtn a{
+                    text-decoration: none;
                 }
 
             }
 
             .explore {
+                background-color: #9d1b65;
+                color: white;
+                border-radius: 20px;
+                padding: 5px;
+                width: 70%;
                 display: flex;
                 align-items: center;
                 gap: 10px;
-                font-size: 18px;
 
-                span {
+                .exploreBtn a {
+                    text-decoration: none;
+                }
 
+    
+
+                button {
+                    width: 100%;
+                    padding: 5px;
+                    border: none;
+                    background-color: transparent;
+                    display: flex;
+                    justify-content: center;
+                    color: white;
+                    font-size: 18px;
+                    text-decoration: none;
+                    cursor: pointer;
                 }
             }
             .people {
+                background-color: #9d1b65;
+                border-radius: 20px;
+                padding: 5px;
+                width: 70%;
                 display: flex;
                 align-items: center;
                 gap: 10px;
                 font-size: 18px;
+                color: white;
 
-                span {
-                    
+                .peopleBtn a{
+                    text-decoration: none;
+                }
+
+                button {
+                    width: 100%;
+                    padding: 5px;
+                    border: none;
+                    background-color: transparent;
+                    display: flex;
+                    justify-content: center;
+                    color: white;
+                    font-size: 18px;
+                    text-decoration: none;
+                    cursor: pointer;
                 }
             }
             .saved {
+                background-color: #9d1b65;
+                border-radius: 20px;
+                padding: 5px;
+                width: 70%;
                 display: flex;
                 align-items: center;
                 gap: 10px;
                 font-size: 18px;
+                color: white;
 
-                span {
-                    
+                .savedBtn a{
+                    text-decoration: none;
                 }
+
+                button {
+                    width: 100%;
+                    padding: 5px;
+                    border: none;
+                    background-color: transparent;
+                    display: flex;
+                    justify-content: center;
+                    color: white;
+                    font-size: 18px;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+
+
             }
             .createPost {
+                background-color: #9d1b65;
+                border-radius: 20px;
+                padding: 5px;
+                width: 70%;
                 display: flex;
                 align-items: center;
                 gap: 10px;
                 font-size: 18px;
+                color: white;
+
+                .createBtn a{
+                    text-decoration: none;
+                }
                 
-                span {
-                    
+                button{
+                    width: 100%;
+                    padding: 5px;
+                    border: none;
+                    background-color: transparent;
+                    display: flex;
+                    justify-content: center;
+                    color: white;
+                    font-size: 18px;
+                    text-decoration: none;
+                    cursor: pointer;
                 }
             }
             .logout {
                 display: flex;
-                width: 50%;
+                width: 70%;
                 align-items: center;
                 font-size: 18px;
-                margin-top: 240px;
+                margin-top: 200px;
                 background-color: #9d1b65;
                 color: white;
                 border-radius: 10px;
@@ -93,7 +180,7 @@
                     border: none;
                     background-color: transparent;
                     display: flex;
-                    justify-content: center;
+                    align-items: center;
                     color: white;
                     font-weight: bold;
                     font-size: 18px;

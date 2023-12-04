@@ -9,6 +9,7 @@ export default function SubmitPost() {
 
 
     const [postsList, setPostsList] = useState(null);
+
     const postsRef = collection(db, "posts");
 
     const getPosts = async () => {
@@ -21,7 +22,6 @@ export default function SubmitPost() {
         getPosts();
     }, [])
 
-    console.log(postsList);
 
 
     return (

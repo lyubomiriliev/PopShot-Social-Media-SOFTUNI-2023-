@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 import { Link } from "react-router-dom";
+import "../../assets/styles/singlePost.scss";
 
-import '../../assets/styles/posts.scss';
 
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';

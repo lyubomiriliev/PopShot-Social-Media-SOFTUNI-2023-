@@ -1,5 +1,5 @@
-import "../../assets/styles/profile.scss";
 import Posts from "../posts-page/Posts";
+import "../../assets/styles/profile.scss";
 
 export default function Profile() {
     return (

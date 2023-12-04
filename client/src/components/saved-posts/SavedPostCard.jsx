@@ -1,7 +1,8 @@
-import '../../assets/styles/savedPostCard.scss';
 import { db } from '../../config/firebase';
 import { collection, getDocs } from "firebase/firestore"
 import LeftBar from '../navbar-components/LeftBar';
+import "../../assets/styles/savedPostCard.scss";
+
 
 
 

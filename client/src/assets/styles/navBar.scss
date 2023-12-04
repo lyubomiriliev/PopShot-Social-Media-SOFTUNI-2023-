@@ -16,12 +16,22 @@
         gap: 30px;
 
         img {
-            width: 200px
+            display: flex;
+            align-items: center;
+            height: auto;
+            width: 200px;
+            
+        }
+
+        .homeIcon a{
+            text-decoration: none;
+            display: flex;
+            color: inherit;
+            align-items: center;
         }
 
         .search {
             display: flex;
-            align-items: center;
             gap: 10px;
             border: 2px solid lightgray;
             border-radius: 10px;
@@ -38,6 +48,11 @@
         display: flex;
         align-items: center;
         gap: 20px;
+        
+        .notifications a{
+            text-decoration: none;
+            color: inherit;
+        }
 
         .user{
             display: flex;
