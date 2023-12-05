@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from "@hookform/resolvers/yup"
-import { addDoc, collection } from 'firebase/firestore'
-import { auth, db, storage } from "../../config/firebase";
+import { addDoc, collection, orderBy, query } from 'firebase/firestore'
+import { auth, db } from "../../config/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -39,7 +39,7 @@ export default function CreatePostPage() {
             ...data,
             imageUrl,
             username: user?.displayName,
-            userId: user?.uid, //uid works for Google Login  
+            userId: user?.uid,
         });
 
         navigate('/');

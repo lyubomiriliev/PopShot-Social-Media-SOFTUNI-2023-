@@ -2,11 +2,12 @@
 
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../config/firebase";
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import SinglePost from "./SinglePost";
 
-export default function SubmitPost() {
+export const PostContext = createContext();
 
+export default function SubmitPost() {
 
     const [postsList, setPostsList] = useState(null);
 
@@ -25,8 +26,10 @@ export default function SubmitPost() {
 
 
     return (
-        <div className="posts">
-            {postsList?.map((post) => <SinglePost key={post.id} post={post} />)}
-        </div>
+        <PostContext.Provider value={postsList}>
+            <div className="posts">
+                {postsList?.map((post) => <SinglePost key={post.id} post={post} />)}
+            </div>
+        </PostContext.Provider>
     )
 }

@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom';
-import { PostDataProvider } from '../src/context/useContext';
 
 import HomePage from './components/home-page/HomePage';
 import PeoplePage from './components/people-page/PeoplePage';
@@ -15,6 +14,8 @@ import MyProfileEdit from './components/profile-page/MyProfileEdit';
 import CreatePostPage from './components/create-post/CreatePostPage';
 import GetPeople from './components/create-post/GetPeople';
 import ExplorePage from './components/explore-page/ExplorePage';
+import Comments from './components/comments/Comments';
+import { PostContext } from './contexts/postsContext';
 
 
 
@@ -36,13 +37,12 @@ function App() {
     }
 
     return (
-        <PostDataProvider>
-            <div className='bg'>
+        <div className='bg'>
+            <PostContext>
                 <Routes>
                     {/* public routes */}
                     <Route path="/login" element={<Login />} />
                     <Route path='/register' element={<Register />} />
-
                     {/* private routes */}
                     <Route path="/" element={<HomePage />} />
                     <Route path="/profile" element={<MyProfile />} />
@@ -53,9 +53,10 @@ function App() {
                     <Route path="/saved" element={<SavedPosts />} />
                     <Route path="/create" element={<CreatePostPage />} />
                     <Route path='/getpeople' element={<GetPeople />} />
+                    <Route path='/comments' element={<Comments />} />
                 </Routes>
-            </div >
-        </PostDataProvider>
+            </PostContext>
+        </div >
     );
 }
 

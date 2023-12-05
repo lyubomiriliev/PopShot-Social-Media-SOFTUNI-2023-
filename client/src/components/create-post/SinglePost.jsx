@@ -14,12 +14,13 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 export default function SinglePost({ post }) {
 
 
-    const likeArr = [{ userId: "", likeId: "" }]
-    const likesRef = collection(db, "likes")
-    const likesDoc = query(likesRef, where("postId", "==", post.id));
 
     const [user] = useAuthState(auth)
-    const [likes, setLikes] = useState(likeArr);
+
+    const [likes, setLikes] = useState([]);
+
+    const likesRef = collection(db, "likes")
+    const likesDoc = query(likesRef, where("postId", "==", post.id));
 
     const getLikes = async () => {
         const data = await getDocs(likesDoc)
@@ -42,7 +43,7 @@ export default function SinglePost({ post }) {
         try {
             const likeToDeleteQuery = query(likesRef,
                 where("postId", "==", post.id),
-                where("userId", "===", user.uid));
+                where("userId", "==", user.uid));
 
             const likeToDeleteData = await getDocs(likeToDeleteQuery);
 
@@ -62,12 +63,12 @@ export default function SinglePost({ post }) {
         }
     };
 
-    const hasUserLiked = likes?.find((like) => like.userId === user?.uid);
+    const hasUserLiked = likes?.find((like) => like.userId === user.uid);
 
 
     useEffect(() => {
         getLikes();
-    }, [likesDoc])
+    }, [])
 
     return (
         <div className="single-post">
@@ -101,7 +102,7 @@ export default function SinglePost({ post }) {
                 <div className="info">
                     <div className="likeBtn">
                         <button onClick={hasUserLiked ? removeLike : addLike} > {hasUserLiked ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon />} </button>
-                        <span>{likes && <p>Likes: {likes?.length}</p>}</span>
+                        {hasUserLiked && <p>Likes: {likes?.length}</p>}
                     </div>
                     <div className="item">
                         <AddCommentOutlinedIcon />
