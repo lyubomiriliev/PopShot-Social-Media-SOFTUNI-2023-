@@ -3,6 +3,13 @@ import { auth, db } from "../../config/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useEffect, useState } from "react";
 import "../../assets/styles/singlePost.scss";
+import { Link } from "react-router-dom";
+import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
+import AddCommentOutlinedIcon from '@mui/icons-material/AddCommentOutlined';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+
 
 export default function SinglePost({ post }) {
 
@@ -64,21 +71,48 @@ export default function SinglePost({ post }) {
 
     return (
         <div className="single-post">
+            <div className="container">
+                <div className="userPostInfo">
+                    <img src={user?.photoURL} alt="profilePic" className="postThumbnail" />
+                    <div className="details">
+                        <Link to={`/profile/${post.userId}`} style={{ textDecoration: "none", color: "inherit" }}>
+                            <span className="name">{post.username}</span>
+                        </Link>
+                    </div>
 
-            <div className="title">
-                <h1>{post.title}</h1>
-            </div>
-            <div className="content">
-                <p>{post.content}</p>
-            </div>
-            <div className="image">
-                <img src={post.imageUrl} alt="" />
-            </div>
+                    <div className="editBtn">
+                        <MoreHorizOutlinedIcon />
 
-            <div className="username">
-                <p>@{post.username}</p>
-                <button onClick={hasUserLiked ? removeLike : addLike} > {hasUserLiked ? <>&#128078;</> : <>&#128077;</>} </button>
-                {likes && <p>Likes: {likes?.length}</p>}
+                    </div>
+                </div>
+                <div className="datePosted">
+                    <span className="date">1 min ago</span>
+                </div>
+                <div className="title">
+                    <h2>{post.title}</h2>
+                </div>
+                <div className="content">
+                    <p>{post.content}</p>
+                </div>
+                <div className="image">
+                    <img src={post.imageUrl} alt="" />
+                </div>
+
+                <div className="info">
+                    <div className="likeBtn">
+                        <button onClick={hasUserLiked ? removeLike : addLike} > {hasUserLiked ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon />} </button>
+                        <span>{likes && <p>Likes: {likes?.length}</p>}</span>
+                    </div>
+                    <div className="item">
+                        <AddCommentOutlinedIcon />
+                        <span>7 comments</span>
+                    </div>
+                    <div className="item">
+                        <EditOutlinedIcon />
+                        <span>Edit</span>
+                    </div>
+                </div>
+
             </div>
 
         </div>

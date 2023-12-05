@@ -56,9 +56,9 @@ export default function Post({ post }) {
                         <span>Edit</span>
                     </div>
                 </div>
-                <div>
+                {/* <div>
                     {commentToggle && <Comments />}
-                </div>
+                </div> */}
             </div>
         </div>
     );
