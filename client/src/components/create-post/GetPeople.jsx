@@ -37,7 +37,7 @@ export default function GetPeople() {
         };
         GetPeople(); // call the function
 
-    }, [peopleCollection]);
+    }, []);
 
     return (
         <div>

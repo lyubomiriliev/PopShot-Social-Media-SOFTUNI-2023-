@@ -1,5 +1,9 @@
 import { useAuthState } from "react-firebase-hooks/auth";
 import "../../assets/styles/comments.scss";
+import * as yup from 'yup';
+import { yupResolver } from "@hookform/resolvers/yup"
+import { useForm } from 'react-hook-form';
+
 
 import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
 
@@ -12,9 +16,9 @@ import { PostContext } from "../create-post/SubmitPost";
 
 export default function Comments() {
 
-    const [user] = useAuthState(auth)
+    const { user } = useAuthState(auth)
 
-    const [post] = useContext(PostContext);
+    const { post } = useContext(PostContext)
 
     const [showComments, setShowComments] = useState([]);
     const [newContent, setNewContent] = useState('');
@@ -40,12 +44,21 @@ export default function Comments() {
 
     }, []);
 
+    const validation = yup.object().shape({
+        content: yup.string().required("You can't leave this blank."),
+    });
+
+    const { register, formState: { errors }, } = useForm({
+        resolver: yupResolver(validation),
+    })
+
 
     return (
         <div className="comments">
             <div className="write">
                 <img src={user?.photoURL} alt="userPhoto" />
-                <input type="text" placeholder='Write a comment...' onChange={(e) => { setNewContent(e.target.value) }} />
+                <input type="text" placeholder='Write a comment...' {...register("content")} onChange={(e) => { setNewContent(e.target.value) }} />
+                <p>{errors.content?.message}</p>
                 <button onClick={addComment} ><SendOutlinedIcon /></button>
             </div>
             <div className="comment">

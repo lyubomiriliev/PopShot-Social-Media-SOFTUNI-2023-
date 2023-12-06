@@ -2,6 +2,11 @@
     margin: 0;
     padding: 0;
 
+    .leftBarFlex{
+        display: flex;
+
+    
+
     .mainSection{
         display: flex;
         flex-direction: column;
@@ -31,6 +36,7 @@
 
 
     }
+}
 
 
 }

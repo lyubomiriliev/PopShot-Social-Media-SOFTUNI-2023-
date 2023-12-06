@@ -35,9 +35,7 @@ export default function Register() {
                 <div className="left">
                     <h1>POP A SHOT.</h1>
                     <p>Join Popshot and be part of a vibrant social community where your photos come to life. Share, connect, and capture memories effortlessly.</p>
-                    <Link to="/login">
-                        <span>Already registered?</span>
-                    </Link>
+                    <span>Already registered?</span>
                     <Link to="/login">
                         <button>Login</button>
                     </Link>

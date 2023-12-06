@@ -1,32 +1,30 @@
-import { addDoc, getDocs, collection, query, where, deleteDoc, doc } from "firebase/firestore";
-import { auth, db } from "../../config/firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useEffect, useState } from "react";
 import "../../assets/styles/singlePost.scss";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
+
+import CloseIcon from '@mui/icons-material/Close';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import AddCommentOutlinedIcon from '@mui/icons-material/AddCommentOutlined';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 
 
-export default function SinglePost({ post }) {
+
+import { addDoc, getDocs, collection, query, where, deleteDoc, doc } from "firebase/firestore";
+import { auth, db } from "../../config/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 
+export default function SinglePost({ post, deletePost }) {
 
     const [user] = useAuthState(auth)
 
     const [likes, setLikes] = useState([]);
 
     const likesRef = collection(db, "likes")
+
     const likesDoc = query(likesRef, where("postId", "==", post.id));
-
-    const getLikes = async () => {
-        const data = await getDocs(likesDoc)
-        setLikes(data.docs.map((doc) => ({ userId: doc.data().userId, likeId: doc.id })));
-    }
-
 
     const addLike = async () => {
         try {
@@ -38,6 +36,16 @@ export default function SinglePost({ post }) {
             console.log(err);
         }
     };
+
+    const getLikes = async () => {
+        const data = await getDocs(likesDoc)
+        setLikes(data.docs.map((doc) => ({ userId: doc.data().userId, likeId: doc.id })));
+    }
+
+    useEffect(() => {
+        getLikes();
+    }, [])
+
 
     const removeLike = async () => {
         try {
@@ -51,8 +59,6 @@ export default function SinglePost({ post }) {
 
             const likeToDelete = doc(db, "likes", likeId);
 
-            console.log(likeToDelete);
-
             await deleteDoc(likeToDelete);
 
             if (user) {
@@ -63,12 +69,13 @@ export default function SinglePost({ post }) {
         }
     };
 
+
+    // test
+    // const userPostPhoto = query(postsRef,
+    //     where("userId", "==", user.uid),
+    //     where("user.photoURL", "==", auth.currentUser.user.photoURL));
+
     const hasUserLiked = likes?.find((like) => like.userId === user.uid);
-
-
-    useEffect(() => {
-        getLikes();
-    }, [])
 
     return (
         <div className="single-post">
@@ -81,9 +88,8 @@ export default function SinglePost({ post }) {
                         </Link>
                     </div>
 
-                    <div className="editBtn">
-                        <MoreHorizOutlinedIcon />
-
+                    <div className="deleteBtn">
+                        <button onClick={() => { deletePost(post.id) }} className="delBtn"><CloseIcon /></button>
                     </div>
                 </div>
                 <div className="datePosted">
@@ -106,11 +112,15 @@ export default function SinglePost({ post }) {
                     </div>
                     <div className="item">
                         <AddCommentOutlinedIcon />
-                        <span>7 comments</span>
+                        <span>Add comment</span>
                     </div>
                     <div className="item">
                         <EditOutlinedIcon />
                         <span>Edit</span>
+                    </div>
+                    <div className="item">
+                        <BookmarkBorderOutlinedIcon />
+                        <span>Save</span>
                     </div>
                 </div>
 

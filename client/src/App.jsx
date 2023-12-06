@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import Path from './paths';
 
 import HomePage from './components/home-page/HomePage';
 import PeoplePage from './components/people-page/PeoplePage';
@@ -15,7 +16,8 @@ import CreatePostPage from './components/create-post/CreatePostPage';
 import GetPeople from './components/create-post/GetPeople';
 import ExplorePage from './components/explore-page/ExplorePage';
 import Comments from './components/comments/Comments';
-import { PostContext } from './contexts/postsContext';
+import Settings from './components/settings/Settings';
+// import AuthGuard from './components/guards/AuthGuard';
 
 
 
@@ -38,24 +40,28 @@ function App() {
 
     return (
         <div className='bg'>
-            <PostContext>
-                <Routes>
-                    {/* public routes */}
-                    <Route path="/login" element={<Login />} />
-                    <Route path='/register' element={<Register />} />
-                    {/* private routes */}
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/profile" element={<MyProfile />} />
-                    <Route path='/profile/edit' element={<MyProfileEdit />} />
-                    <Route path="/profile/:id" element={<Layout />} />
-                    <Route path="/explore" element={<ExplorePage />} />
-                    <Route path="/people" element={<PeoplePage />} />
-                    <Route path="/saved" element={<SavedPosts />} />
-                    <Route path="/create" element={<CreatePostPage />} />
-                    <Route path='/getpeople' element={<GetPeople />} />
-                    <Route path='/comments' element={<Comments />} />
-                </Routes>
-            </PostContext>
+            {/* <PostContext> */}
+            <Routes>
+                {/* public routes */}
+                <Route path={Path.Login} element={<Login />} />
+                <Route path={Path.Register} element={<Register />} />
+                {/* private routes */}
+
+                {/* <Route element={<AuthGuard />}> */}
+                <Route path={Path.Home} element={<HomePage />} />
+                <Route path={Path.MyProfile} element={<MyProfile />} />
+                <Route path={Path.Settings} element={<MyProfileEdit />} />
+                <Route path={Path.UserProfile} element={<Layout />} />
+                <Route path={Path.Explore} element={<ExplorePage />} />
+                <Route path={Path.People} element={<PeoplePage />} />
+                <Route path={Path.Saved} element={<SavedPosts />} />
+                <Route path={Path.CreatePost} element={<CreatePostPage />} />
+                <Route path='/getpeople' element={<GetPeople />} />
+                <Route path='/comments' element={<Comments />} />
+                <Route path='/settings' element={<Settings />} />
+                {/* </Route> */}
+            </Routes>
+            {/* </PostContext> */}
         </div >
     );
 }

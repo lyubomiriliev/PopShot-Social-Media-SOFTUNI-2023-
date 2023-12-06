@@ -1,7 +1,9 @@
+import "../../assets/styles/myProfile.scss";
+import { Link } from 'react-router-dom';
+
 import { auth } from '../../config/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth'
-import MyPosts from "./MyPosts";
-import "../../assets/styles/myProfile.scss";
+
 import NavBar from '../navbar-components/NavBar';
 import LeftBar from '../navbar-components/LeftBar';
 
@@ -41,7 +43,9 @@ export default function MyProfile() {
 
 
                                 <div className="right">
-                                    <button>Edit Profile</button>
+                                    <Link to='/settings'>
+                                        <button style={{ textDecoration: 'none' }}>Edit Profile</button>
+                                    </Link>
                                 </div>
 
 

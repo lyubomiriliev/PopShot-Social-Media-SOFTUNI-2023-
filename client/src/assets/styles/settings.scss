@@ -1,0 +1,72 @@
+.settingsContainer{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    .innerContainer{
+        display: flex;
+        flex-direction: column;
+        
+
+    .header{
+        
+        h1{
+            color: #9d1b65;
+            font-size: 2.5rem;
+
+        }
+
+
+    }
+
+    .userHead{
+
+        img{
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    }
+
+    .inputMain{
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        align-items: center;
+
+
+        input{
+            width: 30%;
+            border: none;
+            border-bottom: 1px solid lightgray;
+            padding: 20px 10px;
+        }
+
+    }
+    .submitBtns{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        gap: 50px;
+        margin-top: 30px;
+
+
+        button {
+            padding: 10px 20px;
+            background-color: #1F3B75;
+            color: white;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+      
+            &:hover {
+              background-color: #9d1b65;
+            }
+          }
+    }
+        }
+}
+

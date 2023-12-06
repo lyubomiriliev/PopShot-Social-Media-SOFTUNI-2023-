@@ -1,9 +1,10 @@
 // working code for submitting title and contents and displaying on home page
 
-import { getDocs, collection } from "firebase/firestore";
+import { getDocs, collection, doc, deleteDoc, Firestore, setDoc } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { createContext, useEffect, useState } from "react";
 import SinglePost from "./SinglePost";
+import { async } from "@firebase/util";
 
 export const PostContext = createContext();
 
@@ -24,12 +25,34 @@ export default function SubmitPost() {
     }, [])
 
 
+    const deletePost = async (id) => {
+        const postDoc = doc(db, 'posts', id);
+        await deleteDoc(postDoc)
+    }
+
+
+    // const sourceCollection = collection(db, 'posts');
+    // const destinationCollection = collection(db, 'saved');
+
+    // const sourceDocRef = doc(sourceCollection, doc.id)
+    // const savedDocRef = doc(destinationCollection, id)
+
+
+    // const getSavedPost = async () => {
+    //     await getDocs(sourceDocRef).then((docSnapshot) => {
+    //         if (docSnapshot.exists()) {
+    //             const saveData = docSnapshot.data();
+    //         }
+    //     })
+    // }
+
+    // setDoc(savedDocRef, saveData).then(() => {
+    //     console.log("successful");
+    // })
 
     return (
-        <PostContext.Provider value={postsList}>
-            <div className="posts">
-                {postsList?.map((post) => <SinglePost key={post.id} post={post} />)}
-            </div>
-        </PostContext.Provider>
+        <div className="posts">
+            {postsList?.map((post) => <SinglePost key={post.id} post={post} deletePost={deletePost} />)}
+        </div>
     )
 }
