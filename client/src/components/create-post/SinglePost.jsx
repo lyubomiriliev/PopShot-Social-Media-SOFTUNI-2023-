@@ -14,6 +14,7 @@ import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlin
 import { addDoc, getDocs, collection, query, where, deleteDoc, doc } from "firebase/firestore";
 import { auth, db } from "../../config/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Comments from "../comments/Comments";
 
 
 export default function SinglePost({ post, deletePost }) {
@@ -21,6 +22,8 @@ export default function SinglePost({ post, deletePost }) {
     const [user] = useAuthState(auth)
 
     const [likes, setLikes] = useState([]);
+
+    const [showComments, setShowComments] = useState(false);
 
     const likesRef = collection(db, "likes")
 
@@ -37,15 +40,18 @@ export default function SinglePost({ post, deletePost }) {
         }
     };
 
-    const getLikes = async () => {
+    const refreshLikes = async () => {
         const data = await getDocs(likesDoc)
         setLikes(data.docs.map((doc) => ({ userId: doc.data().userId, likeId: doc.id })));
     }
 
     useEffect(() => {
-        getLikes();
+        refreshLikes();
     }, [])
 
+    // useEffect(() => {
+
+    // }, [likes])
 
     const removeLike = async () => {
         try {
@@ -62,12 +68,17 @@ export default function SinglePost({ post, deletePost }) {
             await deleteDoc(likeToDelete);
 
             if (user) {
-                setLikes((prev) => prev && prev.filter((like) => like.id !== likeId));
+                // setLikes((prev) => prev && prev.filter((like) => like.id !== likeId));
+                refreshLikes();
             }
         } catch (err) {
             console.log(err);
         }
     };
+
+    const showCommentHandler = () => {
+        setShowComments(true);
+    }
 
 
     // test
@@ -111,8 +122,10 @@ export default function SinglePost({ post, deletePost }) {
                         {hasUserLiked && <p>Likes: {likes?.length}</p>}
                     </div>
                     <div className="item">
-                        <AddCommentOutlinedIcon />
-                        <span>Add comment</span>
+                        <button onClick={showCommentHandler}><AddCommentOutlinedIcon /></button>
+                        <div className="comment">
+                            <Comments value={post} />
+                        </div>
                     </div>
                     <div className="item">
                         <EditOutlinedIcon />

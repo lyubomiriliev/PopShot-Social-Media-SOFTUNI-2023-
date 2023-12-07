@@ -53,17 +53,19 @@
 
 
         button {
-            padding: 10px 20px;
-            background-color: #1F3B75;
+            padding: 10px 10px;
+            background-color: #9d1b65;
             color: white;
-            font-size: 20px;
             border: none;
+            scale: 1.2;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            transition: 0.3s ease;
       
             &:hover {
-              background-color: #9d1b65;
+              background-color: #1F3B75;
+              transform: scale(1.1);
             }
           }
     }

@@ -54,19 +54,20 @@
                     gap: 10px;
 
                     button {
-                        border: none;
-                        padding: 5px;
+                        padding: 10px 10px;
+                        background-color: #9d1b65;
                         color: white;
+                        border: none;
+                        border-radius: 5px;
                         cursor: pointer;
-
-                        &:first-child{
-                            background-color: #1F3B75;
+                        transition: background-color 0.3s ease;
+                        transition: 0.3s ease;
+                  
+                        &:hover {
+                          background-color: #1F3B75;
+                          transform: scale(1.1);
                         }
-
-                        &:last-child{
-                            background-color: #9D1B65;
-                        }
-                    }
+                      }
                 }
             
             }

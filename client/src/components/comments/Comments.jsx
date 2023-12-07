@@ -8,17 +8,18 @@ import { useForm } from 'react-hook-form';
 import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
 
 import { auth, db } from "../../config/firebase";
-import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDocs, query, where } from "firebase/firestore";
 
 import { useContext, useEffect, useState } from "react";
-import { PostContext } from "../create-post/SubmitPost";
+import { PostsContext } from "../../contexts/postsContext";
 
 
 export default function Comments() {
 
-    const { user } = useAuthState(auth)
 
-    const { post } = useContext(PostContext)
+    const [user] = useAuthState(auth);
+
+    const value = useContext(PostsContext);
 
     const [showComments, setShowComments] = useState([]);
     const [newContent, setNewContent] = useState('');
@@ -26,23 +27,25 @@ export default function Comments() {
     const commentsRef = collection(db, "comments")
 
     const addComment = async () => {
-        await addDoc(commentsRef, { userId: user.uid, postId: post.id, author: user.displayName, content: newContent });
+        await addDoc(commentsRef, { userId: user.uid, commentId: value.id, author: user.displayName, content: newContent }).catch(err => { console.log(err); });
     }
 
-    const deleteComment = async (id) => {
-        const commentDel = doc(db, "comments", id);
-        await deleteDoc(commentDel);
+    const getComments = async () => {
+        const querySnapshot = await getDocs(query(commentsRef, where("commentId", "==", value.id)));
+        const commentsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setShowComments(commentsData);
     }
-
 
     useEffect(() => {
-        const getComments = async () => {
-            const data = await getDocs(commentsRef)
-            setShowComments(data.docs.map((doc) => ({ userId: doc.data().userId, postId: post.id })))
-        }
+
         getComments();
 
     }, []);
+
+    const deleteComment = async (id) => {
+        const commentDoc = doc(db, 'comments', id);
+        await deleteDoc(commentDoc);
+    }
 
     const validation = yup.object().shape({
         content: yup.string().required("You can't leave this blank."),
@@ -54,24 +57,25 @@ export default function Comments() {
 
 
     return (
-        <div className="comments">
-            <div className="write">
+        <div className="commentContainer">
+            <div className="writeComment">
                 <img src={user?.photoURL} alt="userPhoto" />
-                <input type="text" placeholder='Write a comment...' {...register("content")} onChange={(e) => { setNewContent(e.target.value) }} />
+                <input type="text" placeholder='Write a comment...' value={newContent} {...register("content")} onChange={(e) => { setNewContent(e.target.value) }} />
                 <p>{errors.content?.message}</p>
                 <button onClick={addComment} ><SendOutlinedIcon /></button>
-            </div>
-            <div className="comment">
-                <img src={user?.photoURL} alt="userPhoto" />
-                <div className="info">
-                    <span>Username</span>
-                    <p>description</p>
-                </div>
-                <div className="date">
-                    <span>1 hour ago</span>
-                    <button onClick={() => { deleteComment(post.id) }} >Delete</button>
-                </div>
+                <h3>Comments:</h3>
+                <ul>
+                    {showComments.map((comment) => {
+                        <li key={comment.id}>
+                            <h3>{comment.author}</h3>
+                            <p>{comment.content}</p>
+                            <button>Delete</button>
+                        </li>
+                    })}
+                </ul>
+
             </div>
         </div>
     );
+
 }

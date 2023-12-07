@@ -1,12 +1,11 @@
 // working code for submitting title and contents and displaying on home page
 
-import { getDocs, collection, doc, deleteDoc, Firestore, setDoc } from "firebase/firestore";
+import { getDocs, collection, doc, deleteDoc } from "firebase/firestore";
 import { db } from "../../config/firebase";
-import { createContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import SinglePost from "./SinglePost";
-import { async } from "@firebase/util";
+import { PostsContext } from "../../contexts/postsContext";
 
-export const PostContext = createContext();
 
 export default function SubmitPost() {
 
@@ -30,7 +29,7 @@ export default function SubmitPost() {
         await deleteDoc(postDoc)
     }
 
-
+    // преместване на пост в saved
     // const sourceCollection = collection(db, 'posts');
     // const destinationCollection = collection(db, 'saved');
 
@@ -52,7 +51,7 @@ export default function SubmitPost() {
 
     return (
         <div className="posts">
-            {postsList?.map((post) => <SinglePost key={post.id} post={post} deletePost={deletePost} />)}
+            {postsList?.map((post) => <PostsContext.Provider key={post.id} value={post}><SinglePost key={post.id} post={post} deletePost={deletePost} /></PostsContext.Provider>)}
         </div>
     )
 }

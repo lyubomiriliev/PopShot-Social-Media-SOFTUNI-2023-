@@ -9,7 +9,6 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import AddCommentOutlinedIcon from '@mui/icons-material/AddCommentOutlined';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
-import Comments from "../comments/Comments";
 
 const liked = false;
 
@@ -56,9 +55,6 @@ export default function Post({ post }) {
                         <span>Edit</span>
                     </div>
                 </div>
-                {/* <div>
-                    {commentToggle && <Comments />}
-                </div> */}
             </div>
         </div>
     );

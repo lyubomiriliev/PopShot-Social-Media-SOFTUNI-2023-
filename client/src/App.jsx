@@ -20,9 +20,6 @@ import Settings from './components/settings/Settings';
 // import AuthGuard from './components/guards/AuthGuard';
 
 
-
-
-
 function App() {
 
     const Layout = () => {
@@ -40,7 +37,6 @@ function App() {
 
     return (
         <div className='bg'>
-            {/* <PostContext> */}
             <Routes>
                 {/* public routes */}
                 <Route path={Path.Login} element={<Login />} />
@@ -61,7 +57,6 @@ function App() {
                 <Route path='/settings' element={<Settings />} />
                 {/* </Route> */}
             </Routes>
-            {/* </PostContext> */}
         </div >
     );
 }
