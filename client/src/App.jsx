@@ -17,6 +17,10 @@ import GetPeople from './components/create-post/GetPeople';
 import ExplorePage from './components/explore-page/ExplorePage';
 import Comments from './components/comments/Comments';
 import Settings from './components/settings/Settings';
+
+import { AuthContextProvider } from './contexts/AuthConext';
+import AuthGuard from './components/guards/AuthGuard';
+
 // import AuthGuard from './components/guards/AuthGuard';
 
 
@@ -37,26 +41,25 @@ function App() {
 
     return (
         <div className='bg'>
-            <Routes>
-                {/* public routes */}
-                <Route path={Path.Login} element={<Login />} />
-                <Route path={Path.Register} element={<Register />} />
-                {/* private routes */}
-
-                {/* <Route element={<AuthGuard />}> */}
-                <Route path={Path.Home} element={<HomePage />} />
-                <Route path={Path.MyProfile} element={<MyProfile />} />
-                <Route path={Path.Settings} element={<MyProfileEdit />} />
-                <Route path={Path.UserProfile} element={<Layout />} />
-                <Route path={Path.Explore} element={<ExplorePage />} />
-                <Route path={Path.People} element={<PeoplePage />} />
-                <Route path={Path.Saved} element={<SavedPosts />} />
-                <Route path={Path.CreatePost} element={<CreatePostPage />} />
-                <Route path='/getpeople' element={<GetPeople />} />
-                <Route path='/comments' element={<Comments />} />
-                <Route path='/settings' element={<Settings />} />
-                {/* </Route> */}
-            </Routes>
+            <AuthContextProvider>
+                <Routes>
+                    {/* public routes */}
+                    <Route path={Path.Login} element={<Login />} />
+                    <Route path={Path.Register} element={<Register />} />
+                    {/* private routes */}
+                    <Route path={Path.Home} element={<AuthGuard><HomePage /></AuthGuard>} />
+                    <Route path={Path.MyProfile} element={<AuthGuard><MyProfile /></AuthGuard>} />
+                    <Route path={Path.Settings} element={<AuthGuard><MyProfileEdit /></AuthGuard>} />
+                    <Route path={Path.UserProfile} element={<AuthGuard><Layout /></AuthGuard>} />
+                    <Route path={Path.Explore} element={<AuthGuard><ExplorePage /></AuthGuard>} />
+                    <Route path={Path.People} element={<AuthGuard><PeoplePage /></AuthGuard>} />
+                    <Route path={Path.Saved} element={<AuthGuard><SavedPosts /></AuthGuard>} />
+                    <Route path={Path.CreatePost} element={<AuthGuard><CreatePostPage /></AuthGuard>} />
+                    <Route path='/getpeople' element={<GetPeople />} />
+                    <Route path='/comments' element={<Comments />} />
+                    <Route path='/settings' element={<AuthGuard><Settings /></AuthGuard>} />
+                </Routes>
+            </AuthContextProvider>
         </div >
     );
 }

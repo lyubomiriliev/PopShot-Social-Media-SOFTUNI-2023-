@@ -68,7 +68,7 @@ export default function CreatePostPage() {
             <div style={{ display: "flex" }}>
                 <LeftBar />
                 <div className="formWrapper" style={{ flex: 6 }}>
-                    <img src="../../../public/images/popshot-logo.png" alt="logo" />
+                    <img src="../../src/assets/images/popshot-logo.png" alt="logo" />
 
                     <form onSubmit={handleSubmit(onCreatePost)}>
                         <div className="title">

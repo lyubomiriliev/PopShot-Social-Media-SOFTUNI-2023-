@@ -1,36 +1,35 @@
-import { auth, provider } from '../../config/firebase';
-import { signInWithPopup } from 'firebase/auth'
-import { signInWithEmailAndPassword } from 'firebase/auth';
-
+import Path from '../../paths';
+import "../../assets/styles/login.scss";
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from 'react';
-import "../../assets/styles/login.scss";
+
+import { auth, provider } from '../../config/firebase';
+import { signInWithPopup } from 'firebase/auth'
+import { UserAuth } from '../../contexts/AuthConext';
 
 export default function Login() {
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
     const navigate = useNavigate();
-    const signInWithGoogle = async () => {
-        const result = await signInWithPopup(auth, provider)
-        navigate('/');
-    }
+    const { signIn, google } = UserAuth();
 
-    const signIn = () => {
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                console.log(user);
-                alert('Log in successful');
-                navigate('/');
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError('')
+        try {
+            await signIn(email, password)
+            navigate(Path.Home)
+        } catch (e) {
+            setError(e.message)
+            console.log(e.message)
+        }
+    };
 
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                alert(errorCode);
-            });
-
+    const googleSignIn = async () => {
+        await google(auth, provider)
+        navigate(Path.Home);
     }
 
     return (
@@ -46,13 +45,17 @@ export default function Login() {
                 </div>
                 <div className="right">
                     <h1>Login</h1>
-                    <form >
+                    <form onSubmit={handleSubmit} >
                         <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
                         <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+                        <div className="right">
+                            <button >Login</button>
+                            <button onClick={googleSignIn} >Google Sign In</button>
+                        </div>
+                        <div className="forgotPW">
+                            <p>Forgot Password?</p>
+                        </div>
                     </form>
-                    <button onClick={signIn}>Login</button>
-                    <button onClick={signInWithGoogle} >Sign in with Google</button>
-
                 </div>
             </div>
         </div>

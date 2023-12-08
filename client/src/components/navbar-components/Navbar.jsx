@@ -19,7 +19,7 @@ export default function NavBar() {
         <div className="navBar">
             <div className="left">
                 <Link to="/">
-                    <img src="../../public/images/popshot-logo.png" alt="" />
+                    <img src="../../src/assets/images/popshot-logo.png" alt="" />
                 </Link>
                 <div className="homeIcon">
                     <Link to="/">

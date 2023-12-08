@@ -1,15 +1,15 @@
-// import { Navigate } from "react-router-dom";
-// import { useAuthState } from "react-firebase-hooks/auth";
-// import { auth } from "../../config/firebase";
+import { Navigate } from "react-router-dom";
+import { UserAuth } from "../../contexts/AuthConext";
+import Path from "../../paths";
 
-// export default function AuthGuard(children) {
+const AuthGuard = ({ children }) => {
+    const { user } = UserAuth();
 
-//     const { user } = useAuthState(auth)
+    if (!user) {
+        return <Navigate to={Path.Login} />
+    }
+    return children;
 
-//     if (!user) {
-//         return <Navigate to='login' />;
-//     } else {
-//         return children;
-//     }
+}
 
-// }
+export default AuthGuard;

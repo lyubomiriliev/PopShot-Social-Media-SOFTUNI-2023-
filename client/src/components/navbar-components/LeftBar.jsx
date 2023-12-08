@@ -1,26 +1,31 @@
+import "../../assets/styles/leftBar.scss";
+import Path from '../../paths';
+import { Link, useNavigate } from 'react-router-dom';
+
 import CollectionsOutlinedIcon from '@mui/icons-material/CollectionsOutlined';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-
-import { Link, useNavigate } from 'react-router-dom';
-import "../../assets/styles/leftBar.scss";
-
-import { signOut } from 'firebase/auth'
-import { auth } from '../../config/firebase';
-
+import { UserAuth } from "../../contexts/AuthConext";
 
 
 
 export default function LeftBar() {
 
     const navigate = useNavigate();
+    const { user, logOut } = UserAuth();
 
     const signOutUser = async () => {
-        await signOut(auth);
-        navigate('/login')
+        try {
+            await logOut()
+            navigate(Path.Register)
+            alert('Logged out successfully')
+        } catch (e) {
+            console.log(e.message);
+        }
+
     }
 
     return (
