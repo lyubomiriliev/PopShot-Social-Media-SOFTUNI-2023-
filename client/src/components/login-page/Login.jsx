@@ -1,10 +1,9 @@
-import Path from '../../paths';
 import "../../assets/styles/login.scss";
+import Path from '../../paths';
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from 'react';
 
 import { auth, provider } from '../../config/firebase';
-import { signInWithPopup } from 'firebase/auth'
 import { UserAuth } from '../../contexts/AuthConext';
 
 export default function Login() {

@@ -8,6 +8,7 @@ import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
+import Path from "../../paths";
 
 
 
@@ -18,11 +19,11 @@ export default function NavBar() {
     return (
         <div className="navBar">
             <div className="left">
-                <Link to="/">
+                <Link to={Path.Home}>
                     <img src="../../src/assets/images/popshot-logo.png" alt="" />
                 </Link>
                 <div className="homeIcon">
-                    <Link to="/">
+                    <Link to={Path.Home}>
                         <HomeOutlinedIcon />
                     </Link>
                 </div>
@@ -44,7 +45,9 @@ export default function NavBar() {
                 <div className="user">
                     {user && (
                         <>
-                            <img src={user?.photoURL ?? ""} alt="profilePic" />
+                            <Link to={Path.MyProfile}>
+                                <img src={user?.photoURL ?? ""} alt="profilePic" />
+                            </Link>
                             <span>{user?.displayName}</span>
                         </>
                     )}

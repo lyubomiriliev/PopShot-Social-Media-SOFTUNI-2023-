@@ -1,4 +1,3 @@
-import { useAuthState } from "react-firebase-hooks/auth";
 import "../../assets/styles/comments.scss";
 import * as yup from 'yup';
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -6,18 +5,20 @@ import { useForm } from 'react-hook-form';
 
 
 import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
+import CloseIcon from '@mui/icons-material/Close';
 
-import { auth, db } from "../../config/firebase";
+import { db } from "../../config/firebase";
 import { addDoc, collection, deleteDoc, doc, getDocs, query, where } from "firebase/firestore";
 
 import { useContext, useEffect, useState } from "react";
 import { PostsContext } from "../../contexts/postsContext";
+import { UserAuth } from "../../contexts/AuthConext";
 
 
 export default function Comments() {
 
 
-    const [user] = useAuthState(auth);
+    const { user } = UserAuth();
 
     const value = useContext(PostsContext);
 
@@ -27,13 +28,25 @@ export default function Comments() {
     const commentsRef = collection(db, "comments")
 
     const addComment = async () => {
-        await addDoc(commentsRef, { userId: user.uid, commentId: value.id, author: user.displayName, content: newContent }).catch(err => { console.log(err); });
+        if (user && user.uid) {
+            await addDoc(commentsRef, {
+                userId: user.uid,
+                commentId: value.id,
+                author: user.displayName,
+                content: newContent
+            }).catch(err => {
+                console.log(err);
+            });
+        }
+        getComments();
+        setNewContent("");
     }
 
     const getComments = async () => {
         const querySnapshot = await getDocs(query(commentsRef, where("commentId", "==", value.id)));
-        const commentsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        const commentsData = querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
         setShowComments(commentsData);
+
     }
 
     useEffect(() => {
@@ -45,6 +58,11 @@ export default function Comments() {
     const deleteComment = async (id) => {
         const commentDoc = doc(db, 'comments', id);
         await deleteDoc(commentDoc);
+
+        if (user) {
+            getComments();
+        } else
+            console.log(err);
     }
 
     const validation = yup.object().shape({
@@ -57,25 +75,33 @@ export default function Comments() {
 
 
     return (
-        <div className="commentContainer">
-            <div className="writeComment">
-                <img src={user?.photoURL} alt="userPhoto" />
-                <input type="text" placeholder='Write a comment...' value={newContent} {...register("content")} onChange={(e) => { setNewContent(e.target.value) }} />
-                <p>{errors.content?.message}</p>
-                <button onClick={addComment} ><SendOutlinedIcon /></button>
-                <h3>Comments:</h3>
-                <ul>
-                    {showComments.map((comment) => {
-                        <li key={comment.id}>
-                            <h3>{comment.author}</h3>
-                            <p>{comment.content}</p>
-                            <button>Delete</button>
-                        </li>
-                    })}
-                </ul>
-
+        <div className="commentSection">
+            <div className="commentContainer">
+                <div className="writeComment">
+                    <img src={user?.photoURL} alt="userPhoto" />
+                    <input type="text" placeholder='Write a comment...' value={newContent} {...register("content")} onChange={(e) => { setNewContent(e.target.value) }} />
+                    <p>{errors.content?.message}</p>
+                    <button onClick={addComment} ><SendOutlinedIcon /></button>
+                </div>
             </div>
+            <div className="newCommentContainer">
+
+                <ul className="commentMap">
+                    {showComments.map((comment) => (
+                        <li key={comment.id}>
+                            <div className="postInner">
+                                <h3>{comment.author}</h3>
+                                <p>{comment.content}</p>
+                                <button onClick={() => deleteComment(comment.id)}><CloseIcon /></button>
+
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
         </div>
+
     );
 
 }

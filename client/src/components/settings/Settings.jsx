@@ -1,12 +1,16 @@
-import { useAuthState } from "react-firebase-hooks/auth";
 import "../../assets/styles/settings.scss";
 import { auth } from "../../config/firebase";
 import NavBar from "../navbar-components/NavBar";
 import LeftBar from "../navbar-components/LeftBar";
+import { UserAuth } from "../../contexts/AuthConext";
 
 export default function Settings() {
 
-    const [user] = useAuthState(auth);
+    const { user } = UserAuth();
+
+
+
+
 
     return (
         <>

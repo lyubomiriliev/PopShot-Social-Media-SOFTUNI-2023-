@@ -9,6 +9,8 @@ const Path = {
   Saved: "/saved",
   Explore: "/explore",
   People: "/people",
+  Settings: "/settings",
+  NotFound: "*",
 };
 
 export default Path;

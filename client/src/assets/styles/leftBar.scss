@@ -9,6 +9,7 @@
     border-radius: 5px;
     margin-right: 40px;
 
+    
 
     .container {
         padding: 30px;
@@ -41,7 +42,14 @@
                     font-size: 18px;
                     text-decoration: none;
                     cursor: pointer;
+
+
                 }
+                &:hover {
+                    background-color: #1F3B75;
+                    transition: ease-in-out 0.3s;
+                    transform: scale(1.1);
+                  }
 
                 .settingsBtn a{
                     text-decoration: none;
@@ -76,7 +84,14 @@
                     font-size: 18px;
                     text-decoration: none;
                     cursor: pointer;
+
+
                 }
+                &:hover {
+                    background-color: #1F3B75;
+                    transition: ease-in-out 0.3s;
+                    transform: scale(1.1);
+                  }
             }
             .people {
                 background-color: #9d1b65;
@@ -104,7 +119,14 @@
                     font-size: 18px;
                     text-decoration: none;
                     cursor: pointer;
+
+
                 }
+                &:hover {
+                    background-color: #1F3B75;
+                    transition: ease-in-out 0.3s;
+                    transform: scale(1.1);
+                  }
             }
             .saved {
                 background-color: #9d1b65;
@@ -132,7 +154,14 @@
                     font-size: 18px;
                     text-decoration: none;
                     cursor: pointer;
+
+
                 }
+                &:hover {
+                    background-color: #1F3B75;
+                    transition: ease-in-out 0.3s;
+                    transform: scale(1.1);
+                  }
 
 
             }
@@ -151,7 +180,7 @@
                     text-decoration: none;
                 }
                 
-                button{
+                button {
                     width: 100%;
                     padding: 5px;
                     border: none;
@@ -162,7 +191,14 @@
                     font-size: 18px;
                     text-decoration: none;
                     cursor: pointer;
+
+
                 }
+                &:hover {
+                    background-color: #1F3B75;
+                    transition: ease-in-out 0.3s;
+                    transform: scale(1.1);
+                  }
             }
             .logout {
                 display: flex;
@@ -181,12 +217,19 @@
                     border: none;
                     background-color: transparent;
                     display: flex;
-                    align-items: center;
+                    margin-left: 10px;
                     color: white;
-                    font-weight: bold;
                     font-size: 18px;
+                    text-decoration: none;
                     cursor: pointer;
+
+
                 }
+                &:hover {
+                    background-color: #1F3B75;
+                    transition: ease-in-out 0.3s;
+                    transform: scale(1.1);
+                  }
             }
         }
  

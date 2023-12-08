@@ -5,11 +5,14 @@ import { db } from "../../config/firebase";
 import { useEffect, useState } from "react";
 import SinglePost from "./SinglePost";
 import { PostsContext } from "../../contexts/postsContext";
+import { UserAuth } from "../../contexts/AuthConext";
 
 
 export default function SubmitPost() {
 
     const [postsList, setPostsList] = useState(null);
+
+    const user = UserAuth();
 
     const postsRef = collection(db, "posts");
 
@@ -17,9 +20,11 @@ export default function SubmitPost() {
         const data = await getDocs(postsRef)
         setPostsList(
             data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+
     }
 
     useEffect(() => {
+
         getPosts();
     }, [])
 
@@ -27,7 +32,14 @@ export default function SubmitPost() {
     const deletePost = async (id) => {
         const postDoc = doc(db, 'posts', id);
         await deleteDoc(postDoc)
+
+        if (user) {
+            getPosts();
+        } else
+            console.log(err);
+
     }
+
 
     // преместване на пост в saved
     // const sourceCollection = collection(db, 'posts');

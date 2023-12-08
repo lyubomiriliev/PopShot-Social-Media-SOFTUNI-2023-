@@ -20,7 +20,7 @@ export default function LeftBar() {
     const signOutUser = async () => {
         try {
             await logOut()
-            navigate(Path.Register)
+            navigate(Path.Login)
             alert('Logged out successfully')
         } catch (e) {
             console.log(e.message);

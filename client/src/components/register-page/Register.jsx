@@ -5,7 +5,6 @@ import { useState } from 'react';
 
 import { UserAuth } from "../../contexts/AuthConext";
 
-
 export default function Register() {
 
 

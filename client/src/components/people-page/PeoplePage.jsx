@@ -10,17 +10,20 @@ export default function PeoplePage() {
             <div className="leftBarFlex">
                 <LeftBar />
                 <div className="mainSection">
-                    <div className="userInfo">
-                        <h3>John Doe</h3>
-                        <p>@johndoe_97</p>
-                    </div>
                     <div className="userImg">
                         <img src="https://images.pexels.com/photos/1182825/pexels-photo-1182825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="profilePhoto" />
                     </div>
+
                     <div className="actionBtns">
                         <button>Follow</button>
                     </div>
+                    <div className="userInfo">
+                        <h3>John Doe</h3>
+                        <p>@johndoe_97</p>
+                        <p>3660 followers</p>
+                    </div>
                 </div>
+
             </div>
         </div>
     );

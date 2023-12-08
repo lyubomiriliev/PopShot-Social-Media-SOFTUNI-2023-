@@ -77,7 +77,7 @@ export default function SinglePost({ post, deletePost }) {
     };
 
     const showCommentHandler = () => {
-        setShowComments(true);
+        setShowComments(!showComments);
     }
 
 
@@ -90,7 +90,7 @@ export default function SinglePost({ post, deletePost }) {
 
     return (
         <div className="single-post">
-            <div className="container">
+            <div className="postContainer">
                 <div className="userPostInfo">
                     <img src={user?.photoURL} alt="profilePic" className="postThumbnail" />
                     <div className="details">
@@ -118,14 +118,8 @@ export default function SinglePost({ post, deletePost }) {
 
                 <div className="info">
                     <div className="likeBtn">
-                        <button onClick={hasUserLiked ? removeLike : addLike} > {hasUserLiked ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon />} </button>
+                        <button onClick={hasUserLiked ? removeLike : addLike} > {hasUserLiked ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon />}</button>
                         {hasUserLiked && <p>Likes: {likes?.length}</p>}
-                    </div>
-                    <div className="item">
-                        <button onClick={showCommentHandler}><AddCommentOutlinedIcon /></button>
-                        <div className="comment">
-                            <Comments value={post} />
-                        </div>
                     </div>
                     <div className="item">
                         <EditOutlinedIcon />
@@ -135,9 +129,17 @@ export default function SinglePost({ post, deletePost }) {
                         <BookmarkBorderOutlinedIcon />
                         <span>Save</span>
                     </div>
+                    <div className="item">
+                        <button onClick={showCommentHandler}><AddCommentOutlinedIcon /></button>
+                        <span>Comment</span>
+                    </div>
                 </div>
 
             </div>
+            <div className="newComments">
+                {showComments && <Comments value={post} />}
+            </div>
+
 
         </div>
     );
