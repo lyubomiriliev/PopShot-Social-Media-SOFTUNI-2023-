@@ -40,6 +40,6 @@ Popshot is a social media platform designed to share moments through images and 
   1. Google Sign In triggers Email/Password validations.
   2. A user can try to edit another user's post but it won't let him.
   3. Changing user doesn't change Profile Information.
-  4. 
+  4. Saving posts problem with undefined after mapping.
     
 ![Logo](https://i.imgur.com/BlynGmW.png)
