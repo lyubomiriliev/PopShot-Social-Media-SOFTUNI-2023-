@@ -38,7 +38,7 @@ Popshot is a social media platform designed to share moments through images and 
 
 ## 6. Known Issues:
   1. Google Sign In triggers Email/Password validations.
-  2. 
+  2. A user can try to edit another user's post but it won't let him
   3. 
   4. 
     
