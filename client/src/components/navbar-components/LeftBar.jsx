@@ -21,7 +21,6 @@ export default function LeftBar() {
         try {
             await logOut()
             navigate(Path.Login)
-            alert('Logged out successfully')
         } catch (e) {
             console.log(e.message);
         }

@@ -1,33 +1,25 @@
+import "../../assets/styles/CreatePostPage.scss";
 import { useForm } from 'react-hook-form';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import * as yup from 'yup';
 import { yupResolver } from "@hookform/resolvers/yup"
 
-import { addDoc, collection, orderBy, query } from 'firebase/firestore'
-import { auth, db } from "../../config/firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { addDoc, collection } from 'firebase/firestore'
+import { db } from "../../config/firebase";
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import "../../assets/styles/CreatePostPage.scss";
+
 import NavBar from '../navbar-components/NavBar';
 import LeftBar from '../navbar-components/LeftBar';
+import { UserAuth } from '../../contexts/AuthConext';
 
-// working code title and contents store in db and displaying in home page
 
 export default function CreatePostPage() {
 
     const navigate = useNavigate();
-    const [user] = useAuthState(auth);
+    const { user } = UserAuth();
     const [image, setImage] = useState(null);
-
-    const schema = yup.object().shape({
-        title: yup.string().required("You must add a title."),
-        content: yup.string().required("You must add contents."),
-    });
-
-    const { register, handleSubmit, formState: { errors }, } = useForm({
-        resolver: yupResolver(schema),
-    })
 
     const postsRef = collection(db, "posts")
     const storage = getStorage();
@@ -55,11 +47,21 @@ export default function CreatePostPage() {
             ...data,
             imageUrl,
             username: user?.displayName,
+            authorAvatar: user.photoURL,
             userId: user?.uid,
         });
 
         navigate('/');
     };
+
+    const schema = yup.object().shape({
+        title: yup.string().required("You must add a title."),
+        content: yup.string().required("You must add contents."),
+    });
+
+    const { register, handleSubmit, formState: { errors }, } = useForm({
+        resolver: yupResolver(schema),
+    })
 
 
     return (
@@ -74,11 +76,11 @@ export default function CreatePostPage() {
                         <div className="title">
                             <h3>Create a new post</h3>
                             <input type="text" placeholder='Title...' {...register("title")} />
-                            <p style={{ color: "red" }}> {errors.title?.message} </p>
+                            <p style={{ color: "red", fontSize: "13px", marginTop: "0px" }}> {errors.title?.message} </p>
                         </div>
                         <div className="contents">
                             <textarea placeholder='Description...' {...register("content")} />
-                            <p style={{ color: "red" }}> {errors.content?.message} </p>
+                            <p style={{ color: "red", fontSize: "13px", marginTop: "0px" }}> {errors.content?.message} </p>
                             <input type="file" className='customInput' onChange={handleImageChange} />
                         </div>
                         <div className="submit">

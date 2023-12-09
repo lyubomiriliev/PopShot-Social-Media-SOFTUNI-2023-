@@ -1,15 +1,15 @@
 import LeftBar from "../navbar-components/LeftBar";
 import NavBar from "../navbar-components/NavBar";
 import RightBar from "../navbar-components/RightBar";
-import Profile from "./Profile";
+import UserProfileContainer from "./UserProfileContainer";
 
-export default function UserProfile() {
+export default function UserProfileLayout() {
     return (
         <div>
             <NavBar />
             <div style={{ display: "flex" }}>
                 <LeftBar />
-                <Profile />
+                <UserProfileContainer />
                 <RightBar />
             </div>
         </div>

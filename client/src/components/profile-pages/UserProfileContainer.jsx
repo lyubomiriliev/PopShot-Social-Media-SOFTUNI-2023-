@@ -1,7 +1,7 @@
-import Posts from "../posts-page/Posts";
+import Posts from "../user-posts-page/Posts";
 import "../../assets/styles/profile.scss";
 
-export default function Profile() {
+export default function UserProfileContainer() {
     return (
         <div className="profile">
             <div className="images">

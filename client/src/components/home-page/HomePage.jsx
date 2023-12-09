@@ -1,9 +1,10 @@
+import "../../assets/styles/homePage.scss";
+
 import LeftBar from "../navbar-components/LeftBar";
 import NavBar from "../navbar-components/NavBar";
 import RightBar from "../navbar-components/RightBar";
 import Stories from "../stories/Stories";
-import SubmitPost from "../create-post/SubmitPost";
-import "../../assets/styles/homePage.scss";
+import SubmitPost from "../posts/SubmitPost";
 
 
 

@@ -1,0 +1,15 @@
+.editForm{
+    display: flex;
+    flex-direction: column;
+
+    button{
+        width: 10%;
+    }
+
+    input{
+        display: flex;
+        padding: 5px 10px;
+        scale: 1.1;
+        margin-bottom: 30px;
+    }
+}

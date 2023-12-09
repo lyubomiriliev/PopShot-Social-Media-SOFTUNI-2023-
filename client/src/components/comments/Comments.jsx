@@ -10,17 +10,15 @@ import CloseIcon from '@mui/icons-material/Close';
 import { db } from "../../config/firebase";
 import { addDoc, collection, deleteDoc, doc, getDocs, query, where } from "firebase/firestore";
 
-import { useContext, useEffect, useState } from "react";
-import { PostsContext } from "../../contexts/postsContext";
+import { useEffect, useState } from "react";
 import { UserAuth } from "../../contexts/AuthConext";
 
 
-export default function Comments() {
+export default function Comments(post_id) {
 
 
     const { user } = UserAuth();
 
-    const value = useContext(PostsContext);
 
     const [showComments, setShowComments] = useState([]);
     const [newContent, setNewContent] = useState('');
@@ -31,8 +29,9 @@ export default function Comments() {
         if (user && user.uid) {
             await addDoc(commentsRef, {
                 userId: user.uid,
-                commentId: value.id,
+                commentId: post_id,
                 author: user.displayName,
+                authorAvatar: user.photoURL,
                 content: newContent
             }).catch(err => {
                 console.log(err);
@@ -43,7 +42,7 @@ export default function Comments() {
     }
 
     const getComments = async () => {
-        const querySnapshot = await getDocs(query(commentsRef, where("commentId", "==", value.id)));
+        const querySnapshot = await getDocs(query(commentsRef, where("commentId", "==", post_id)));
         const commentsData = querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
         setShowComments(commentsData);
 
@@ -90,10 +89,10 @@ export default function Comments() {
                     {showComments.map((comment) => (
                         <li key={comment.id}>
                             <div className="postInner">
+                                <img src={comment.authorAvatar} alt="" />
                                 <h3>{comment.author}</h3>
                                 <p>{comment.content}</p>
                                 <button onClick={() => deleteComment(comment.id)}><CloseIcon /></button>
-
                             </div>
                         </li>
                     ))}

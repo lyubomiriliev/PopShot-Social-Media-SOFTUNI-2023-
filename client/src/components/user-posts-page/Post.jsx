@@ -1,16 +1,13 @@
-import { useState } from "react";
-
-import { Link } from "react-router-dom";
 import "../../assets/styles/singlePost.scss";
 
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import AddCommentOutlinedIcon from '@mui/icons-material/AddCommentOutlined';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 
-const liked = false;
 
 export default function Post({ post }) {
     const [commentToggle, setCommentToggle] = useState(false);
@@ -30,7 +27,7 @@ export default function Post({ post }) {
                             <Link to={`/profile/${post.userId}`} style={{ textDecoration: "none", color: "inherit" }}>
                                 <span className="name">{post.name}</span>
                             </Link>
-                            <span className="date">1 min ago</span>
+                            <span className="date">Just posted</span>
                         </div>
                     </div>
                     <div>
@@ -43,7 +40,7 @@ export default function Post({ post }) {
                 </div>
                 <div className="info">
                     <div className="item">
-                        {liked ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon />}
+                        {<FavoriteBorderOutlinedIcon />}
                         <span>12 likes</span>
                     </div>
                     <div className="item" onClick={commentToggleHandler}>

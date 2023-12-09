@@ -6,6 +6,11 @@ import { useState } from 'react';
 import { auth, provider } from '../../config/firebase';
 import { UserAuth } from '../../contexts/AuthConext';
 
+import * as yup from 'yup';
+import { yupResolver } from "@hookform/resolvers/yup"
+import { useForm } from 'react-hook-form';
+
+
 export default function Login() {
 
     const [email, setEmail] = useState('');
@@ -14,8 +19,7 @@ export default function Login() {
     const navigate = useNavigate();
     const { signIn, google } = UserAuth();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const LoginSubmit = async () => {
         setError('')
         try {
             await signIn(email, password)
@@ -31,6 +35,15 @@ export default function Login() {
         navigate(Path.Home);
     }
 
+    const loginValidation = yup.object().shape({
+        email: yup.string().required("You need an email to log in."),
+        password: yup.string().required("You need a password to log in."),
+    });
+
+    const { register, handleSubmit, formState: { errors }, } = useForm({
+        resolver: yupResolver(loginValidation),
+    })
+
     return (
         <div className="login">
             <div className="card">
@@ -44,9 +57,11 @@ export default function Login() {
                 </div>
                 <div className="right">
                     <h1>Login</h1>
-                    <form onSubmit={handleSubmit} >
-                        <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-                        <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+                    <form onSubmit={handleSubmit(LoginSubmit)} >
+                        <input type="email" placeholder="Email" {...register("email")} onChange={(e) => setEmail(e.target.value)} />
+                        <p style={{ color: "red", fontSize: "13px", marginTop: "-15px" }}> {errors.email?.message} </p>
+                        <input type="password" placeholder="Password" {...register("password")} onChange={(e) => setPassword(e.target.value)} />
+                        <p style={{ color: "red", fontSize: "13px", marginTop: "-15px" }}> {errors.password?.message} </p>
                         <div className="right">
                             <button >Login</button>
                             <button onClick={googleSignIn} >Google Sign In</button>

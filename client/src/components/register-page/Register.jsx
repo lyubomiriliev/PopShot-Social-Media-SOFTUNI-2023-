@@ -5,6 +5,10 @@ import { useState } from 'react';
 
 import { UserAuth } from "../../contexts/AuthConext";
 
+import * as yup from 'yup';
+import { yupResolver } from "@hookform/resolvers/yup"
+import { useForm } from 'react-hook-form';
+
 export default function Register() {
 
 
@@ -13,12 +17,11 @@ export default function Register() {
     const [password, setPassword] = useState("")
     const [username, setUsername] = useState("")
     const [error, setError] = useState("")
-    const createUser = UserAuth();
+    const { createUser } = UserAuth();
     const navigate = useNavigate();
 
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
+    const RegisterSubmit = async () => {
         setError('')
         try {
             await createUser(email, password)
@@ -28,6 +31,16 @@ export default function Register() {
             console.log(e.message);
         }
     }
+
+    const registerValidation = yup.object().shape({
+        username: yup.string().required("You need a valid username to register."),
+        email: yup.string().required("You need an email to register."),
+        password: yup.string().required("You need a password to register."),
+    });
+
+    const { register, handleSubmit, formState: { errors }, } = useForm({
+        resolver: yupResolver(registerValidation),
+    })
     return (
         <div className="register">
             <div className="card">
@@ -41,10 +54,13 @@ export default function Register() {
                 </div>
                 <div className="right">
                     <h1>Register</h1>
-                    <form onSubmit={handleSubmit} >
-                        <input name="username" type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
-                        <input name="email" type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-                        <input name="password" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+                    <form onSubmit={handleSubmit(RegisterSubmit)} >
+                        <input name="username" type="text" placeholder="Username" {...register("username")} onChange={(e) => setUsername(e.target.value)} />
+                        <p style={{ color: "red", fontSize: "13px", marginTop: "-15px" }}> {errors.username?.message} </p>
+                        <input name="email" type="email" placeholder="Email" {...register("email")} onChange={(e) => setEmail(e.target.value)} />
+                        <p style={{ color: "red", fontSize: "13px", marginTop: "-15px" }}> {errors.email?.message} </p>
+                        <input name="password" type="password" placeholder="Password" {...register("password")} onChange={(e) => setPassword(e.target.value)} />
+                        <p style={{ color: "red", fontSize: "13px", marginTop: "-15px" }}> {errors.password?.message} </p>
                         <button>Register</button>
                     </form>
                 </div>

@@ -7,6 +7,7 @@
         height: 40px;
         border-radius: 50%;
         object-fit: cover;
+        border: 2px solid #9d1b65;
     }
 
     .writeComment {
@@ -59,8 +60,8 @@
             height: 60px;
             display: flex;
             align-items: center;
-            gap: 20px;
-            border: 1px solid black;
+            justify-content: space-between;
+            border: 1px solid gray;
             background-color: lightgray;
             border-radius: 10px;
             box-shadow: 0px 0px 15px 1px rgba(192, 188, 188, 0.223);
@@ -68,8 +69,8 @@
             margin-bottom: 20px;
 
             button {
-                height: 60px;
                 width: 10%;
+                height: 60px;
                 background-color: #9d1b65;
                 color: white;
                 border: none;
@@ -86,12 +87,21 @@
                 }
               }
 
+              img{
+                width: 55px;
+                height: 55px;
+                border: 2px solid #9d1b65;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
               h3{
+                width: 40%;
                 font-size: 20px;
               }
 
               p{
-                width: 60%;
+                width: 20%;
                 font-size: 18px;
               }
     
