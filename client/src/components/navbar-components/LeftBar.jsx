@@ -47,14 +47,6 @@ export default function LeftBar() {
                             </Link>
                         </div>
                     </div>
-                    <div className="saved">
-                        <BookmarkBorderOutlinedIcon />
-                        <div className="savedBtn">
-                            <Link to="/saved">
-                                <button>Saved</button>
-                            </Link>
-                        </div>
-                    </div>
                     <div className="createPost">
                         <AddCircleOutlineOutlinedIcon />
                         <div className="createBtn">

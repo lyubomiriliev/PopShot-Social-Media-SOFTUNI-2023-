@@ -1,7 +1,7 @@
-import LeftBar from "../navbar-components/LeftBar";
-import RightBar from "../navbar-components/RightBar";
-import NavBar from "../navbar-components/NavBar";
 import "../../assets/styles/explorePage.scss";
+
+import LeftBar from "../navbar-components/LeftBar";
+import NavBar from "../navbar-components/NavBar";
 
 export default function ExplorePage() {
     return (
@@ -11,10 +11,6 @@ export default function ExplorePage() {
                 <div style={{ display: "flex" }}>
                     <LeftBar />
                     <div style={{ flex: 6 }}>
-                        <h2>Popular Today</h2>
-                        <div className="sort">
-                            <button>Sort By:</button>
-                        </div>
 
                         <div className="exploreGrid">
                             <div>

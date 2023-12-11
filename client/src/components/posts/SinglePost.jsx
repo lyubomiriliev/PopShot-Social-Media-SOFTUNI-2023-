@@ -92,7 +92,6 @@ export default function SinglePost({ getPosts, post }) {
 
     const hasUserLiked = likes?.find((like) => like.userId === user.uid);
 
-    //MODAL
     const style = {
         position: 'absolute',
         top: '50%',
@@ -147,21 +146,17 @@ export default function SinglePost({ getPosts, post }) {
                     </div>
 
                     <div className="info">
-                        <div className="likeBtn">
-                            <button onClick={hasUserLiked ? removeLike : addLike} > {hasUserLiked ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon />}</button>
-                            {hasUserLiked && <p>Likes: {likes?.length}</p>}
+                        <div className="actionBtn">
+                            <button onClick={hasUserLiked ? removeLike : addLike} > {hasUserLiked ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon />}Likes: {likes?.length}</button>
                         </div>
-                        <div className="item">
-                            <button onClick={handleOpen} ><EditOutlinedIcon /></button>
-                            <span>Edit</span>
+                        <div className="actionBtn">
+                            <button onClick={handleOpen} ><EditOutlinedIcon />Edit</button>
                         </div>
-                        <div className="item">
-                            <button><BookmarkBorderOutlinedIcon /></button>
-                            <span>Save</span>
+                        <div className="actionBtn">
+                            <button><BookmarkBorderOutlinedIcon />Save</button>
                         </div>
-                        <div className="item">
-                            <button onClick={showCommentHandler}><AddCommentOutlinedIcon /></button>
-                            <span>Comment</span>
+                        <div className="actionBtn">
+                            <button onClick={showCommentHandler}><AddCommentOutlinedIcon />Comment</button>
                         </div>
                     </div>
 

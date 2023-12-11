@@ -11,6 +11,8 @@
     z-index: 999;
 
     .left {
+        margin: 0;
+        padding: 0;
         display: flex;
         align-items: center;
         gap: 30px;
@@ -20,7 +22,6 @@
             align-items: center;
             height: auto;
             width: 200px;
-            
         }
 
         .homeIcon a{
@@ -28,37 +29,52 @@
             display: flex;
             color: inherit;
             align-items: center;
-        }
+            transition: 0.3s;
 
-        .search {
-            display: flex;
-            gap: 10px;
-            border: 2px solid lightgray;
-            border-radius: 10px;
-            padding: 5px;
-
-            input {
-            border: none;
-            width: 600px;
+            &:hover {
+                scale: 1.2;
             }
         }
+
+        .gridIcon{
+            transition: 0.3s ease;
+
+            &:hover {
+                scale: 1.2;
+            }
+        }
+
+
     }
     
     .right {
         display: flex;
         align-items: center;
-        gap: 20px;
-        
-        .notifications a{
-            text-decoration: none;
-            color: inherit;
+        gap: 30px;
+
+        .notifications{
+            transition: 0.3s ease;
+
+            &:hover {
+                scale: 1.2;
+            }
+
         }
+
+        .userProfile{
+            transition: 0.3s ease;
+
+            &:hover {
+                scale: 1.2;
+            }
+        }
+    
 
         .user{
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-weight: 500;
+            gap: 15px;
+            font-weight: 600;
             font-size: 18px;
 
             img {
@@ -67,6 +83,11 @@
                 border-radius: 50px;
                 object-fit: cover;
                 border: 3px solid #9d1b65;
+                transition: 0.3s ease-out;
+
+                &:hover {
+                    scale: 1.1;
+                }
 
             }
         }
