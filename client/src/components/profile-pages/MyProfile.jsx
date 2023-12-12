@@ -1,17 +1,17 @@
 import "../../assets/styles/myProfile.scss";
 import { Link } from 'react-router-dom';
 
-import { auth } from '../../config/firebase';
-import { useAuthState } from 'react-firebase-hooks/auth'
-
 import NavBar from '../navbar-components/NavBar';
 import LeftBar from '../navbar-components/LeftBar';
+import { UserAuth } from "../../contexts/AuthConext";
+
+
 
 
 
 export default function MyProfile() {
 
-    const [user] = useAuthState(auth);
+    const { user } = UserAuth();
 
     return (
         <>
@@ -22,7 +22,7 @@ export default function MyProfile() {
                     <div style={{ flex: 6 }}>
                         <div className="images">
                             <img src="https://images.pexels.com/photos/2876511/pexels-photo-2876511.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="cover" />
-                            <img src={user?.photoURL ?? ""} alt="" className="profilePic" />
+                            <img src={user.photoURL} alt="" className="profilePic" />
                         </div>
                         <div className="profileContainerr">
                             <div className="userInfo">

@@ -1,14 +1,13 @@
 import "../../assets/styles/navBar.scss";
 import Path from "../../paths";
 
-import { Link } from 'react-router-dom';
-import { auth } from '../../config/firebase';
-import { useAuthState } from 'react-firebase-hooks/auth'
+import { Link, useNavigate } from 'react-router-dom';
+import { UserAuth } from "../../contexts/AuthConext";
 
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
-import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
+import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 
 
 
@@ -16,7 +15,19 @@ import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNone
 
 export default function NavBar() {
 
-    const [user] = useAuthState(auth);
+
+    const navigate = useNavigate();
+    const { user, logOut } = UserAuth();
+
+    const signOutUser = async () => {
+        try {
+            await logOut()
+            navigate(Path.Login)
+        } catch (e) {
+            console.log(e.message);
+        }
+
+    }
 
     return (
         <div className="navBar">
@@ -39,10 +50,12 @@ export default function NavBar() {
                         <NotificationsNoneOutlinedIcon />
                     </Link>
                 </div>
-                <div className="userProfile">
-                    <Link to="/profile" style={{ textDecoration: "none", color: "inherit" }}>
-                        <PersonOutlineOutlinedIcon />
-                    </Link>
+                <div className="logout">
+                    <button onClick={signOutUser} >
+                        <Link to={Path.Login} style={{ textDecoration: "none", color: "inherit" }}>
+                            <ExitToAppOutlinedIcon />
+                        </Link>
+                    </button>
                 </div>
                 <div className="user">
                     {user && (

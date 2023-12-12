@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import CollectionsOutlinedIcon from '@mui/icons-material/CollectionsOutlined';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
-import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
@@ -63,12 +62,6 @@ export default function LeftBar() {
                             </Link>
                         </div>
                     </div>
-
-                    <div className="logout">
-                        <ExitToAppOutlinedIcon />
-                        <button onClick={signOutUser} >Logout</button>
-                    </div>
-
                 </div>
 
             </div>

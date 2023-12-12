@@ -6,7 +6,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../config/firebase";
 
-export default function PostEditForm({ closeEvent, post }) {
+export default function PostEditForm({ handleClose, post }) {
 
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -14,9 +14,9 @@ export default function PostEditForm({ closeEvent, post }) {
     const EditPost = async () => {
 
         const postDoc = doc(db, "posts", post.id);
-        const newFields = { title, content };
-        await updateDoc(postDoc, newFields);
-        closeEvent();
+        const updateFields = { title, content };
+        await updateDoc(postDoc, updateFields);
+        handleClose();
         post.title = title
         post.content = content
     }
@@ -24,7 +24,7 @@ export default function PostEditForm({ closeEvent, post }) {
     return (
         <div className="editForm">
             <>
-                <button onClick={closeEvent}><CloseIcon /></button>
+                <button onClick={handleClose}><CloseIcon /></button>
 
                 <Box sx={{ m: 2 }} />
                 <Typography id="modal-modal-title" variant="h6" component="h2">

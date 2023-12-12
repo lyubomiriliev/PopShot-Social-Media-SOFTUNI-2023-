@@ -7,12 +7,13 @@ import * as yup from 'yup';
 import { yupResolver } from "@hookform/resolvers/yup"
 
 import { addDoc, collection } from 'firebase/firestore'
-import { db } from "../../config/firebase";
+import { auth, db } from "../../config/firebase";
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 import NavBar from '../navbar-components/NavBar';
 import LeftBar from '../navbar-components/LeftBar';
 import { UserAuth } from '../../contexts/AuthConext';
+import moment from "moment";
 
 
 export default function CreatePostPage() {
@@ -38,6 +39,7 @@ export default function CreatePostPage() {
         return await getDownloadURL(ref);
     };
 
+
     const onCreatePost = async (data) => {
         const imageRef = ref(storage, `images/${image.name}`);
         await uploadImage(imageRef);
@@ -48,7 +50,8 @@ export default function CreatePostPage() {
             imageUrl,
             username: user?.displayName,
             authorAvatar: user.photoURL,
-            userId: user?.uid,
+            userId: auth?.currentUser?.uid,
+            timestamp: moment().format(),
         });
 
         navigate('/');

@@ -16,6 +16,7 @@ import Comments from "../comments/Comments";
 import { UserAuth } from "../../contexts/AuthConext";
 import { Box, Modal } from "@mui/material";
 import PostEditForm from "./PostEditForm";
+import { formatTime } from "../../utils/formatTime";
 
 
 export default function SinglePost({ getPosts, post }) {
@@ -104,6 +105,8 @@ export default function SinglePost({ getPosts, post }) {
         p: 4,
     };
 
+
+
     return (
         <>
             <div>
@@ -114,7 +117,7 @@ export default function SinglePost({ getPosts, post }) {
                     aria-describedby="modal-modal-description"
                 >
                     <Box sx={style}>
-                        <PostEditForm closeEvent={handleClose} post={post} />
+                        <PostEditForm handleClose={handleClose} post={post} />
                     </Box>
                 </Modal>
             </div>
@@ -133,7 +136,7 @@ export default function SinglePost({ getPosts, post }) {
                         </div>
                     </div>
                     <div className="datePosted">
-                        <span className="date">1 min ago</span>
+                        <span className="date">{formatTime(post.timestamp)}</span>
                     </div>
                     <div className="title">
                         <h2>{post.title}</h2>

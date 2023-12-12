@@ -17,7 +17,7 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
-    const { signIn, google } = UserAuth();
+    const { signIn, google, user, createUserDoc } = UserAuth();
 
     const LoginSubmit = async () => {
         setError('')
@@ -31,7 +31,7 @@ export default function Login() {
     };
 
     const googleSignIn = async () => {
-        await google(auth, provider)
+        const result = await google(auth, provider)
         navigate(Path.Home);
     }
 

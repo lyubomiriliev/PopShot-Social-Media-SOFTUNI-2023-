@@ -1,14 +1,19 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, signInWithPopup } from "firebase/auth";
-import { auth, provider } from "../config/firebase";
+import { auth, db, provider } from "../config/firebase";
+import { addDoc, collection } from "firebase/firestore";
 
 const UserContext = createContext()
 
 export const AuthContextProvider = ({ children }) => {
     const [user, setUser] = useState({});
 
-    const createUser = (email, password) => {
-        return createUserWithEmailAndPassword(auth, email, password);
+    const SignUp = (email, password) => {
+        try {
+            return createUserWithEmailAndPassword(auth, email, password);
+        } catch (err) {
+            console.log(err);
+        }
     };
 
     const signIn = (email, password) => {
@@ -16,13 +21,32 @@ export const AuthContextProvider = ({ children }) => {
     }
 
     const google = (auth, provider) => {
-        return signInWithPopup(auth, provider)
+        try {
+            return signInWithPopup(auth, provider)
+        } catch (err) {
+            return err;
+        }
     }
 
     const logOut = () => {
-        return signOut(auth)
+        try {
+            return signOut(auth)
+        } catch (err) {
+            return err;
+        }
     };
 
+
+    const usersCollection = collection(db, 'users')
+
+    const createUserDoc = (username, email) => {
+        addDoc(usersCollection, {
+            username,
+            email,
+            displayName: username,
+            photoURL: "https://www.whitechapelgallery.org/wp-content/uploads/2020/07/blank-head-profile-pic-for-a-man.jpg"
+        });
+    };
 
 
 
@@ -36,7 +60,7 @@ export const AuthContextProvider = ({ children }) => {
     }, []);
 
     return (
-        <UserContext.Provider value={{ createUser, user, logOut, signIn, google }}>
+        <UserContext.Provider value={{ SignUp, user, logOut, signIn, google, createUserDoc }}>
             {children}
         </UserContext.Provider>
     )
