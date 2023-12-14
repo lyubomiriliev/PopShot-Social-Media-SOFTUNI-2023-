@@ -1,5 +1,4 @@
 import "../../assets/styles/rightBar.scss";
-import PopularCreators from "../popular-creators/PopularCreators";
 import SuggestedUsers from "../suggested-users/SuggestedUsers";
 
 export default function RightBar() {
@@ -10,7 +9,6 @@ export default function RightBar() {
                     <SuggestedUsers />
                 </div>
                 <div className="popularCreators">
-                    <PopularCreators />
                 </div>
             </div>
         </div>

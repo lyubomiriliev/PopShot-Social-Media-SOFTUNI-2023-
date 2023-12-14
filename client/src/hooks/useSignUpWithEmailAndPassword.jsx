@@ -27,7 +27,7 @@ const useSignUpWithEmailAndPassword = () => {
       !inputs.username ||
       !inputs.fullName
     ) {
-      console.log("Please fill all the fields");
+      alert("Please fill all the fields!");
       return;
     }
 

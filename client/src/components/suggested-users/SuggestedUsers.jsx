@@ -3,7 +3,7 @@ import SuggestedUser from "./SuggestedUser";
 
 export default function SuggestedUsers() {
 
-    const { isLoading, suggestedUsers } = useGetSuggestedUsers();
+    const { suggestedUsers } = useGetSuggestedUsers();
 
 
     return (

@@ -3,7 +3,14 @@ import { create } from "zustand";
 const useUserProfileStore = create((set) => ({
   userProfile: null,
   setUserProfile: (userProfile) => set({ userProfile }),
-  // addPost:()
+  // this is updating the number of posts in the profile page
+  addPost: (post) =>
+    set((state) => ({
+      userProfile: {
+        ...state.userProfile,
+        posts: [post.id, ...state.userProfile.posts],
+      },
+    })),
 }));
 
 export default useUserProfileStore;

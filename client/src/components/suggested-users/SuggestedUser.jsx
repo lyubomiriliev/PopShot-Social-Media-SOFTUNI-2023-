@@ -5,7 +5,7 @@ import useAuthStore from "../../store/authStore";
 
 export default function SuggestedUser({ user, setUser }) {
 
-    const { isFollowing, IsUpdating, handleFollowUser } = useFollowUser(user.uid)
+    const { isFollowing, handleFollowUser } = useFollowUser(user.uid)
     const authUser = useAuthStore((state) => state.user);
 
     const onFollowUser = async () => {

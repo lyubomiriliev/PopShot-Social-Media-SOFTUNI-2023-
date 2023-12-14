@@ -1,6 +1,6 @@
 import "../../assets/styles/register.scss";
 import Path from "../../paths";
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useState } from 'react';
 
 
@@ -13,8 +13,6 @@ import useSignUpWithEmailAndPassword from "../../hooks/useSignUpWithEmailAndPass
 
 export default function Register() {
 
-
-
     const [inputs, setInputs] = useState({
         fullName: "",
         username: "",
@@ -25,19 +23,6 @@ export default function Register() {
     const [showPassword, setShowPassword] = useState(false);
 
     const { signup } = useSignUpWithEmailAndPassword();
-
-    // const RegisterSubmit = async () => {
-    //     try {
-    //         const newUser = await SignUp(inputs.email, inputs.password)
-    //         if (newUser) {
-
-    //         }
-    //         createUserDoc(response.user.email,)
-    //         navigate(Path.Home)
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // }
 
     const registerValidation = yup.object().shape({
         fullName: yup.string().required("You need a name to register."),

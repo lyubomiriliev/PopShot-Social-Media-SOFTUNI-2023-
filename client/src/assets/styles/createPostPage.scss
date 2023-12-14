@@ -10,7 +10,11 @@
     text-align: center;
 
     img{
-      width: 20%;
+      height: 150px;
+      width: auto;
+      margin: 0;
+      padding: 0;
+
     }
 
     form {
@@ -55,39 +59,36 @@
         outline: none;
       }
 
-      .customInput{
-        color: transparent;
-        font-size: 20px;
+      button{
+        background: transparent;
+        border: none;
+        scale: 1.3;
+        padding: 5px 10px;
+        transition: 0.3s ease;
+        color: #9d1b65;
+
+
+        &:hover {
+        color: #1F3B75;
+        transform: scale(1.2);
+        }
       }
-      .customInput::-webkit-file-upload-button {
-        visibility: hidden;
+
+      .imagePreview{
+        position: relative;
+
+        img{
+          width: 30%;
+        }
+
+        button{
+          position: absolute;
+          top: 2;
+          right: 2;
+
+        }
       }
-      .customInput::before {
-        content: 'Upload your photo';
-        color: black;
-        display: inline-block;
-        background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
-        border: 1px solid #999;
-        border-radius: 5px;
-        padding: 5px 8px;
-        outline: none;
-        white-space: nowrap;
-        margin-bottom: 20px;
-        
-        cursor: pointer;
-        text-shadow: 1px 1px #fff;
-        font-weight: 700;
-        font-size: 10pt;
-      }
-      .customInput:hover::before {
-        border-color: black;
-      }
-      .customInput:active {
-        outline: 0;
-      }
-      .customInput:active::before {
-        background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
-      }
+
 
     }
   
