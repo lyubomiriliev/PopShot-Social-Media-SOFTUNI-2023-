@@ -5,11 +5,13 @@ import useUserProfileStore from "../../store/userProfileStore";
 import useAuthStore from "../../store/authStore";
 import MyProfileEdit from "./MyProfileEdit";
 import { useState } from "react";
+import useFollowUser from "../../hooks/useFollowUser";
 
 export default function UserProfileContainer() {
 
     const { userProfile } = useUserProfileStore();
 
+    const { isFollowing, isUpdating, handleFollowUser } = useFollowUser(userProfile?.uid)
 
     const authUser = useAuthStore(state => state.user);
 
@@ -43,7 +45,7 @@ export default function UserProfileContainer() {
                     </div>
                     <div className="right">
                         {visitingOwnProfileAuth && <button onClick={handleOpen} >Edit Profile</button>}
-                        {visitingAnotherProfileAuth && <button>Follow</button>}
+                        {visitingAnotherProfileAuth && <button onClick={handleFollowUser} >{isFollowing ? "Unfollow" : "Follow"}</button>}
                         <MyProfileEdit open={open} handleClose={handleClose} />
                     </div>
                 </div>
