@@ -1,17 +1,24 @@
-import Posts from "../user-posts-page/Posts";
 import "../../assets/styles/profile.scss";
+
+import Posts from "../user-posts-page/Posts";
 import useUserProfileStore from "../../store/userProfileStore";
 import useAuthStore from "../../store/authStore";
+import MyProfileEdit from "./MyProfileEdit";
+import { useState } from "react";
 
 export default function UserProfileContainer() {
 
     const { userProfile } = useUserProfileStore();
 
+
     const authUser = useAuthStore(state => state.user);
 
     const visitingOwnProfileAuth = authUser && authUser.username === userProfile.username;
-
     const visitingAnotherProfileAuth = authUser && authUser.username !== userProfile.username;
+
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
     return (
         <div className="profile">
@@ -35,8 +42,9 @@ export default function UserProfileContainer() {
                         </div>
                     </div>
                     <div className="right">
-                        {visitingOwnProfileAuth && <button>Edit Profile</button>}
+                        {visitingOwnProfileAuth && <button onClick={handleOpen} >Edit Profile</button>}
                         {visitingAnotherProfileAuth && <button>Follow</button>}
+                        <MyProfileEdit open={open} handleClose={handleClose} />
                     </div>
                 </div>
                 <Posts />
