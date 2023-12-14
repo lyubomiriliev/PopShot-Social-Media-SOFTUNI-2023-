@@ -10,7 +10,7 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 
 
-import { addDoc, getDocs, collection, query, where, deleteDoc, doc } from "firebase/firestore";
+import { addDoc, getDocs, collection, query, where, deleteDoc, doc, getDoc } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import Comments from "../comments/Comments";
 import { UserAuth } from "../../contexts/AuthConext";
@@ -105,6 +105,25 @@ export default function SinglePost({ getPosts, post }) {
         p: 4,
     };
 
+    const handleSave = async () => {
+        try {
+            if (user) {
+                const savedPostsRef = collection(db, 'saved-posts');
+                await addDoc(savedPostsRef, {
+                    postId: post.id,
+                    userId: user.uid,
+                    username: post.username,
+                    title: post.title,
+                    content: post.content,
+                    imageUrl: post.imageUrl,
+                    timestamp: post.timestamp,
+                    authorAvatar: post.authorAvatar,
+                });
+            }
+        } catch (error) {
+            console.error('Error saving post', error)
+        }
+    }
 
 
     return (
@@ -156,7 +175,7 @@ export default function SinglePost({ getPosts, post }) {
                             <button onClick={handleOpen} ><EditOutlinedIcon />Edit</button>
                         </div>
                         <div className="actionBtn">
-                            <button><BookmarkBorderOutlinedIcon />Save</button>
+                            <button onClick={handleSave} ><BookmarkBorderOutlinedIcon />Save</button>
                         </div>
                         <div className="actionBtn">
                             <button onClick={showCommentHandler}><AddCommentOutlinedIcon />Comment</button>

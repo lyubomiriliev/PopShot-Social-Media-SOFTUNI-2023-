@@ -1,30 +1,42 @@
 import Posts from "../user-posts-page/Posts";
 import "../../assets/styles/profile.scss";
+import useUserProfileStore from "../../store/userProfileStore";
+import useAuthStore from "../../store/authStore";
 
 export default function UserProfileContainer() {
+
+    const { userProfile } = useUserProfileStore();
+
+    const authUser = useAuthStore(state => state.user);
+
+    const visitingOwnProfileAuth = authUser && authUser.username === userProfile.username;
+
+    const visitingAnotherProfileAuth = authUser && authUser.username !== userProfile.username;
+
     return (
         <div className="profile">
             <div className="images">
                 <img src="https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="cover" />
-                <img src="https://images.pexels.com/photos/3778876/pexels-photo-3778876.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="profilePic" />
+                <img src={userProfile.profilePicURL} alt="" className="profilePic" />
             </div>
             <div className="profileContainer">
                 <div className="uInfo">
                     <div className="left">
                         <div className="item">
-                            <p>20 Posts</p>
-                            <p>141 Followers</p>
-                            <p>366 Following</p>
+                            <p>{userProfile.posts.length} posts</p>
+                            <p>{userProfile.followers.length} followers</p>
+                            <p>{userProfile.following.length} following</p>
                         </div>
                     </div>
                     <div className="center">
-                        <span>John Doe</span>
+                        <span>{userProfile.fullName}</span>
                         <div className="info">
-                            <p>About me: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, sit.</p>
+                            <p>{userProfile.bio}</p>
                         </div>
                     </div>
                     <div className="right">
-                        <button>Follow</button>
+                        {visitingOwnProfileAuth && <button>Edit Profile</button>}
+                        {visitingAnotherProfileAuth && <button>Follow</button>}
                     </div>
                 </div>
                 <Posts />

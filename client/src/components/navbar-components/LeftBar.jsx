@@ -1,11 +1,10 @@
 import "../../assets/styles/leftBar.scss";
-import Path from '../../paths';
 import { Link, useNavigate } from 'react-router-dom';
 
 import CollectionsOutlinedIcon from '@mui/icons-material/CollectionsOutlined';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
-import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
+import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import { UserAuth } from "../../contexts/AuthConext";
 
@@ -16,15 +15,6 @@ export default function LeftBar() {
     const navigate = useNavigate();
     const { user, logOut } = UserAuth();
 
-    const signOutUser = async () => {
-        try {
-            await logOut()
-            navigate(Path.Login)
-        } catch (e) {
-            console.log(e.message);
-        }
-
-    }
 
     return (
         <div className="leftBar">
@@ -43,6 +33,14 @@ export default function LeftBar() {
                         <div className="peopleBtn">
                             <Link to="/people">
                                 <button>People</button>
+                            </Link>
+                        </div>
+                    </div>
+                    <div className="saved">
+                        <BookmarkBorderOutlinedIcon />
+                        <div className="savedBtn">
+                            <Link to="/saved">
+                                <button>Saved</button>
                             </Link>
                         </div>
                     </div>

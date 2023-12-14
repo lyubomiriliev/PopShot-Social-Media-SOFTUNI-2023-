@@ -1,0 +1,64 @@
+.myProfileEdit{
+    display: flex;
+    flex-direction: column;
+
+    .editHeading{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button{
+            border: none;
+            background-color: transparent;
+            transition: 0.3s ease;
+            cursor: pointer;
+
+            &:hover {
+                scale: 1.2;
+              }
+        }
+
+    }
+
+    .profilePicEdit{
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        img{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+
+    .editInputs {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        gap: 10px;
+
+        input{
+            padding: 10px;
+            border: 1px solid gray;
+            border-radius: 5px;
+        }
+    }
+
+
+    .submitBtnEdit{
+        width: 100px;
+            padding: 10px 10px;
+            background-color: #9d1b65;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            transition: 0.3s ease;
+      
+            &:hover {
+              background-color: #1F3B75;
+            }
+    }
+}

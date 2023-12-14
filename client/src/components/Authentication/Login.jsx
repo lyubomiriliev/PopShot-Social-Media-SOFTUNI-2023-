@@ -3,47 +3,70 @@ import Path from '../../paths';
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from 'react';
 
-import { auth, provider } from '../../config/firebase';
+import { auth, db, provider } from '../../config/firebase';
 import { UserAuth } from '../../contexts/AuthConext';
 
-import * as yup from 'yup';
-import { yupResolver } from "@hookform/resolvers/yup"
-import { useForm } from 'react-hook-form';
+import useLogin from "../../hooks/useLogin";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import useAuthStore from "../../store/authStore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 
 export default function Login() {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-    const navigate = useNavigate();
-    const { signIn, google, user, createUserDoc } = UserAuth();
-
-    const LoginSubmit = async () => {
-        setError('')
-        try {
-            await signIn(email, password)
-            navigate(Path.Home)
-        } catch (e) {
-            setError(e.message)
-            console.log(e.message)
-        }
-    };
-
-    const googleSignIn = async () => {
-        const result = await google(auth, provider)
-        navigate(Path.Home);
-    }
-
-    const loginValidation = yup.object().shape({
-        email: yup.string().required("You need an email to log in."),
-        password: yup.string().required("You need a password to log in."),
+    const [inputs, setInputs] = useState({
+        email: "",
+        password: "",
     });
 
-    const { register, handleSubmit, formState: { errors }, } = useForm({
-        resolver: yupResolver(loginValidation),
-    })
+    const { handleUserLogin } = useLogin()
+    const navigate = useNavigate();
 
+    const [signInWithGoogle, user, error] = useSignInWithGoogle(auth);
+    const loginUser = useAuthStore((state) => state.login);
+
+    const googleSignIn = async () => {
+        try {
+            const newUser = await signInWithGoogle()
+            if (!newUser) {
+                console.log(error)
+                return
+            }
+
+            const userRef = doc(db, "users", newUser.user.uid);
+            const userSnapshot = await getDoc(userRef);
+
+            if (userSnapshot.exists()) {
+
+                const userDoc = userSnapshot.data();
+                localStorage.setItem("user-info", JSON.stringify(userDoc));
+                loginUser(userDoc);
+
+            } else {
+                const userDoc = {
+                    uid: newUser.user.uid,
+                    email: newUser.user.email,
+                    username: newUser.user.email.split("@")[0],
+                    fullName: newUser.user.displayName,
+                    bio: "",
+                    profilePicURL: newUser.user.photoURL,
+                    followers: [],
+                    following: [],
+                    posts: [],
+                    createdAt: Date.now(),
+                };
+                await setDoc(doc(db, "users", newUser.user.uid), userDoc);
+                localStorage.setItem("user-info", JSON.stringify(userDoc));
+                loginUser(userDoc);
+                navigate(Path.Home);
+            }
+
+        } catch (error) {
+            console.log(error)
+        }
+
+        navigate(Path.Home);
+    }
     return (
         <div className="login">
             <div className="card">
@@ -57,19 +80,21 @@ export default function Login() {
                 </div>
                 <div className="right">
                     <h1>Login</h1>
-                    <form onSubmit={handleSubmit(LoginSubmit)} >
-                        <input type="email" placeholder="Email" {...register("email")} onChange={(e) => setEmail(e.target.value)} />
-                        <p style={{ color: "red", fontSize: "13px", marginTop: "-15px" }}> {errors.email?.message} </p>
-                        <input type="password" placeholder="Password" {...register("password")} onChange={(e) => setPassword(e.target.value)} />
-                        <p style={{ color: "red", fontSize: "13px", marginTop: "-15px" }}> {errors.password?.message} </p>
-                        <div className="right">
-                            <button >Login</button>
-                            <button onClick={googleSignIn} >Google Sign In</button>
-                        </div>
-                        <div className="forgotPW">
-                            <p>Forgot Password?</p>
-                        </div>
+                    <form onSubmit={(e) => {
+                        e.preventDefault();
+                        handleUserLogin(inputs);
+                    }}>
+                        <input type="email" placeholder="Email" value={inputs.email} onChange={(e) => setInputs({ ...inputs, email: e.target.value })} />
+
+                        <input type="password" placeholder="Password" value={inputs.password} onChange={(e) => setInputs({ ...inputs, password: e.target.value })} />
+                        <button type="submit">Login</button>
                     </form>
+                    <div className="right">
+                        <button onClick={googleSignIn} >Google Sign In</button>
+                    </div>
+                    <div className="forgotPW">
+                        <p>Forgot Password?</p>
+                    </div>
                 </div>
             </div>
         </div>

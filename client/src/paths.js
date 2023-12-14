@@ -3,7 +3,7 @@ const Path = {
   Logout: "/logout",
   Login: "/login",
   Register: "/register",
-  MyProfile: "/profile",
+  MyProfile: "/:username",
   UserProfile: "/profile/:id",
   CreatePost: "/create",
   Saved: "/saved",

@@ -1,33 +1,24 @@
 import "../../assets/styles/navBar.scss";
 import Path from "../../paths";
 
-import { Link, useNavigate } from 'react-router-dom';
-import { UserAuth } from "../../contexts/AuthConext";
+import { Link } from 'react-router-dom';
 
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
-
-
-
+import useLogout from "../../hooks/useLogout";
+import useAuthStore from "../../store/authStore";
 
 
 export default function NavBar() {
 
+    const { handleUserLogout } = useLogout();
 
-    const navigate = useNavigate();
-    const { user, logOut } = UserAuth();
+    const authUser = useAuthStore(state => state.user);
 
-    const signOutUser = async () => {
-        try {
-            await logOut()
-            navigate(Path.Login)
-        } catch (e) {
-            console.log(e.message);
-        }
+    if (!authUser) return null;
 
-    }
 
     return (
         <div className="navBar">
@@ -51,19 +42,19 @@ export default function NavBar() {
                     </Link>
                 </div>
                 <div className="logout">
-                    <button onClick={signOutUser} >
-                        <Link to={Path.Login} style={{ textDecoration: "none", color: "inherit" }}>
-                            <ExitToAppOutlinedIcon />
-                        </Link>
+                    <button onClick={handleUserLogout} >
+                        <ExitToAppOutlinedIcon />
                     </button>
                 </div>
                 <div className="user">
-                    {user && (
+                    {authUser && (
                         <>
-                            <Link to={Path.MyProfile}>
-                                <img src={user?.photoURL ?? ""} alt="profilePic" />
+                            <Link to={`${authUser.username}`}>
+                                <img src={authUser.profilePicURL} alt="profilePic" />
                             </Link>
-                            <span>{user?.displayName}</span>
+                            <Link to={`${authUser.username}`}>
+                                <span>{authUser.username}</span>
+                            </Link>
                         </>
                     )}
                 </div>

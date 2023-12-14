@@ -14,12 +14,14 @@ import UserProfileLayout from './components/profile-pages/UserProfileLayout';
 import { PostContextProvider } from './contexts/PostContext';
 import Register from './components/Authentication/Register';
 import Login from './components/Authentication/Login';
-
+import SavedPosts from './components/saved-posts/SavedPosts';
+import useAuthStore from './store/authStore';
 
 
 
 function App() {
 
+    const authUser = useAuthStore(state => state.user);
 
 
     return (
@@ -32,10 +34,11 @@ function App() {
                         <Route path={Path.Register} element={<Register />} />
                         {/* private routes */}
                         <Route path={Path.Home} element={<AuthGuard><HomePage /></AuthGuard>} />
-                        <Route path={Path.MyProfile} element={<AuthGuard><MyProfile /></AuthGuard>} />
+                        <Route path='/:username' element={<AuthGuard><MyProfile /></AuthGuard>} />
                         <Route path={Path.UserProfile} element={<AuthGuard><UserProfileLayout /></AuthGuard>} />
                         <Route path={Path.Explore} element={<AuthGuard><ExplorePage /></AuthGuard>} />
                         <Route path={Path.People} element={<AuthGuard><PeoplePage /></AuthGuard>} />
+                        <Route path={Path.Saved} element={<AuthGuard><SavedPosts /></AuthGuard>} />
                         <Route path={Path.CreatePost} element={<AuthGuard><CreatePostPage /></AuthGuard>} />
                         <Route path={Path.Settings} element={<AuthGuard><Settings /></AuthGuard>} />
                         <Route path={Path.NotFound} element={<NotFound />} />

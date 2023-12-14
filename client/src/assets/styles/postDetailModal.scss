@@ -11,7 +11,27 @@ img{
     justify-content: center;
     align-items: center;
 
-  
+    .author-modal{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .title-modal{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .content{
+        font-size: 20px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+
     button {
       background-color: transparent;
       border: none;
@@ -36,11 +56,10 @@ img{
 
     }
   
-    p {
-      font-size: 16px;
-      line-height: 1.5;
-      margin-bottom: 15px;
-      color: rgb(58, 58, 58);
+    .timestamp {
+      font-size: 14px;
+      margin-top: 5px;
+      color: gray
   
     }
   }

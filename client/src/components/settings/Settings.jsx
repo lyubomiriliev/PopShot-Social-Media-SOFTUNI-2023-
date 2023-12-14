@@ -5,7 +5,7 @@ import LeftBar from "../navbar-components/LeftBar";
 
 import { UserAuth } from "../../contexts/AuthConext";
 import { useEffect, useState } from "react";
-import { addDoc, collection, doc, getDocs } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 import { db } from "../../config/firebase";
 
 
@@ -29,36 +29,17 @@ export default function Settings() {
 
     const settingsRef = collection(db, 'settings');
 
-
-    const EditProfileSubmitHandler = async (e) => {
-        e.preventDefault();
-
-        await addDoc(settingsRef, {
-            nickname: nickname,
-            location: location,
-            hobbies: hobbies,
-            occupation: occupation,
-            birthday: birthday,
-            authorAvatar: user.photoURL,
-        });
-
-        setSettings({
-            nickname: nickname,
-            location: location,
-            hobbies: hobbies,
-            occupation: occupation,
-            birthday: birthday,
-            authorAvatar: user.photoURL,
-        });
-
-    }
-
-
     const getUserSettings = async () => {
-        const data = await getDocs(settingsRef)
-        const fetchedSettings = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-        if (fetchedSettings.length > 0) {
-            setSettings(fetchedSettings[0]);
+        const userSettingsRef = doc(settingsRef, user.uid);
+        const snapshot = await getDoc(userSettingsRef);
+        if (snapshot.exists()) {
+            const userData = snapshot.data();
+            setSettings(userData);
+            setNickname(userData.nickname || '');
+            setLocation(userData.location || '');
+            setHobbies(userData.hobbies || '');
+            setOccupation(userData.occupation || '');
+            setBirthday(userData.birthday || '');
         }
 
     }
@@ -68,21 +49,35 @@ export default function Settings() {
 
     }, [])
 
-
-    const editUserSettings = async (id) => {
-
-        const settingsDoc = doc(db, "settings", id);
-        const updateFields =
-        {
-            nickname: nickname,
-            location: location,
-            hobbies: hobbies,
-            birthday: birthday,
-            authorAvatar: authorAvatar,
-
-        };
-        await updateDoc(settingsDoc, updateFields);
+    const editUserSettings = async () => {
+        const userSettingsRef = doc(settingsRef, user.uid);
+        await setDoc(userSettingsRef, {
+            nickname,
+            location,
+            hobbies,
+            occupation,
+            birthday,
+            authorAvatar: user.photoURL
+        });
+        setSettings({
+            nickname,
+            location,
+            hobbies,
+            occupation,
+            birthday,
+            authorAvatar: user.photoURL
+        });
     }
+
+
+
+    const EditProfileSubmitHandler = async (e) => {
+        e.preventDefault();
+        editUserSettings();
+    }
+
+
+
 
 
     return (

@@ -1,57 +1,46 @@
+import { useEffect, useState } from "react";
 import "../../assets/styles/savedPostCard.scss";
-
-import { db } from '../../config/firebase';
-import { collection, getDocs } from "firebase/firestore"
-import LeftBar from '../navbar-components/LeftBar';
-
-
-import { useState, useEffect } from 'react';
 import { UserAuth } from "../../contexts/AuthConext";
+import LeftBar from '../navbar-components/LeftBar';
+import { collection, getDocs, query } from "firebase/firestore";
+import { db } from "../../config/firebase";
 import SavedPost from "./SavedPost";
 
 export default function SavedPostCard() {
-    const [posts, setPosts] = useState([]);
-    const { user } = UserAuth();
 
+    const user = UserAuth();
+    const [savedPosts, setSavedPosts] = useState([]);
 
     useEffect(() => {
+
         const fetchSavedPosts = async () => {
             try {
-                const snapshot = await getDocs(collection(db, 'saved-posts'));
-                const fetchPosts = [];
-                for (let index = 0; index < snapshot.docs.length; index++) {
-                    const element = snapshot.docs[index];
-                    const result = await getPostById(element.data().postId, user.uid);
-                    fetchPosts.push(result)
+                if (user) {
+                    const savedPostsRef = collection(db, 'saved-posts', user.user.uid);
+                    const q = query(savedPostsRef);
+                    const querySnapshot = await getDocs(q);
+                    const fetchedPosts = querySnapshot.docs.map((doc) => doc.data());
+
+                    setSavedPosts(fetchedPosts);
                 }
-                setPosts(fetchPosts);
             } catch (error) {
-                console.error('Error fetching saved posts: ', error);
+                console.error("Error", error)
             }
         };
 
         fetchSavedPosts();
-    }, []);
 
-    const postsRef = collection(db, "posts");
+    }, [user]);
 
-    const getPostById = async (postId, useruid) => {
-        const data = await getDocs(postsRef)
-        return (data.docs.filter((p) => p.id === postId).map((doc) => ({ ...doc.data(), id: doc.id })));
-
-    }
 
 
     return (
         <div className='page-container'>
             <LeftBar />
             <div className="saved-posts-container">
-                <div className="content">
-                    <h1>Saved Posts</h1>
-                </div>
-                {posts.map((post) =>
-                    <SavedPost post={post} />
-                )}
+                {savedPosts.map((savedPost) => (
+                    <SavedPost key={savedPost.postId} post={savedPost} />
+                ))}
             </div>
         </div>
     );

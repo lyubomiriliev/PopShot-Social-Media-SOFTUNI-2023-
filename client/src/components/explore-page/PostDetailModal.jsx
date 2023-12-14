@@ -13,19 +13,19 @@ export default function PostDetailModal({ post, handleClose }) {
             {post ? (
                 <Box>
                     <Typography variant="body1" component="p">
-                        <h4>Author: {post.username}</h4>
+                        <h4 className='author-modal'>{post.username}</h4>
                     </Typography>
                     <Typography variant="h6" component="h2">
-                        <h3>{post.title}</h3>
+                        <h3 className='title-modal'>{post.title}</h3>
                     </Typography>
                     <Typography variant="body1" component="p">
-                        <p>{post.content}</p>
+                        <p className='content'>{post.content}</p>
                     </Typography>
                     <Typography variant="body1" component="p">
                         <img src={post.imageUrl} alt="" />
                     </Typography>
                     <Typography variant="body1" component="p">
-                        <p>{formatTime(post.timestamp)}</p>
+                        <p className='timestamp'>{formatTime(post.timestamp)}</p>
                     </Typography>
                 </Box>
             ) : (
