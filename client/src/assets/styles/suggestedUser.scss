@@ -1,0 +1,59 @@
+.suggestedUserWrapper {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+
+    .profilePic{
+        img{
+            margin-top: 10px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+
+        }
+    }
+
+    .userInfo{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 15px;
+
+        p{
+            margin: 5px 0;
+        }
+
+    }
+
+    .actionBtn{
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+
+
+        button {
+            padding: 5px 10px;
+            background-color: #9d1b65;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            transition: 0.3s ease;
+      
+            &:hover {
+              background-color: #1F3B75;
+              transform: scale(1.1);
+            }
+          }
+    }
+    
+
+}
+
+
+   
