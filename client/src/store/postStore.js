@@ -1,13 +1,11 @@
-import { create } from 'zustand'
+import { create } from "zustand";
 
 const usePostStore = create((set) => ({
-    posts: [],
-    createPost: (post) => set(state => ({ posts: [post, ...state.posts] }))
-    // del post
-    // add comment
-    // setPosts
-}))
+  posts: [],
+  createPost: (post) => set((state) => ({ posts: [post, ...state.posts] })),
+  // del post
+  // add comment
+  setPosts: (posts) => set({ posts }),
+}));
 
 export default usePostStore;
-
-

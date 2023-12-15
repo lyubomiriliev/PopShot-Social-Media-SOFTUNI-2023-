@@ -1,6 +1,5 @@
 import "../../assets/styles/profile.scss";
 
-import Posts from "../user-posts-page/Posts";
 import useUserProfileStore from "../../store/userProfileStore";
 import useAuthStore from "../../store/authStore";
 import MyProfileEdit from "./MyProfileEdit";
@@ -49,7 +48,6 @@ export default function UserProfileContainer() {
                         <MyProfileEdit open={open} handleClose={handleClose} />
                     </div>
                 </div>
-                <Posts />
             </div>
         </div>
     );

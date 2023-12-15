@@ -4,12 +4,10 @@ import { Link, useParams } from 'react-router-dom';
 import NavBar from '../navbar-components/NavBar';
 import LeftBar from '../navbar-components/LeftBar';
 
-import { Box, Modal } from "@mui/material";
-import MyProfileEdit from "./MyProfileEdit";
-import NotFound from "../404/NotFound";
 import useGetUserProfileByUsername from "../../hooks/useGetUserProfileByUsername";
-import { useState } from "react";
 import UserProfileContainer from "./UserProfileContainer";
+import Path from "../../paths";
+import ProfilePosts from "../posts/ProfilePosts";
 
 
 
@@ -21,7 +19,7 @@ export default function MyProfile() {
     const { isLoading, userProfile } = useGetUserProfileByUsername(username);
 
     const userNotFound = !isLoading && !userProfile;
-    if (userNotFound) return <NotFound />;
+    if (userNotFound) return <UserNotFound />;
 
     return (
         <>
@@ -31,8 +29,9 @@ export default function MyProfile() {
                     <LeftBar />
                     {userProfile && <UserProfileContainer />}
                     <div style={{ flex: 6 }}>
-                        {/* <ProfilePosts /> */}
+                        <ProfilePosts />
 
+                        {/* <ProfileTabs /> */}
                     </div>
 
                 </div>
@@ -41,3 +40,14 @@ export default function MyProfile() {
         </>
     );
 }
+
+const UserNotFound = () => {
+    return (
+        <div>
+            <h1>User Not <Found></Found></h1>
+            <Link to={Path.Home}>
+                <h3>Go home</h3>
+            </Link>
+        </div>
+    );
+};
