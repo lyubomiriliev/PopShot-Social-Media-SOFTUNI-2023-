@@ -49,10 +49,10 @@ export default function NavBar() {
                 <div className="user">
                     {authUser && (
                         <>
-                            <Link to={`${authUser.username}`}>
+                            <Link to={`/${authUser.username}`}>
                                 <img src={authUser.profilePicURL} alt="profilePic" />
                             </Link>
-                            <Link to={`${authUser.username}`}>
+                            <Link to={`/${authUser.username}`}>
                                 <span>{authUser.username}</span>
                             </Link>
                         </>

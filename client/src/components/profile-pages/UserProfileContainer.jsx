@@ -1,4 +1,4 @@
-import "../../assets/styles/profile.scss";
+import "../../assets/styles/userProfileContainer.scss";
 
 import useUserProfileStore from "../../store/userProfileStore";
 import useAuthStore from "../../store/authStore";

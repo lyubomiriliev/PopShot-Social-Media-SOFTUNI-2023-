@@ -25,11 +25,14 @@ export default function MyProfile() {
         <>
             <div className="profile">
                 <NavBar />
-                <div style={{ display: "flex" }}>
+                <div className="profileContainer" style={{ display: "flex" }}>
                     <LeftBar />
-                    {userProfile && <UserProfileContainer />}
                     <div style={{ flex: 6 }}>
+                        {userProfile && <UserProfileContainer />}
                         <ProfilePosts />
+                    </div>
+
+                    <div >
 
                         {/* <ProfileTabs /> */}
                     </div>
