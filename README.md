@@ -29,6 +29,7 @@ Popshot is a social media platform designed to share moments through images and 
   3. Like, Dislike, Comment, Edit and Delete the post.
   4. Display other users posts in news feed.
   5. Display your posts in your profile feed.
+  6. User can edit profile with new username, full name, profile picture and bio.
 
     
 ![Logo](https://i.imgur.com/BlynGmW.png)
