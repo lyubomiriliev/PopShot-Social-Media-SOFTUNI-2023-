@@ -9,7 +9,7 @@ import useAuthStore from "../../store/authStore";
 import useUserProfileStore from "../../store/userProfileStore";
 import { deleteObject, ref } from "firebase/storage";
 import { db, storage } from "../../config/firebase";
-import { arrayRemove, deleteDoc, doc, updateDoc } from "firebase/firestore";
+import { arrayRemove, deleteDoc, doc, query, updateDoc } from "firebase/firestore";
 import usePostStore from "../../store/postStore";
 import Comments from "../comments/Comments";
 import usePostComment from "../../hooks/usePostComment";
@@ -111,14 +111,14 @@ export default function ProfilePost({ post }) {
                     </div>
 
                 </div>
+                <div className="commentsDiv">
+                    {post.comments.map(comment => (
 
+                        <Comments key={comment.id} comment={comment} />
+                    ))}
+                </div>
             </div>
-            <div className="commentsDiv">
-                {post.comments.map(comment => (
 
-                    <Comments key={comment.id} comment={comment} />
-                ))}
-            </div>
         </>
     )
 }

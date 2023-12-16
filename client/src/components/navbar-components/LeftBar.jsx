@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import CollectionsOutlinedIcon from '@mui/icons-material/CollectionsOutlined';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 
 
@@ -20,15 +20,15 @@ export default function LeftBar() {
                         <AddCircleOutlineOutlinedIcon />
                         <div className="createBtn">
                             <Link to="/create">
-                                <button>Create Post</button>
+                                <button>Create</button>
                             </Link>
                         </div>
                     </div>
-                    <div className="people">
-                        <PeopleAltOutlinedIcon />
-                        <div className="peopleBtn">
-                            <Link to="/people">
-                                <button>People</button>
+                    <div className="user">
+                        <SearchOutlinedIcon />
+                        <div className="settingsBtn">
+                            <Link to="/settings">
+                                <button>Search</button>
                             </Link>
                         </div>
                     </div>
@@ -40,16 +40,15 @@ export default function LeftBar() {
                             </Link>
                         </div>
                     </div>
-                    <div className="user">
-                        <SettingsOutlinedIcon />
-                        <div className="settingsBtn">
-                            <Link to="/settings">
-                                <button>Settings</button>
+                    <div className="people">
+                        <PeopleAltOutlinedIcon />
+                        <div className="peopleBtn">
+                            <Link to="/people">
+                                <button>People</button>
                             </Link>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     );

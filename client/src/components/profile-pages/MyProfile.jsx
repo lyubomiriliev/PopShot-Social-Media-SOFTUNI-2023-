@@ -16,10 +16,9 @@ import ProfilePosts from "../posts/ProfilePosts";
 export default function MyProfile() {
 
     const { username } = useParams();
-    const { isLoading, userProfile } = useGetUserProfileByUsername(username);
+    const { userProfile } = useGetUserProfileByUsername(username);
 
-    const userNotFound = !isLoading && !userProfile;
-    if (userNotFound) return <UserNotFound />;
+    if (!userProfile) return <UserNotFound />;
 
     return (
         <>
@@ -31,12 +30,6 @@ export default function MyProfile() {
                         {userProfile && <UserProfileContainer />}
                         <ProfilePosts />
                     </div>
-
-                    <div >
-
-                        {/* <ProfileTabs /> */}
-                    </div>
-
                 </div>
             </div>
 
@@ -47,7 +40,7 @@ export default function MyProfile() {
 const UserNotFound = () => {
     return (
         <div>
-            <h1>User Not <Found></Found></h1>
+            <h1>User not found !</h1>
             <Link to={Path.Home}>
                 <h3>Go home</h3>
             </Link>

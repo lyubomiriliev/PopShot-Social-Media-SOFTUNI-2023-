@@ -40,11 +40,10 @@ export default function FeedPost({ post }) {
                         </Link>
                         <div className="details">
                             <Link to={`/${userProfile?.username}`} style={{ textDecoration: "none", color: "inherit" }}>
-                                <span className="name">{userProfile?.username}</span>
+                                <span className="name">{userProfile?.fullName}</span>
                             </Link>
                         </div>
-
-                        <button onClick={handleFollowUser} >{isFollowing ? "Unfollow" : "Follow"}</button>
+                        <button className="followUnfollow" onClick={handleFollowUser} >{isFollowing ? "Unfollow" : "Follow"}</button>
                     </div>
                     <div className="datePosted">
                         <span className="date">{timeAgo(post.createdAt)}</span>
@@ -72,12 +71,13 @@ export default function FeedPost({ post }) {
                     </div>
 
                 </div>
+                <div className="commentsDiv">
+                    {post.comments.map(comment => (
+                        <Comments key={comment.id} comment={comment} />
+                    ))}
+                </div>
             </div>
-            <div className="commentsDiv">
-                {post.comments.map(comment => (
-                    <Comments key={comment.id} comment={comment} />
-                ))}
-            </div>
+
         </>
     );
 }

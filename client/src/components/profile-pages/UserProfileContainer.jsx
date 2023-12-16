@@ -10,7 +10,7 @@ export default function UserProfileContainer() {
 
     const { userProfile } = useUserProfileStore();
 
-    const { isFollowing, isUpdating, handleFollowUser } = useFollowUser(userProfile?.uid)
+    const { isFollowing, handleFollowUser } = useFollowUser(userProfile?.uid)
 
     const authUser = useAuthStore(state => state.user);
 

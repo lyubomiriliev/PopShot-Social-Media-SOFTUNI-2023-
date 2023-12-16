@@ -3,8 +3,7 @@ import Path from '../../paths';
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from 'react';
 
-import { auth, db, provider } from '../../config/firebase';
-import { UserAuth } from '../../contexts/AuthConext';
+import { auth, db } from '../../config/firebase';
 
 import useLogin from "../../hooks/useLogin";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
@@ -87,15 +86,17 @@ export default function Login() {
                         <input type="email" placeholder="Email" value={inputs.email} onChange={(e) => setInputs({ ...inputs, email: e.target.value })} />
 
                         <input type="password" placeholder="Password" value={inputs.password} onChange={(e) => setInputs({ ...inputs, password: e.target.value })} />
-                        <button type="submit">Login</button>
+                        <div className="actionBtnsLogin">
+                            <button type="submit">Login</button>
+                            <button onClick={googleSignIn} >Google Sign In</button>
+                        </div>
                     </form>
-                    <div className="right">
-                        <button onClick={googleSignIn} >Google Sign In</button>
-                    </div>
+
                     <div className="forgotPW">
                         <p>Forgot Password?</p>
                     </div>
                 </div>
+
             </div>
         </div>
     )

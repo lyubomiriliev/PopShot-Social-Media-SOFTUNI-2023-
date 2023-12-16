@@ -4,8 +4,6 @@ import Path from "../../paths";
 import { Link } from 'react-router-dom';
 
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
-import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import useLogout from "../../hooks/useLogout";
 import useAuthStore from "../../store/authStore";
@@ -33,11 +31,6 @@ export default function NavBar() {
                 </div>
             </div>
             <div className="right">
-                <div className="notifications">
-                    <Link to="/notifications" style={{ textDecoration: "none", color: "inherit" }}>
-                        <NotificationsNoneOutlinedIcon />
-                    </Link>
-                </div>
                 <div className="logout">
                     <button onClick={handleUserLogout} >
                         <ExitToAppOutlinedIcon />

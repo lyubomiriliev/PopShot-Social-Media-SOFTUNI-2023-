@@ -1,0 +1,31 @@
+.wrapper404{
+    display: flex;
+    align-items: center;
+    height: 100vh; /* Ensure full viewport height */
+    margin: 0; /* Reset default margin */
+
+    button{
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-weight: 500;
+        scale: 1.5;
+        padding: 5px 10px;
+        transition: 0.3s ease;
+        background-color: #9d1b65;
+        margin-left: 150px;
+        margin-top: 250px;
+        transition: 0.3s ease;
+        cursor: pointer;
+
+        &:hover {
+        transform: scale(1.1);
+        }
+      }
+
+    background-image: url(https://i.imgur.com/rw8oaJf.jpg);
+    background-repeat: no-repeat;
+
+}
+
+    

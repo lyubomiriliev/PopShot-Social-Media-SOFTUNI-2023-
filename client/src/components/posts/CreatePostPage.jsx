@@ -24,6 +24,8 @@ export default function CreatePostPage() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
 
+    const authUser = useAuthStore(state => state.user);
+
     const imgRef = useRef(null)
 
     const { selectedFile, handleImageChange, setSelectedFile } = usePreviewImage();
@@ -33,7 +35,7 @@ export default function CreatePostPage() {
     const handlePostCreation = async () => {
         try {
             await handleCreatePost(selectedFile, title, content);
-            navigate(Path.Home)
+            navigate(`/${authUser.username}`);
             setTitle(""),
                 setContent(""),
                 setSelectedFile(null);
@@ -41,6 +43,8 @@ export default function CreatePostPage() {
             console.log(error)
         }
     }
+
+
 
     return (
         <div className='create-main'>

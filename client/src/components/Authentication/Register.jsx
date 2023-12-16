@@ -47,23 +47,24 @@ export default function Register() {
                 </div>
                 <div className="right">
                     <h1>Register</h1>
-                    <input name="fullName" type="text" placeholder="Full Name" {...register("fullName")} value={inputs.fullName} onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })} />
-                    <p style={{ color: "red", fontSize: "13px", marginTop: "-15px" }}> {errors.fullName?.message} </p>
+                    <div className="inputForm">
+                        <input name="fullName" type="text" placeholder="Full Name" {...register("fullName")} value={inputs.fullName} onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })} />
 
-                    <input name="username" type="text" placeholder="Username" {...register("username")} value={inputs.username} onChange={(e) => setInputs({ ...inputs, username: e.target.value })} />
-                    <p style={{ color: "red", fontSize: "13px", marginTop: "-15px" }}> {errors.username?.message} </p>
+                        <input name="username" type="text" placeholder="Username" {...register("username")} value={inputs.username} onChange={(e) => setInputs({ ...inputs, username: e.target.value })} />
 
-                    <input name="email" type="email" placeholder="Email" {...register("email")} value={inputs.email} onChange={(e) => setInputs({ ...inputs, email: e.target.value })} />
-                    <p style={{ color: "red", fontSize: "13px", marginTop: "-15px" }}> {errors.email?.message} </p>
+                        <input name="email" type="email" placeholder="Email" {...register("email")} value={inputs.email} onChange={(e) => setInputs({ ...inputs, email: e.target.value })} />
+                        <div className="showPassword">
+                            <input name="password" type={showPassword ? "text" : "password"} placeholder="Password" {...register("password")} value={inputs.password} onChange={(e) => setInputs({ ...inputs, password: e.target.value })} />
+                            <button className="showBtn" onClick={() => setShowPassword(!showPassword)}>
+                                {showPassword ? <VisibilityOutlinedIcon /> : <VisibilityOffOutlinedIcon />}
+                            </button>
+                        </div>
 
-                    <input name="password" type={showPassword ? "text" : "password"} placeholder="Password" {...register("password")} value={inputs.password} onChange={(e) => setInputs({ ...inputs, password: e.target.value })} />
-                    <p style={{ color: "red", fontSize: "13px", marginTop: "-15px" }}> {errors.password?.message} </p>
+                    </div>
+                    <div className="actionButtonsRegister">
+                        <button onClick={() => signup(inputs)}>Register</button>
+                    </div>
 
-                    <button onClick={() => signup(inputs)}>Register</button>
-                    <button onClick={() => setShowPassword(!showPassword)}>
-                        {showPassword ? <VisibilityOffOutlinedIcon /> : <VisibilityOutlinedIcon />}
-
-                    </button>
                 </div>
             </div>
         </div>

@@ -17,7 +17,6 @@ const useSignUpWithEmailAndPassword = () => {
     useCreateUserWithEmailAndPassword(auth);
 
   const loginUser = useAuthStore((state) => state.login);
-  const logoutUser = useAuthStore((state) => state.logout);
   const navigate = useNavigate();
 
   const signup = async (inputs) => {
@@ -37,7 +36,7 @@ const useSignUpWithEmailAndPassword = () => {
     const querySnapshot = await getDocs(q);
 
     if (!querySnapshot.empty) {
-      console.log("Error", "Username already exists!");
+      alert("Error", "Username already exists!");
       return;
     }
 
@@ -57,7 +56,7 @@ const useSignUpWithEmailAndPassword = () => {
           username: inputs.username,
           fullName: inputs.fullName,
           bio: "",
-          profilePicURL: "",
+          profilePicURL: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
           followers: [],
           following: [],
           posts: [],
@@ -69,7 +68,7 @@ const useSignUpWithEmailAndPassword = () => {
         navigate(Path.Home);
       }
     } catch (error) {
-      console.log(error);
+      alert("Sign up failed");
     }
   };
 
