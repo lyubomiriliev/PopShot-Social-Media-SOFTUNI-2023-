@@ -5,11 +5,15 @@ import CollectionsOutlinedIcon from '@mui/icons-material/CollectionsOutlined';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import Search from "../search-users/Search";
+import { useState } from "react";
 
 
 
 export default function LeftBar() {
 
+    const [open, setOpen] = useState(false);
+    const handleClose = () => setOpen(false);
 
 
     return (
@@ -24,12 +28,10 @@ export default function LeftBar() {
                             </Link>
                         </div>
                     </div>
-                    <div className="user">
+                    <div className="search">
                         <SearchOutlinedIcon />
-                        <div className="settingsBtn">
-                            <Link to="/settings">
-                                <button>Search</button>
-                            </Link>
+                        <div className="searchBtn">
+                            <Search open={open} handleClose={handleClose} />
                         </div>
                     </div>
                     <div className="explore">

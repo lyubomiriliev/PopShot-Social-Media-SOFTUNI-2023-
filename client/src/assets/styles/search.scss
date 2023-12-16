@@ -1,0 +1,54 @@
+.closeBtnSearch{
+    display: flex;
+    justify-content: flex-end;
+    margin: -10px -10px;
+
+    button{
+        background-color: transparent;
+        border: none;
+        transition: 0.3s ease;
+
+        &:hover{
+            scale: (1.2);
+        }
+    }
+}
+
+.modalForm{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 20px;
+
+    h2{
+        margin-top: -5px;
+    }
+
+    label{
+        margin-bottom: -5px;
+    }
+
+    input{
+        margin-top: 10px;
+        padding: 10px 20px;
+    }
+
+    button{
+        margin-top: 20px;
+        width: 80px;
+        padding: 10px 10px;
+        background-color: #9d1b65;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        transition: 0.3s ease;
+
+        &:hover {
+          background-color: #1F3B75;
+        }
+    }
+
+
+}
