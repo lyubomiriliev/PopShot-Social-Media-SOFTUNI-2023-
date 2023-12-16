@@ -24,22 +24,12 @@ Popshot is a social media platform designed to share moments through images and 
   3. After that write "npm run dev" to open the website link.
 
 ## 4. Key features:
-  1. User Sign up/Sign/Logout in possible with Email/Password and Google PopUp.
+  1. User Sign up/Sign/Logout is possible with Email/Password and Google Pop Up.
   2. Create a post (Title, description and uploading photo).
-  3. Like, Comment, Edit, Delete, Save the post.
-  4. Dislike, Remove Comment
+  3. Like, Dislike, Comment, Edit and Delete the post.
+  4. Display other users posts in news feed.
+  5. Display your posts in your profile feed.
+  6. User can edit profile with new username, full name, profile picture and bio.
 
-
-## 5. Further improvements
-  1. Working search bar.
-  2. People page functionality.
-  3. Explore page - Display the posts of other users.
-  4. Stories - User can share stories avaiblable for others.
-
-## 6. Known Issues:
-  1. Google Sign In triggers Email/Password validations.
-  2. A user can try to edit another user's post but it won't let him.
-  3. Changing user doesn't change Profile Information.
-  4. Saving posts problem with undefined after mapping.
     
 ![Logo](https://i.imgur.com/BlynGmW.png)
