@@ -2,7 +2,6 @@ import '../../assets/styles/postDetailModal.scss';
 
 import { Box, Typography } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
-import { formatTime } from "../../utils/formatTime";
 
 
 export default function PostDetailModal({ post, handleClose }) {

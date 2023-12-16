@@ -3,7 +3,7 @@ import "../../assets/styles/homePage.scss";
 import LeftBar from "../navbar-components/LeftBar";
 import NavBar from "../navbar-components/NavBar";
 import RightBar from "../navbar-components/RightBar";
-import SubmitPost from "../posts/SubmitPost";
+import FeedPosts from "../posts/FeedPosts";
 
 
 
@@ -16,8 +16,8 @@ export default function HomePage() {
             <NavBar />
             <div style={{ display: "flex" }}>
                 <LeftBar />
-                <div style={{ flex: 6 }}>
-                    <SubmitPost />
+                <div style={{ flex: 8 }}>
+                    <FeedPosts />
                 </div>
                 <RightBar />
 

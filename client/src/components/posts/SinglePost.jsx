@@ -16,7 +16,6 @@ import Comments from "../comments/Comments";
 import { UserAuth } from "../../contexts/AuthConext";
 import { Box, Modal } from "@mui/material";
 import PostEditForm from "./PostEditForm";
-import { formatTime } from "../../utils/formatTime";
 
 
 export default function SinglePost({ getPosts, post }) {

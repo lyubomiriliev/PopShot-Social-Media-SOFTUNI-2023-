@@ -23,16 +23,13 @@ export default function NavBar() {
     return (
         <div className="navBar">
             <div className="left">
-                <Link to={Path.Home}>
+                <Link to={Path.Home} style={{ textDecoration: "none", color: "inherit" }}>
                     <img src="../../src/assets/images/popshot-logo.png" alt="" />
                 </Link>
                 <div className="homeIcon">
-                    <Link to={Path.Home}>
+                    <Link to={Path.Home} style={{ textDecoration: "none", color: "inherit" }}>
                         <HomeOutlinedIcon />
                     </Link>
-                </div>
-                <div className="gridIcon">
-                    <GridViewOutlinedIcon />
                 </div>
             </div>
             <div className="right">
@@ -52,8 +49,8 @@ export default function NavBar() {
                             <Link to={`/${authUser.username}`}>
                                 <img src={authUser.profilePicURL} alt="profilePic" />
                             </Link>
-                            <Link to={`/${authUser.username}`}>
-                                <span>{authUser.username}</span>
+                            <Link to={`/${authUser.username}`} style={{ textDecoration: "none", color: "inherit" }}>
+                                <span>{authUser.fullName}</span>
                             </Link>
                         </>
                     )}

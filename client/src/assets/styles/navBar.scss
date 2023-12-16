@@ -9,6 +9,7 @@
     top: 0;
     background-color: white;
     z-index: 999;
+    margin: 0;
 
     .left {
         display: flex;
@@ -16,10 +17,10 @@
         gap: 30px;
 
         img {
-            display: flex;
             align-items: center;
+            width: 250px;
             height: auto;
-            width: 200px;
+            margin-bottom: 12px;
         }
 
         .homeIcon{
