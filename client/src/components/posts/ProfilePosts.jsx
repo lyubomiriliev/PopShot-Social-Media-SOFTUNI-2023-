@@ -1,8 +1,11 @@
+import { useState } from "react";
+
 import { Box, Modal } from "@mui/material";
+
 import useGetUserPosts from "../../hooks/useGetUserPosts";
+
 import ProfilePost from "./ProfilePost";
 import PostDetailModal from "../explore-page/PostDetailModal";
-import { useState } from "react";
 
 export default function ProfilePosts() {
 

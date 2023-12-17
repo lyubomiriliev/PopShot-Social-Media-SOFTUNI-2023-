@@ -8,7 +8,7 @@ export default function RightBar() {
     return (
         <div className="rightBar">
             <div className="container">
-                <div className="friendList">
+                <div className="suggestedUsersList">
                     <SuggestedUsers />
                 </div>
             </div>

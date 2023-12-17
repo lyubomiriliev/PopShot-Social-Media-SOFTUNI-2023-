@@ -5,13 +5,12 @@ import NavBar from "../navbar-components/NavBar";
 import { useState } from "react";
 import { Box, Modal } from "@mui/material";
 import PostDetailModal from "./PostDetailModal";
-import useGetFeedPosts from "../../hooks/useGetFeedPosts";
-import useUserProfileStore from "../../store/userProfileStore";
+import useGetExplorePosts from "../../hooks/useGetExplorePosts";
 
 export default function ExplorePage() {
 
 
-    const { posts } = useGetFeedPosts()
+    const { posts } = useGetExplorePosts()
 
     const handlePostClick = (post) => {
         setSelectedPost(post);
@@ -27,8 +26,6 @@ export default function ExplorePage() {
     const [selectedPost, setSelectedPost] = useState(null);
     const [showModal, setShowModal] = useState(false);
 
-    const [open, setOpen] = useState(false);
-
 
     const style = {
         position: 'absolute',
@@ -42,10 +39,6 @@ export default function ExplorePage() {
         p: 4,
     };
 
-    const { userProfile } = useUserProfileStore();
-
-    console.log(userProfile)
-
 
     return (
         <div className="explore-main">
@@ -56,7 +49,7 @@ export default function ExplorePage() {
                     <div style={{ flex: 6 }}>
                         <div className="exploreGrid">
                             {posts.length === 0 && (
-                                <h1>You must follow other users to see their posts.</h1>
+                                <h1>Looks like you followed all users...</h1>
                             )}
                             {posts.map((post) => (
                                 <div key={post.id} className="post-item" onClick={() => handlePostClick(post)}>

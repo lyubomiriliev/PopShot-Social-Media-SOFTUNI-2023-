@@ -1,9 +1,9 @@
 import { Navigate } from "react-router-dom";
-import { UserAuth } from "../../contexts/AuthConext";
 import Path from "../../paths";
+import useAuthStore from "../../store/authStore";
 
 const AuthGuard = ({ children }) => {
-    const { user } = UserAuth();
+    const { user } = useAuthStore();
 
     if (!user) {
         return <Navigate to={Path.Login} />

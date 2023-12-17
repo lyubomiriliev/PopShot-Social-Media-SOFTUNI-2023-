@@ -1,8 +1,34 @@
 import NavBar from "../navbar-components/NavBar";
 import LeftBar from "../navbar-components/LeftBar";
 import "../../assets/styles/peoplePage.scss";
+import { collection, getDocs, query } from "firebase/firestore";
+import { db } from "../../config/firebase";
+import { useEffect } from "react";
 
 export default function PeoplePage() {
+
+
+
+    const getAllUsers = async () => {
+
+        const usersQuery = query(
+            collection(db, "users"),
+        );
+
+        const querySnapshot = await getDocs(usersQuery);
+
+        querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+        }));
+    }
+
+    useEffect(() => {
+
+        getAllUsers();
+
+    }, [])
+
     return (
 
         <div id="people-main">

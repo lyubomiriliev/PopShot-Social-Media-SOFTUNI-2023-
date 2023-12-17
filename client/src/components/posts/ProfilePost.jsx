@@ -1,23 +1,26 @@
 import "../../assets/styles/singlePost.scss";
 
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { timeAgo } from "../../utils/timeAgo";
+import usePostStore from "../../store/postStore";
+import useAuthStore from "../../store/authStore";
+import useUserProfileStore from "../../store/userProfileStore";
+
+import useLikePost from "../../hooks/useLikePost";
+import usePostComment from "../../hooks/usePostComment";
+
+import { arrayRemove, deleteDoc, doc, updateDoc } from "firebase/firestore";
+import { deleteObject, ref } from "firebase/storage";
+import { db, storage } from "../../config/firebase";
 
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import CloseIcon from '@mui/icons-material/Close';
-import useAuthStore from "../../store/authStore";
-import useUserProfileStore from "../../store/userProfileStore";
-import { deleteObject, ref } from "firebase/storage";
-import { db, storage } from "../../config/firebase";
-import { arrayRemove, deleteDoc, doc, query, updateDoc } from "firebase/firestore";
-import usePostStore from "../../store/postStore";
-import Comments from "../comments/Comments";
-import usePostComment from "../../hooks/usePostComment";
-import { useState } from "react";
 import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
-import useLikePost from "../../hooks/useLikePost";
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
-import { timeAgo } from "../../utils/timeAgo";
+
+import Comments from "../comments/Comments";
 
 
 

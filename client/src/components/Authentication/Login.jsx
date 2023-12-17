@@ -3,11 +3,11 @@ import Path from '../../paths';
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from 'react';
 
-import { auth, db } from '../../config/firebase';
-
 import useLogin from "../../hooks/useLogin";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import useAuthStore from "../../store/authStore";
+
+import { auth, db } from '../../config/firebase';
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 
 
