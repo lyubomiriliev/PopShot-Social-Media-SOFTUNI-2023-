@@ -1,9 +1,9 @@
 import "../../assets/styles/userProfileContainer.scss";
+import { useState } from "react";
 
 import useUserProfileStore from "../../store/userProfileStore";
 import useAuthStore from "../../store/authStore";
 import MyProfileEdit from "./MyProfileEdit";
-import { useState } from "react";
 import useFollowUser from "../../hooks/useFollowUser";
 
 export default function UserProfileContainer() {

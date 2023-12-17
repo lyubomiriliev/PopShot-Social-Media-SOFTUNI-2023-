@@ -51,7 +51,7 @@ export default function CreatePostPage() {
             <NavBar />
             <div style={{ display: "flex" }}>
                 <LeftBar />
-                <div className="formWrapper" style={{ flex: 6 }}>
+                <div className="formWrapper" >
                     <img src="../../src/assets/images/popshot-logo.png" alt="logo" />
                     <div className="title">
                         <h3>Create a new post</h3>
@@ -63,7 +63,7 @@ export default function CreatePostPage() {
                         <button onClick={() => imgRef.current.click()}><AddAPhotoIcon /></button>
                         {selectedFile && (
                             <div className="imagePreview" >
-                                <img src={selectedFile} alt="postImage" />,
+                                <img src={selectedFile} alt="postImage" />
                                 <button onClick={() => { setSelectedFile("") }}><CloseIcon /></button>
                             </div>
 
@@ -74,8 +74,8 @@ export default function CreatePostPage() {
                     </div>
 
                 </div>
-            </div>
 
+            </div>
         </div>
     );
 }

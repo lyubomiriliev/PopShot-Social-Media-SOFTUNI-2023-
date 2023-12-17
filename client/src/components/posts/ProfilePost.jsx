@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import CloseIcon from '@mui/icons-material/Close';
-import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import useAuthStore from "../../store/authStore";
 import useUserProfileStore from "../../store/userProfileStore";
 import { deleteObject, ref } from "firebase/storage";
@@ -100,9 +99,6 @@ export default function ProfilePost({ post }) {
                         </div>
                         <div className="actionBtn">
                             <button><EditOutlinedIcon />Edit</button>
-                        </div>
-                        <div className="actionBtn">
-                            <button ><BookmarkBorderOutlinedIcon />Save</button>
                         </div>
                         <div className="actionBtn">
                             <input type="text" placeholder="Add a comment..." value={comment} onChange={(e) => setComment(e.target.value)} />

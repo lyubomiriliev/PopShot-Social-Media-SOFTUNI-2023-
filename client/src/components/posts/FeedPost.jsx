@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
 import "../../assets/styles/singlePost.scss";
+
+import { Link } from "react-router-dom";
 import useGetUserProfileById from "../../hooks/useGetUserProfileById";
 import useFollowUser from "../../hooks/useFollowUser";
 import { timeAgo } from "../../utils/timeAgo";

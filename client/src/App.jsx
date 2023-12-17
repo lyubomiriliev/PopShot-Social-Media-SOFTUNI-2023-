@@ -8,7 +8,6 @@ import PeoplePage from './components/people-page/PeoplePage';
 import MyProfile from './components/profile-pages/MyProfile';
 import CreatePostPage from './components/posts/CreatePostPage';
 import ExplorePage from './components/explore-page/ExplorePage';
-import Settings from './components/settings/Settings';
 import { PostContextProvider } from './contexts/PostContext';
 import Register from './components/Authentication/Register';
 import Login from './components/Authentication/Login';
@@ -34,7 +33,6 @@ function App() {
                         <Route path={Path.MyProfile} element={<AuthGuard><MyProfile /></AuthGuard>} />
                         <Route path={Path.Explore} element={<AuthGuard><ExplorePage /></AuthGuard>} />
                         <Route path={Path.People} element={<AuthGuard><PeoplePage /></AuthGuard>} />
-                        <Route path={Path.Settings} element={<AuthGuard><Settings /></AuthGuard>} />
                         <Route path={Path.NotFound} element={<NotFound />} />
                     </Routes>
                 </AuthContextProvider>
