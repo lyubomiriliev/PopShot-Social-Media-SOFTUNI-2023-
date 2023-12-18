@@ -26,9 +26,10 @@
         gap: 30px;
 
         img{
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
+            margin-bottom: 20px;
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
             object-fit: cover;
         }
 
@@ -53,9 +54,19 @@
         gap: 10px;
 
         input{
+            margin-top: -5px;
             padding: 10px;
             border: 1px solid gray;
             border-radius: 5px;
+        }
+
+        textarea{
+            margin-top: -5px;
+            resize: none;
+            padding: 10px 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+
         }
     }
 

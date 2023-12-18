@@ -86,9 +86,6 @@ export default function ProfilePost({ post, handlePostClick }) {
                             </div>
                         )}
                     </div>
-                    <div className="datePosted">
-                        <span className="date">{timeAgo(post.createdAt)}</span>
-                    </div>
                     <div className="title">
                         <h2>{post.title}</h2>
                     </div>
@@ -98,7 +95,9 @@ export default function ProfilePost({ post, handlePostClick }) {
                     <div className="image">
                         <img src={post.imageURL} alt="" />
                     </div>
-
+                    <div className="datePosted">
+                        <span className="date">{timeAgo(post.createdAt)}</span>
+                    </div>
                     <div className="info">
                         <div className="actionBtn">
                             <button onClick={handleLikePost}>{!isLiked ? <FavoriteBorderOutlinedIcon /> : <FavoriteOutlinedIcon />}</button>

@@ -16,6 +16,7 @@
             border-radius: 20px;
 
         .userPostInfo{
+          justify-content: center;
           display: flex;
           align-items: center;
           gap: 20px;
@@ -67,9 +68,13 @@
       
 
       .datePosted{
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
 
         .date{
-          font-size: 14px;
+          font-size: 18px;
           color: gray;
         }
   

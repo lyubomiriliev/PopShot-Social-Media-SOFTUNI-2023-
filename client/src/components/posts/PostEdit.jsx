@@ -2,9 +2,10 @@ import "../../assets/styles/myProfileEdit.scss"
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { useState } from "react";
-import useEditPost from "../../hooks/useEditPost";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../config/firebase";
+import CloseIcon from '@mui/icons-material/Close';
+
 
 
 export default function PostEdit({ open, handleClose, post }) {
@@ -48,7 +49,7 @@ export default function PostEdit({ open, handleClose, post }) {
                     <div className="myProfileEdit">
                         <div className="editHeading">
                             <h3>Edit post</h3>
-                            <button onClick={handleClose} >Close</button>
+                            <button onClick={handleClose} ><CloseIcon /></button>
                         </div>
                         <div className="profilePicEdit">
                             <img src={post.imageURL} alt="postPhoto" />
