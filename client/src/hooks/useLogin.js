@@ -30,7 +30,7 @@ const useLogin = () => {
         navigate(Path.Home);
       }
     } catch (error) {
-      console.log("Firebase Auth Error:", error);
+      alert("Firebase Auth Error:", error);
     }
   };
 

@@ -17,8 +17,8 @@ export default function ProfilePosts() {
         <>
             <div className="posts">
                 {posts.map((post) => (
-                    <div >
-                        <ProfilePost post={post} key={post.id} />
+                    <div key={post.id} >
+                        <ProfilePost post={post} />
                     </div>
                 ))}
 

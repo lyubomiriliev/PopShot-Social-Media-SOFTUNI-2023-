@@ -88,10 +88,11 @@ export default function Login() {
                         <input type="password" placeholder="Password" value={inputs.password} onChange={(e) => setInputs({ ...inputs, password: e.target.value })} />
                         <div className="actionBtnsLogin">
                             <button type="submit">Login</button>
-                            <button onClick={googleSignIn} >Google Sign In</button>
                         </div>
                     </form>
-
+                    <div className="googleSignIn">
+                        <button onClick={googleSignIn} >Google Sign In</button>
+                    </div>
                     <div className="forgotPW">
                         <p>Forgot Password?</p>
                     </div>

@@ -106,8 +106,16 @@ justify-content: center;
 
               .actionBtnsLogin{
                 display: flex;
-                margin-left: 15px;
-                gap: 60px
+                justify-content: center;
+
+                button{
+                    width: 15%;
+                }
+              }
+
+              .googleSignIn{
+                display: flex;
+                justify-content: center;
               }
         }
         

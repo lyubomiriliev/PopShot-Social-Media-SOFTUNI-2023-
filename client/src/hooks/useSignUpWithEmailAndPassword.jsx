@@ -46,7 +46,7 @@ const useSignUpWithEmailAndPassword = () => {
         inputs.password
       );
       if (!newUser && error) {
-        console.log(error);
+        alert(error);
         return;
       }
       if (newUser) {

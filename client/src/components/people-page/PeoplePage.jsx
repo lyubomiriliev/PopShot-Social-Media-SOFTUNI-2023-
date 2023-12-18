@@ -13,7 +13,6 @@ export default function PeoplePage() {
     const [allUsers, setAllUsers] = useState([]);
     const authUser = useAuthStore((state) => state.user);
 
-    console.log(authUser)
 
     useEffect(() => {
         const getAllUsers = async () => {
