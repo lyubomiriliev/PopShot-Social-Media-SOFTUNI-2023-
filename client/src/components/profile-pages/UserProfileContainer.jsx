@@ -24,7 +24,7 @@ export default function UserProfileContainer() {
     return (
         <div className="profile">
             <div className="images">
-                <img src="https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="cover" />
+                <img src="https://i.imgur.com/4L3gPTn.jpg" alt="" className="cover" />
                 <img src={userProfile.profilePicURL} alt="" className="profilePic" />
             </div>
             <div className="profileContainer">
