@@ -4,12 +4,10 @@ import { db } from "../config/firebase";
 import useUserProfileStore from "../store/userProfileStore";
 
 const useGetUserProfileByUsername = (username) => {
-  const [isLoading, setIsLoading] = useState(true);
   const { userProfile, setUserProfile } = useUserProfileStore();
 
   useEffect(() => {
     const getUserProfile = async () => {
-      setIsLoading(true);
       try {
         const q = query(
           collection(db, "users"),
@@ -28,14 +26,13 @@ const useGetUserProfileByUsername = (username) => {
       } catch (error) {
         console.log("Error");
       } finally {
-        setIsLoading(false);
       }
     };
 
     getUserProfile();
   }, [setUserProfile, username]);
 
-  return { isLoading, userProfile };
+  return { userProfile };
 };
 
 export default useGetUserProfileByUsername;
