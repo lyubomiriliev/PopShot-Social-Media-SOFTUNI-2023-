@@ -21,6 +21,7 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 
 import Comments from "../comments/Comments";
+import PostEdit from "./PostEdit";
 
 
 
@@ -62,6 +63,9 @@ export default function ProfilePost({ post, handlePostClick }) {
         setComment("")
     }
 
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
 
     return (
@@ -100,9 +104,12 @@ export default function ProfilePost({ post, handlePostClick }) {
                             <button onClick={handleLikePost}>{!isLiked ? <FavoriteBorderOutlinedIcon /> : <FavoriteOutlinedIcon />}</button>
                             <p>{likes} likes</p>
                         </div>
-                        <div className="actionBtn">
-                            <button onClick={() => handlePostClick(post)}><EditOutlinedIcon />Edit</button>
-                        </div>
+                        {authUser?.uid === userProfile.uid && (
+                            <div className="actionBtn">
+                                <button onClick={handleOpen} ><EditOutlinedIcon />Edit</button>
+                                <PostEdit open={open} handleClose={handleClose} post={post} />
+                            </div>
+                        )}
                         <div className="actionBtn">
                             <input type="text" placeholder="Add a comment..." value={comment} onChange={(e) => setComment(e.target.value)} />
                             <button onClick={handleSubmitComment} ><SendOutlinedIcon /></button>
