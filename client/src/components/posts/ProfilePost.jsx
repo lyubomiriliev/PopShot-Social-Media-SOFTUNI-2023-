@@ -24,7 +24,7 @@ import Comments from "../comments/Comments";
 
 
 
-export default function ProfilePost({ post }) {
+export default function ProfilePost({ post, handlePostClick }) {
 
     const authUser = useAuthStore((state) => state.user);
     const userProfile = useUserProfileStore((state) => state.userProfile);
@@ -101,7 +101,7 @@ export default function ProfilePost({ post }) {
                             <p>{likes} likes</p>
                         </div>
                         <div className="actionBtn">
-                            <button><EditOutlinedIcon />Edit</button>
+                            <button onClick={() => handlePostClick(post)}><EditOutlinedIcon />Edit</button>
                         </div>
                         <div className="actionBtn">
                             <input type="text" placeholder="Add a comment..." value={comment} onChange={(e) => setComment(e.target.value)} />

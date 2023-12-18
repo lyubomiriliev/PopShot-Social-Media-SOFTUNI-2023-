@@ -46,8 +46,8 @@ export default function ProfilePosts() {
         <>
             <div className="posts">
                 {posts.map((post) => (
-                    <div onClick={() => handlePostClick(post)}>
-                        <ProfilePost post={post} key={post.id} />
+                    <div >
+                        <ProfilePost post={post} key={post.id} handlePostClick={handlePostClick} />
                     </div>
                 ))}
 

@@ -1,5 +1,5 @@
 import "../../assets/styles/peoplePage.scss";
-import { collection, getDocs, query } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { useEffect, useState } from "react";
 import Person from "./Person";
@@ -13,13 +13,14 @@ export default function PeoplePage() {
     const [allUsers, setAllUsers] = useState([]);
     const authUser = useAuthStore((state) => state.user);
 
-
+    console.log(authUser)
 
     useEffect(() => {
         const getAllUsers = async () => {
 
             const usersQuery = query(
                 collection(db, "users"),
+                where("uid", "!=", authUser.uid)
             );
 
             const querySnapshot = await getDocs(usersQuery);
