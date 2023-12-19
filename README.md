@@ -15,6 +15,7 @@ Popshot is a social media platform designed to share moments through images and 
   3. SCSS
   4. Firebase
   5. MUI Material Icons
+  6. Global state with Zustand
 
 
 ## 3. Setup guide:
