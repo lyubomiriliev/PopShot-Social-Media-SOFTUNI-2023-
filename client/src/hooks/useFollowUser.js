@@ -37,7 +37,7 @@ const useFollowUser = (userId) => {
           setUserProfile({
             ...userProfile,
             followers: userProfile.followers.filter(
-              (uid) => uid != +authUser.uid
+              (uid) => uid != authUser.uid
             ),
           });
 
