@@ -31,11 +31,6 @@ export default function NavBar() {
                 </div>
             </div>
             <div className="right">
-                <div className="logout">
-                    <button onClick={handleUserLogout} >
-                        <ExitToAppOutlinedIcon />
-                    </button>
-                </div>
                 <div className="user">
                     {authUser && (
                         <>
@@ -47,6 +42,11 @@ export default function NavBar() {
                             </Link>
                         </>
                     )}
+                </div>
+                <div className="logout">
+                    <button onClick={handleUserLogout} >
+                        <ExitToAppOutlinedIcon />
+                    </button>
                 </div>
             </div>
         </div>

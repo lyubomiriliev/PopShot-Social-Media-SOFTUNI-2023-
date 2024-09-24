@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 10px 10px;
     height: 50px;
     border-bottom: 1px solid lightgrey;
     position: sticky;
@@ -13,10 +13,13 @@
 
     .left {
         display: flex;
+        width: 20%;
+        height: 100%;
         align-items: center;
-        gap: 30px;
+        justify-content: start;
 
         img {
+            display: flex;
             align-items: center;
             width: 250px;
             height: auto;
@@ -50,9 +53,10 @@
     }
     
     .right {
+        width: 15%;
         display: flex;
+        justify-content: space-around;
         align-items: center;
-        gap: 30px;
 
         .notifications{
             transition: 0.3s ease;
@@ -86,11 +90,11 @@
             font-size: 18px;
 
             img {
-                width: 50px;
-                height: 50px;
+                width: 45px;
+                height: 45px;
                 border-radius: 50px;
                 object-fit: cover;
-                border: 3px solid #9d1b65;
+                border: 2px solid #9d1b65;
                 transition: 0.3s ease-out;
 
                 &:hover {
