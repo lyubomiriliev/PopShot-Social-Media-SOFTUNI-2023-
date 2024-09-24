@@ -6,6 +6,7 @@ import { useState } from 'react';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import useSignUpWithEmailAndPassword from "../../hooks/useSignUpWithEmailAndPassword";
+import { popshotWhite } from "../../assets/images";
 
 export default function Register() {
 
@@ -24,15 +25,20 @@ export default function Register() {
         <div className="register">
             <div className="card">
                 <div className="left">
-                    <h1>POP A SHOT.</h1>
-                    <p>Join Popshot and be part of a vibrant social community where your photos come to life. Share, connect, and capture memories effortlessly.</p>
-                    <span>Already registered?</span>
-                    <Link to={Path.Login}>
-                        <button>Login</button>
+                    <div>
+                        <h1>POP A SHOT.</h1>
+                        <p>Join Popshot and be part of a vibrant social community where your photos come to life. Share, connect, and capture memories effortlessly.</p>
+                    </div>
+
+                    <Link className="goToLogin" to={Path.Login}>
+                        <img className="logo" src={popshotWhite} alt="Popshot Logo" />
+                        <span>Already registered?</span>
+                        <button className="logBtn">Login</button>
                     </Link>
                 </div>
                 <div className="right">
                     <h1>Register</h1>
+                    <h2>Register</h2>
                     <div className="inputForm">
                         <input name="fullName" type="text" placeholder="Full Name" value={inputs.fullName} onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })} />
 
@@ -48,7 +54,7 @@ export default function Register() {
 
                     </div>
                     <div className="actionButtonsRegister">
-                        <button onClick={() => signup(inputs)}>Register</button>
+                        <button onClick={() => signup(inputs)}>Sign up</button>
                     </div>
 
                 </div>

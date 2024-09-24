@@ -77,12 +77,12 @@ export default function Login() {
                 </div>
                 <div className="right">
                     <h1>Login</h1>
+                    <h2>Login</h2>
                     <form onSubmit={(e) => {
                         e.preventDefault();
                         handleUserLogin(inputs);
                     }}>
                         <input type="email" placeholder="Email" value={inputs.email} onChange={(e) => setInputs({ ...inputs, email: e.target.value })} />
-
                         <input type="password" placeholder="Password" value={inputs.password} onChange={(e) => setInputs({ ...inputs, password: e.target.value })} />
                         <div className="actionBtnsLogin">
                             <button type="submit">Sign In</button>
