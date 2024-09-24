@@ -1,125 +1,266 @@
 .login {
-margin: -10px;
-height: 100vh;
-background: linear-gradient(rgb(85, 0, 85), rgb(0, 0, 63));
-display: flex;
-align-items: center;
-justify-content: center;
-
+    margin: -10px;
+    height: 100vh;
+    background: linear-gradient(rgb(85, 0, 85), rgb(0, 0, 63));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
     .card {
-        width: 60%;
+      width: 60%; // Default width for larger screens
+      display: flex;
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+      .left {
+        background: linear-gradient(
+            rgba(255, 0, 255, 0.363),
+            rgba(0, 0, 255, 0.493)
+          ),
+          url("https://images.unsplash.com/photo-1522010675502-c7b3888985f6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") center;
+        background-size: cover;
+        height: 60vh;
+        padding: 20px;
         display: flex;
-        background-color: white;
-        border-radius: 10px;
-        min-height: 700px;
-        overflow: hidden;
+        flex-direction: column;
+        gap: 30px;
+        color: white;
 
-        .left {
-            flex: 1;
-            background: linear-gradient(rgba(255, 0, 255, 0.363), rgba(0, 0, 255, 0.493)), 
-            url("https://images.unsplash.com/photo-1522010675502-c7b3888985f6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") center;
-            background-size: cover;
-            padding: 50px;
+        .logo {
+            width: 12em;
+        }
+  
+        h1 {
+          margin-top: 30px;
+          font-size: 70px;
+          line-height: 100px;
+        }
+  
+        p {
+            width: 80%;
+            align-items: center;
+            margin: auto;
+          font-size: 20px;
+          text-align: center;
+        }
+  
+      }
+      .link {
+        text-decoration: none;
+      }
+  
+      .right {
+        display: flex;
+        width: 100%;
+        height: 60vh;
+        margin: auto;
+        align-items: center;
+        flex-direction: column;
+
+        .google {
+            width: 42%;
+            height: 38px;
             display: flex;
-            flex-direction: column;
-            gap: 30px;
-            color: white;
-
-            h1{
-                margin-top: 30px;
-                font-size: 70px;
-                line-height: 100px;
-            }
-            p{
-                font-size: 22px;
-
-            }
-            span{
-                font-size: 20px;
-            }
-            button{
-                width: 50%;
-                padding: 10px;
-                border: none;
-                background-color: white;
-                color:#1F3B75;
-                font-size: 24px;
-                font-weight: bold;
-                cursor: pointer;
-                border-radius: 5px;
-            }
+            align-items: center;
+            justify-content: center;
+            padding-right: 2px;
+            background-color: transparent;
+            color: #5c0e3a;
+            border-radius: 20px;
+            border: 1px solid #5c0e3a;
         }
 
-        .right {
-            flex: 1;
-            padding: 50px;
+        .googleLogo {
+            width: 40px;
+          }
+  
+        form {
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+        }
+  
+        h1 {
+          font-size: 40px;
+          text-transform: uppercase;
+          color: #5c0e3a;
+        }
+  
+        input {
+          border: none;
+          width: 30em;
+          border-bottom: 1px solid lightgray;
+          padding: 10px 10px;
+          margin-bottom: 10px;
+        }
+  
+        button {
+        width: 40%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #9d1b65;
+        color: white;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        transition: 0.3s ease;
+        padding: 6px 8px;
+  
+        &:hover {
+            background-color: #1f3b75;
+        }
+        }
+  
+        
+  
+        .actionBtnsLogin {
+            width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 50px;
             justify-content: center;
+            align-items: center;
+            gap: 1em;
 
-
-            form {
-                display: flex;
-                flex-direction: column;
-                gap: 30px;
-            
-
-                
-            }
-
-            h1{
-            font-size: 50px;
-            color: #5c0e3a;
-
-            }
-            
-            input {
-                border: none;
-                border-bottom: 1px solid lightgray;
-                padding: 20px 10px;
-                margin-bottom: 30px;
-            }
-
-            button {
-                width: 25%;
-                padding: 5px 10px;
-                background-color: #9d1b65;
-                color: white;
-                border: none;
-                scale: 1.3;
-                border-radius: 5px;
-                cursor: pointer;
-                transition: background-color 0.3s ease;
-                transition: 0.3s ease;
-          
-                &:hover {
-                  background-color: #1F3B75;
-                  transform: scale(1.1);
-                }
-              }
-
-              .forgotPW{
+            .forgotPW {
                 color: gray;
                 text-align: center;
               }
-
-              .actionBtnsLogin{
-                display: flex;
-                justify-content: center;
-
-                button{
-                    width: 15%;
-                }
-              }
-
-              .googleSignIn{
-                display: flex;
-                justify-content: center;
-              }
+  
         }
-        
-
+  
+        .notRegistered {
+          height: 16vh;
+          display: flex;
+          gap: 10px;
+          margin-top: 10px;
+          flex-direction: column;
+          align-items: center;
+          justify-content: end;
+        }
+      }
     }
+  
+    /* MEDIA QUERIES for Mobile Responsiveness */
+    @media (max-width: 1024px) {
+      .card {
+        width: 90%; /* Increase width for tablets */
+        flex-direction: column; /* Stack left and right on top of each other */
+  
+        .left, .right {
+          flex: none; /* Remove flex grow to make them both independent */
+          padding: 30px;
+          text-align: center; /* Center the text */
+        }
+  
+        .left h1 {
+          font-size: 50px; /* Reduce font size for smaller screens */
+          line-height: 70px;
+        }
+  
+        .left button {
+          width: 60%; /* Adjust button size */
+        }
+  
+        .right h1 {
+          font-size: 40px;
+        }
+  
+        .right button {
+          width: 20%; /* Adjust button width for smaller screens */
+        }
+      }
+    }
+  
+    @media (max-width: 768px) {
+      .card {
+        width: 95%; /* Full width for smaller mobile devices */
+        flex-direction: column;
+  
+        .left, .right {
+          padding: 20px;
+        }
+  
+        .left h1 {
+          font-size: 40px;
+          line-height: 60px;
+        }
+  
+        .left button {
+          width: 70%;
+          padding: 8px;
+        }
+  
+        .right h1 {
+          font-size: 30px;
+        }
+  
+        .right button {
+          width: 60%; /* Further adjust button width */
+          padding: 8px;
+        }
+  
+        input {
+          padding: 15px;
+        }
+      }
+    }
+  
+    @media (max-width: 480px) {
+      .card {
+        width: 100%; /* Full width for very small screens */
+        flex-direction: column;
+  
+        .left, .right {
+          padding: 10px;
 
-}
+          .googleLogo {
+            width: 30px;
+            
+          }
+
+          .google {
+            width: 50%;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent;
+            color: #5c0e3a;
+            border-radius: 20px;
+            border: 1px solid #5c0e3a;
+          }
+        }
+  
+        .left h1 {
+          font-size: 30px;
+          line-height: 50px;
+        }
+  
+        .left button {
+          width: 80%;
+          padding: 8px;
+        }
+  
+        .right h1 {
+          font-size: 25px;
+        }
+  
+        .right button {
+          width: 40%;
+          padding: 8px;
+        }
+  
+        input {
+          padding: 10px;
+        }
+      }
+    }
+  }
+  

@@ -9,6 +9,7 @@ import useAuthStore from "../../store/authStore";
 import { auth, db } from '../../config/firebase';
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
+import { googleSVG, popshotWhite } from "../../assets/images";
 
 
 export default function Login() {
@@ -72,10 +73,7 @@ export default function Login() {
                 <div className="left">
                     <h1>Welcome to Popshot !</h1>
                     <p>Where every shot tells a story and spreads happiness! Get ready to paint the world with your picture-perfect experiences!</p>
-                    <span>You dont have an account?</span>
-                    <Link to="/register">
-                        <button>Register</button>
-                    </Link>
+                    <img className="logo" src={popshotWhite} alt="Popshot Logo" />
                 </div>
                 <div className="right">
                     <h1>Login</h1>
@@ -87,15 +85,22 @@ export default function Login() {
 
                         <input type="password" placeholder="Password" value={inputs.password} onChange={(e) => setInputs({ ...inputs, password: e.target.value })} />
                         <div className="actionBtnsLogin">
-                            <button type="submit">Login</button>
+                            <button type="submit">Sign In</button>
+                            <div className="forgotPW">
+                                <p>Forgot Password?</p>
+                            </div>
+                            <div className="google">
+                                <img className="googleLogo" src={googleSVG} alt="Google Logo" />
+                                <span onClick={googleSignIn} >Google Sign In</span>
+                            </div>
                         </div>
                     </form>
-                    <div className="googleSignIn">
-                        <button onClick={googleSignIn} >Google Sign In</button>
-                    </div>
-                    <div className="forgotPW">
-                        <p>Forgot Password?</p>
-                    </div>
+                    <Link className="link" to="/register">
+                        <div className="notRegistered">
+                            <span>You dont have an account?</span>
+                            <button>Register</button>
+                        </div>
+                    </Link>
                 </div>
 
             </div>

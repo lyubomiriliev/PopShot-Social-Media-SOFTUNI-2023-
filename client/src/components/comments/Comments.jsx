@@ -2,7 +2,6 @@ import "../../assets/styles/comments.scss";
 
 import useGetUserProfileById from "../../hooks/useGetUserProfileById";
 import { Link } from "react-router-dom";
-import { timeAgo } from "../../utils/timeAgo";
 
 
 

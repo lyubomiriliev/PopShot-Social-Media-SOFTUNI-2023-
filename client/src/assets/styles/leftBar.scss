@@ -1,206 +1,64 @@
 .leftBar {
-    width: 20%;
+    width: 18em;
     position: sticky;
     top: 70px;
     height: calc(100vh - 70px);
-    -webkit-box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.15);
-    -moz-box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.15);
     box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.15);
-    margin-right: 50px;
-
-    
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: start;
 
     .container {
-        padding: 30px;
-        
         .menu {
             display: flex;
-            flex-direction: column;
-            gap: 70px;
-            
-            .search {
-                background-color: #9d1b65;
+            justify-content: center;
+            flex-direction: column;    
+            gap: 30px;
+
+            div, a {
                 border-radius: 5px;
                 padding: 5px;
-                width: 50%;
+                width: 100%;
                 display: flex;
                 align-items: center;
                 gap: 10px;
-                color: white;
                 font-size: 18px;
+                cursor: pointer;
+                text-decoration: none;
+                transition: ease-in-out 0.3s;
+                transform: scale(1);
+            }
+
+            .createPost, .createBtn, .createPost a {
+                color: #9d1b65;
+                background-color: transparent;
+                font-weight: 700;
+                &:hover {
+                    opacity: 50%;
+
+                }
                 
                 
-                button {
-                    width: 100%;
-                    padding: 5px;
-                    border: none;
-                    background-color: transparent;
-                    display: flex;
-                    justify-content: center;
-                    color: white;
-                    font-size: 18px;
-                    text-decoration: none;
-                    cursor: pointer;
-
-
-                }
-                &:hover {
-                    background-color: #1F3B75;
-                    transition: ease-in-out 0.3s;
-                    transform: scale(1.1);
-                  }
-
-                .searchBtn a{
-                    text-decoration: none;
-                }
-
             }
 
-            .explore {
-                background-color: #9d1b65;
-                color: white;
-                border-radius: 5px;
-                padding: 5px;
-                width: 50%;
-                display: flex;
-                align-items: center;
-                gap: 10px;
-
-                .exploreBtn a {
-                    text-decoration: none;
-                }
-
-    
-
-                button {
-                    width: 100%;
-                    padding: 5px;
-                    border: none;
-                    background-color: transparent;
-                    display: flex;
-                    justify-content: center;
-                    color: white;
-                    font-size: 18px;
-                    text-decoration: none;
-                    cursor: pointer;
-
-
-                }
+            .search, .explore, .people, .saved {
+                color: #9d1b65;
+                background-color: transparent;
+                font-weight: 700;
                 &:hover {
-                    background-color: #1F3B75;
-                    transition: ease-in-out 0.3s;
-                    transform: scale(1.1);
-                  }
+                    opacity: 50%;
+                }
+                .searchSVG {
+                    font-size: 1.4em;
+                    margin-left: 3px;
+                }
             }
-            .people {
-                background-color: #9d1b65;
-                border-radius: 5px;
-                padding: 5px;
-                width: 50%;
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                font-size: 18px;
-                color: white;
 
-                .peopleBtn a{
-                    text-decoration: none;
-                }
-
-                button {
-                    width: 100%;
-                    padding: 5px;
-                    border: none;
-                    background-color: transparent;
-                    display: flex;
-                    justify-content: center;
-                    color: white;
-                    font-size: 18px;
-                    text-decoration: none;
-                    cursor: pointer;
-
-
-                }
-                &:hover {
-                    background-color: #1F3B75;
-                    transition: ease-in-out 0.3s;
-                    transform: scale(1.1);
-                  }
+            svg {
+                font-size: 1.2em;
+                margin-right: 10px;
             }
-            .saved {
-                background-color: #9d1b65;
-                border-radius: 5px;
-                padding: 5px;
-                width: 50%;
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                font-size: 18px;
-                color: white;
-
-                .savedBtn a{
-                    text-decoration: none;
-                }
-
-                button {
-                    width: 100%;
-                    padding: 5px;
-                    border: none;
-                    background-color: transparent;
-                    display: flex;
-                    justify-content: center;
-                    color: white;
-                    font-size: 18px;
-                    text-decoration: none;
-                    cursor: pointer;
-
-
-                }
-                &:hover {
-                    background-color: #1F3B75;
-                    transition: ease-in-out 0.3s;
-                    transform: scale(1.1);
-                  }
-
-
-            }
-            .createPost {
-                background-color: #9d1b65;
-                border-radius: 5px;
-                padding: 5px;
-                width: 50%;
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                font-size: 18px;
-                color: white;
-
-                .createBtn a{
-                    text-decoration: none;
-                }
-                
-                button {
-                    width: 100%;
-                    padding: 5px;
-                    border: none;
-                    background-color: transparent;
-                    display: flex;
-                    justify-content: center;
-                    color: white;
-                    font-size: 18px;
-                    text-decoration: none;
-                    cursor: pointer;
-
-
-                }
-                &:hover {
-                    background-color: #1F3B75;
-                    transition: ease-in-out 0.3s;
-                    transform: scale(1.1);
-                  }
-            }
-        
         }
- 
     }
 }

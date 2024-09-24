@@ -20,11 +20,7 @@ const style = {
     p: 4,
 };
 
-export default function Search() {
-
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+export default function Search({ open, handleCloseModal }) {
 
     const { user, getUserProfile, setUser } = useSearchUser();
     const searchRef = useRef(null)
@@ -35,17 +31,12 @@ export default function Search() {
         getUserProfile(searchRef.current.value)
     };
 
-    const handleCloseModal = () => {
-        setOpen(false)
-        setUser(null)
-    }
 
     return (
         <div>
-            <button onClick={handleOpen}>Search</button>
             <Modal
                 open={open}
-                onClose={handleClose}
+                onClose={handleCloseModal}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
