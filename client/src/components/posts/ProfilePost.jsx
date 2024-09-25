@@ -73,45 +73,45 @@ export default function ProfilePost({ post, handlePostClick }) {
             <div className="single-post">
                 <div className="postContainer">
                     <div className="userPostInfo">
-                        <img src={userProfile.profilePicURL} alt="profilePic" className="postThumbnail" />
                         <div className="details">
+                            <img src={userProfile.profilePicURL} alt="profilePic" className="postThumbnail" />
                             <Link to={`/${userProfile.username}`} style={{ textDecoration: "none", color: "inherit" }}>
                                 <span className="name">{userProfile.fullName}</span>
                             </Link>
                         </div>
-
                         {authUser?.uid === userProfile.uid && (
                             <div className="deleteBtn">
                                 <button onClick={handleDeletePost}><CloseIcon /></button>
                             </div>
                         )}
                     </div>
-                    <div className="title">
+                    <div className="postTitles">
                         <h2>{post.title}</h2>
-                    </div>
-                    <div className="content">
-                        <p>{post.content}</p>
+                        <div className="subTitles">
+                            <p>{post.content}</p>
+                            <span className="date">{timeAgo(post.createdAt)}</span>
+                        </div>
                     </div>
                     <div className="image">
                         <img src={post.imageURL} alt="" />
                     </div>
-                    <div className="datePosted">
-                        <span className="date">{timeAgo(post.createdAt)}</span>
-                    </div>
-                    <div className="info">
-                        <div className="actionBtn">
-                            <button onClick={handleLikePost}>{!isLiked ? <FavoriteBorderOutlinedIcon /> : <FavoriteOutlinedIcon />}</button>
-                            <p>{likes} likes</p>
-                        </div>
-                        {authUser?.uid === userProfile.uid && (
+                    <div className="postData">
+                        <div className="info">
+
                             <div className="actionBtn">
-                                <button onClick={handleOpen} ><EditOutlinedIcon />Edit</button>
-                                <PostEdit open={open} handleClose={handleClose} post={post} />
+                                <button onClick={handleLikePost}>{!isLiked ? <FavoriteBorderOutlinedIcon /> : <FavoriteOutlinedIcon />}</button>
+                                <p>{likes}</p>
                             </div>
-                        )}
-                        <div className="actionBtn">
-                            <input type="text" placeholder="Add a comment..." value={comment} onChange={(e) => setComment(e.target.value)} />
-                            <button onClick={handleSubmitComment} ><SendOutlinedIcon /></button>
+                            <div className="actionBtn">
+                                <input type="text" placeholder="Add a comment..." value={comment} onChange={(e) => setComment(e.target.value)} />
+                                <button onClick={handleSubmitComment} ><SendOutlinedIcon /></button>
+                            </div>
+                            {authUser?.uid === userProfile.uid && (
+                                <div className="actionBtn">
+                                    <button onClick={handleOpen} ><EditOutlinedIcon /></button>
+                                    <PostEdit open={open} handleClose={handleClose} post={post} />
+                                </div>
+                            )}
                         </div>
                     </div>
 

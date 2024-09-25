@@ -24,9 +24,9 @@ export default function MyProfile() {
         <>
             <div className="profile">
                 <NavBar />
-                <div className="profileContainer" style={{ display: "flex" }}>
+                <div className="profileContainer">
                     <LeftBar />
-                    <div style={{ flex: 6 }}>
+                    <div className="userContainer">
                         {userProfile && <UserProfileContainer />}
                         <ProfilePosts />
                     </div>

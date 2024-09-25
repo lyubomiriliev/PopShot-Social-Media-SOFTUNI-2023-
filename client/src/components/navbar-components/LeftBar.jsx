@@ -19,7 +19,7 @@ export default function LeftBar() {
         <div className="leftBar">
             <div className="container">
                 <div className="menu">
-                    <Link to="/create">
+                    <Link className="createLink" to="/create">
                         <div className="createPost">
                             <AddCircleOutlineOutlinedIcon />
                             <span>Create</span>

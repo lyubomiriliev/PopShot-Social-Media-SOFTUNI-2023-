@@ -3,7 +3,6 @@ import Path from "../../paths";
 
 import { Link } from 'react-router-dom';
 
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import useLogout from "../../hooks/useLogout";
 import useAuthStore from "../../store/authStore";
@@ -21,14 +20,9 @@ export default function NavBar() {
     return (
         <div className="navBar">
             <div className="left">
-                <Link to={Path.Home} style={{ textDecoration: "none", color: "inherit" }}>
+                <Link className="logoHome" to={Path.Home} >
                     <img src="../../src/assets/images/popshot-logo.png" alt="" />
                 </Link>
-                <div className="homeIcon">
-                    <Link to={Path.Home} style={{ textDecoration: "none", color: "inherit" }}>
-                        <HomeOutlinedIcon />
-                    </Link>
-                </div>
             </div>
             <div className="right">
                 <div className="user">

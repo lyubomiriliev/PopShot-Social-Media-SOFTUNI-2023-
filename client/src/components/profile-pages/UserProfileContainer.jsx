@@ -6,6 +6,10 @@ import useAuthStore from "../../store/authStore";
 import MyProfileEdit from "./MyProfileEdit";
 import useFollowUser from "../../hooks/useFollowUser";
 
+import EditIcon from '@mui/icons-material/Edit';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+
+
 export default function UserProfileContainer() {
 
     const { userProfile } = useUserProfileStore();
@@ -25,25 +29,28 @@ export default function UserProfileContainer() {
         <div className="profile">
             <div className="images">
                 <img src="https://i.imgur.com/4L3gPTn.jpg" alt="" className="cover" />
+                {visitingOwnProfileAuth && <EditIcon className="button" onClick={handleOpen} />}
                 <img src={userProfile.profilePicURL} alt="" className="profilePic" />
             </div>
             <div className="profileContainer">
                 <div className="uInfo">
-                    <div className="left">
+                    <div className="center">
+                        <span>{userProfile.fullName}</span>
+                        <div className="info">
+                            <p>Bio: {userProfile.bio}</p>
+                        </div>
                         <div className="item">
                             <p>{userProfile.posts.length} posts</p>
                             <p>{userProfile.followers.length} followers</p>
                             <p>{userProfile.following.length} following</p>
                         </div>
                     </div>
-                    <div className="center">
-                        <span>{userProfile.fullName}</span>
-                        <div className="info">
-                            <p>{userProfile.bio}</p>
-                        </div>
-                    </div>
                     <div className="right">
-                        {visitingOwnProfileAuth && <button onClick={handleOpen} >Edit Profile</button>}
+                        {visitingOwnProfileAuth && (
+                            <span>
+                                <EditIcon onClick={handleOpen} />
+                            </span>
+                        )}
                         {visitingAnotherProfileAuth && <button onClick={handleFollowUser} >{isFollowing ? "Unfollow" : "Follow"}</button>}
                         <MyProfileEdit open={open} handleClose={handleClose} />
                     </div>

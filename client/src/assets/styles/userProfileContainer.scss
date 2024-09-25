@@ -1,16 +1,23 @@
 .profile {
-    flex: 1;
     
     .images{
+        position: relative;
         width: 100%;
         height: 300px;
         position: relative;
-        
 
+        .button {
+            border: none;
+            background-color: transparent;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+        
         .cover{
             width: 100%;
             height: 100%;
-            border-radius: 10px;
             object-fit: cover;
         }
         .profilePic{
@@ -27,45 +34,39 @@
     }
 
     .profileContainer{
+        width: 100%;
+        height: 100%;
+        display: flex;
 
         .uInfo{
             width: 100%;
-            -webkit-box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.15);
-            -moz-box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.15);
-            box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.15);
-            border-radius: 20px;
             padding: 50px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            margin-bottom: 30px;
+            justify-content: center;
 
-            .left{
-                flex:1;
-                display: flex;
-                gap: 20px;
-                justify-content: flex-start;
-
-                .item{
-                    display: flex;
-                    flex-direction: column;
-                    gap: 10px;
-                }
-
-                p{
-                    border: 1px solid gray;
-                    padding: 10px 10px;
-                    border-radius: 10px;
-                    background-color: #1F3B75;
-                    color: white;
-                }
-            }
             .center{
-                flex:1;
+                width: 50%;
+                height: 15em;
                 display: flex;
                 flex-direction: column;
+                justify-content: center;
                 align-items: center;
                 gap: 10px;
+
+                .item{
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-around;
+
+                    p{
+                        font-size: 14px;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        color: #1F3B75;
+                    }
+                }
+
 
                 span{
                     font-size: 30px;
@@ -84,26 +85,18 @@
                 }
             }
             .right{
-                flex:1;
                 display: flex;
-                align-items: center;
-                justify-content: flex-end;
-                gap: 10px;
 
-                button{
+                span{
                     border: none;
-                    background-color: #9d1b65;
-                    color: white;
-                    padding: 10px 20px;
-                    border-radius: 5px;
+                    color: black;
+                    padding: 6px;
                     cursor: pointer;
                     transition: 0.3s ease;
 
-
-                    &:hover {
-                        background-color: #1F3B75;
-                        transform: scale(1.1);
-                        }
+                    &:hover{
+                        color: #9d1b65;
+                    }
                 }
             }
         }

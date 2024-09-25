@@ -1,22 +1,19 @@
 .single-post {
-  width: 70%;
-  -webkit-box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.15);
-            -moz-box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.15);
-            box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.15);
+  background-color: rgba(234, 234, 234, 0.586);
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   
     .postContainer{
-      width: 85%;
+      width: 75%;
       display: flex;
       flex-direction: column;
-      margin-bottom: 20px;
       color: black;
 
         .userPostInfo{
-          justify-content: center;
+          justify-content: space-between;
           display: flex;
           align-items: center;
           gap: 20px;
@@ -30,10 +27,11 @@
           }
   
           .details{
-            span{
+              width: 60%;
+              gap: 1em;
               display: flex;
+              align-items: center;
               font-size: 18px;
-            }
           }
 
           
@@ -68,33 +66,85 @@
    
       
 
-      .datePosted{
+      .postData{
+        width: 100%;
         display: flex;
-        justify-content: center;
         margin-top: 10px;
-        margin-bottom: 10px;
 
         .date{
-          font-size: 18px;
+          font-size: 14px;
           color: gray;
         }
   
+        .info{
+          width: 100%;
+          margin: auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+    
+          .likeBtn{
+            display: flex;
+            align-items: center;
+    
+            button {
+              border: none;
+              background-color: white;
+              font-size: 20px;
+              cursor: pointer;
+            }
+    
+          }
+    
+          input{
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid gray;
+            margin-left: 20px;
+          }
+    
+          .actionBtn{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            scale: 1.1;
+    
+             button{
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              font-size: 16px;
+              background-color: transparent;
+              border: none;
+              cursor: pointer;
+             }
+          }
+        }
+
       }
   
-    .title {
-      font-size: 1.3rem;
-      margin-top: -10px;
+    .postTitles {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      font-size: 16px;
+
+      .subTitles{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        span {
+          font-size: 14px;
+        }
+      }
     }
-  
-    .content {
-      font-size: 1.1rem;
-      margin-top: -25px;
-    }
+
 
     .image {
       display: flex;
       width: 100%;
-      margin: 10px 0;
       justify-content: center;
   
       img {
@@ -206,7 +256,6 @@
 .commentsDiv {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 90%;
 }

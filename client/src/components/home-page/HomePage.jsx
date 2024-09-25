@@ -14,13 +14,16 @@ export default function HomePage() {
     return (
         <div className="home">
             <NavBar />
-            <div style={{ display: "flex" }}>
-                <LeftBar />
-                <div style={{ flex: 8 }}>
+            <div className="homeLayout">
+                <div className="leftBarHome">
+                    <LeftBar />
+                </div>
+                <div className="layoutHome">
                     <FeedPosts />
                 </div>
-                <RightBar />
-
+                <div className="rightBarHome">
+                    <RightBar />
+                </div>
             </div>
         </div>
     );

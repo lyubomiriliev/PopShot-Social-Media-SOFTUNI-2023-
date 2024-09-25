@@ -1,6 +1,5 @@
 import "../../assets/styles/CreatePostPage.scss";
 
-import Path from "../../paths";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -49,18 +48,21 @@ export default function CreatePostPage() {
     return (
         <div className='create-main'>
             <NavBar />
-            <div style={{ display: "flex" }}>
+            <div className="createWrapper">
                 <LeftBar />
                 <div className="formWrapper" >
-                    <img src="../../src/assets/images/popshot-logo.png" alt="logo" />
-                    <div className="title">
+                    <div className="hero">
+                        <img src="../../src/assets/images/popshot-logo.png" alt="logo" />
                         <h3>Create a new post</h3>
                         <input type="text" placeholder='Title...' value={title} onChange={(e) => setTitle(e.target.value)} />
                     </div>
                     <div className="contents">
                         <textarea placeholder='Post description...' value={content} onChange={(e) => setContent(e.target.value)} />
                         <input type="file" hidden ref={imgRef} onChange={handleImageChange} />
-                        <button onClick={() => imgRef.current.click()}><AddAPhotoIcon /></button>
+                        <div onClick={() => imgRef.current.click()} className="uploadImg">
+                            <h3>Upload Image</h3>
+                            <button ><AddAPhotoIcon /></button>
+                        </div>
                         {selectedFile && (
                             <div className="imagePreview" >
                                 <img src={selectedFile} alt="postImage" />
