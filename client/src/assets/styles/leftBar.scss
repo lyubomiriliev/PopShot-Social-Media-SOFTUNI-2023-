@@ -1,5 +1,5 @@
 .leftBar {
-    width: 15em;
+    width: 22em;
     position: sticky;
     top: 70px;
     height: calc(100vh - 70px);
@@ -9,13 +9,20 @@
     justify-content: center;
 
     .container {
+        width: 90%;
+        height: 80vh;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
         .menu {
-            width: 15em;
+            width: 20em;
             height: 40%;
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
-            align-items: ce;
+            justify-content: space-between;
+            gap: 20px;
 
             div, a {
                 border-radius: 5px;
@@ -57,6 +64,25 @@
             svg {
                 font-size: 1.2em;
                 margin-right: 10px;
+            }
+
+        }
+
+        .logout{
+            width: 20em;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            color: #9d1b65;
+            background-color: transparent;
+            font-weight: 700;
+            margin-left: 7px;
+            &:hover {
+                opacity: 50%;
+            }
+            .searchSVG {
+                font-size: 1.4em;
+                margin-left: 3px;
             }
         }
     }

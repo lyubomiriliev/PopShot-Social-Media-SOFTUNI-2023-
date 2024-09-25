@@ -97,7 +97,6 @@ export default function ProfilePost({ post, handlePostClick }) {
                     </div>
                     <div className="postData">
                         <div className="info">
-
                             <div className="actionBtn">
                                 <button onClick={handleLikePost}>{!isLiked ? <FavoriteBorderOutlinedIcon /> : <FavoriteOutlinedIcon />}</button>
                                 <p>{likes}</p>
@@ -117,9 +116,8 @@ export default function ProfilePost({ post, handlePostClick }) {
 
                 </div>
                 <div className="commentsDiv">
-                    {post.comments.map(comment => (
-
-                        <Comments key={comment.id} comment={comment} />
+                    {post.comments.map((comment, index) => (
+                        <Comments key={comment.id || index} comment={comment} />
                     ))}
                 </div>
             </div>

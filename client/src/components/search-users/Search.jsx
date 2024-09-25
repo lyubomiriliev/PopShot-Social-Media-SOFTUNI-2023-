@@ -6,6 +6,7 @@ import { useRef, useState } from 'react';
 import useSearchUser from '../../hooks/useSearchUser';
 import SuggestedUser from '../suggested-users/SuggestedUser';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
+import UserSearch from "./UserSearch";
 
 const style = {
     position: 'absolute',
@@ -45,12 +46,12 @@ export default function Search({ open, handleCloseModal }) {
                         <button onClick={handleCloseModal}><CancelOutlinedIcon /></button>
                     </div>
                     <form className="modalForm" onSubmit={handleSearchUser}>
-                        <h2>Search user</h2>
+                        <h2>Search by username</h2>
                         <label >Username</label>
-                        <input type="text" placeholder='Search...' ref={searchRef} />
+                        <input type="text" placeholder='Type the desired username and click search' ref={searchRef} />
                         <button type='submit'>Search</button>
                     </form>
-                    {user && <SuggestedUser user={user} setUser={setUser} />}
+                    {user && <UserSearch user={user} setUser={setUser} />}
                 </Box>
 
             </Modal>

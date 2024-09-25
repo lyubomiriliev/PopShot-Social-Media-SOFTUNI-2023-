@@ -1,0 +1,22 @@
+.userWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+
+    img{
+        width: 90px;
+        height: 90px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    button {
+        border: none;
+        background-color: #9d1b65;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 10px;
+    }
+
+}

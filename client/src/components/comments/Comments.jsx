@@ -25,15 +25,12 @@ export default function Comments({ comment }) {
     return (
         <div className="postInner">
             <div className="profileUser">
-                <Link to={`/${userProfile.username}`}>
-                    <img src={userProfile.profilePicURL} alt="" />
-                </Link>
                 <Link to={`/${userProfile.username}`} style={{ textDecoration: "none", color: "inherit" }}>
-                    <h3>{userProfile.fullName}</h3>
+                    <h3>{userProfile.username}</h3>
                 </Link>
-            </div>
-            <div className="commentDesc">
-                <p>{comment.comment}</p>
+                <div className="commentDesc">
+                    <p>{comment.comment}</p>
+                </div>
             </div>
             <div className="likeBtn">
                 <button onClick={handleLikeComment} >{!isCommentLiked ? <FavoriteBorderOutlinedIcon /> : <FavoriteOutlinedIcon />}</button>

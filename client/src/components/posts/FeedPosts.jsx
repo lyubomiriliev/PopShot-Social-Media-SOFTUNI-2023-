@@ -14,7 +14,6 @@ export default function FeedPosts() {
             {posts.length === 0 && (
                 <h1>You must follow other users to see their posts.</h1>
             )}
-
             {posts.length > 0 && posts.map((post) =>
                 <FeedPost key={post.id} post={post} />
             )}

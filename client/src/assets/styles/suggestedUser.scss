@@ -1,39 +1,46 @@
 .suggestedUserWrapper {
-    display: flex;
-    align-items: center;
-    border-radius: 10px;
-    padding: 10px 20px;
-    margin-top: 10px;
-    margin-bottom: 30px;
-
-    .profilePic{
-        img{
-            margin-top: 10px;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-
-        }
-    }
-
+    width: 10em;
+   
     .userInfo{
+        width: 80%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        margin-left: 15px;
+        margin: 0 auto;
 
-        p{
-            margin: 5px 0;
+        .profilePic{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            img{
+                margin-top: 10px;
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                object-fit: cover;
+    
+            }
         }
 
+        .profileInfo{
+            width: 100%;
+            display: flex;
+            line-height: 0;
+            flex-direction: column;
+            align-items: center;
+
+            p{
+                font-size: 14px;
+                display: flex;
+
+            }
+        }
     }
 
     .actionBtn{
         flex: 1;
         display: flex;
         justify-content: flex-end;
-
 
         button {
             padding: 5px 10px;

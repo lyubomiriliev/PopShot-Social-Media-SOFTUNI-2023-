@@ -1,3 +1,4 @@
+import "../../assets/styles/suggestedUsers.scss";
 import useGetSuggestedUsers from "../../hooks/useGetSuggestedUsers";
 import SuggestedUser from "./SuggestedUser";
 
@@ -8,14 +9,16 @@ export default function SuggestedUsers() {
 
     return (
         <div className="item">
-
-            {suggestedUsers.length !== 0 && (
-                <span>Suggested users</span>
-            )}
-
-            {suggestedUsers.map((user) => (
-                <SuggestedUser user={user} key={user.id} />
-            ))}
+            <div>
+                {suggestedUsers.length !== 0 && (
+                    <span>Suggested users</span>
+                )}
+            </div>
+            <div>
+                {suggestedUsers.map((user) => (
+                    <SuggestedUser user={user} key={user.id} />
+                ))}
+            </div>
         </div>
     );
 }

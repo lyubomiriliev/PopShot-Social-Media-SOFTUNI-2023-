@@ -1,5 +1,4 @@
-import "../../assets/styles/singlePost.scss";
-
+import "../../assets/styles/feedPost.scss";
 import { Link } from "react-router-dom";
 import useGetUserProfileById from "../../hooks/useGetUserProfileById";
 import useFollowUser from "../../hooks/useFollowUser";
@@ -32,53 +31,54 @@ export default function FeedPost({ post }) {
 
 
     return (
-        <>
-            <div className="single-post">
-                <div className="postContainer">
+        <div className="feedPost">
+            <div className="postContainers">
+                <div className="innerPostContainer">
                     <div className="userPostInfo">
-                        <Link to={`/${userProfile?.username}`} style={{ textDecoration: "none", color: "inherit" }}>
-                            <img src={userProfile?.profilePicURL} alt="profilePic" className="postThumbnail" />
-                        </Link>
-                        <div className="details">
+                        <div className="leftPostInfo">
+                            <Link to={`/${userProfile?.username}`} style={{ textDecoration: "none", color: "inherit" }}>
+                                <img src={userProfile?.profilePicURL} alt="profilePic" className="postThumbnail" />
+                            </Link>
                             <Link to={`/${userProfile?.username}`} style={{ textDecoration: "none", color: "inherit" }}>
                                 <span className="name">{userProfile?.fullName}</span>
                             </Link>
                         </div>
-                        <button className="followUnfollow" onClick={handleFollowUser} >{isFollowing ? "Unfollow" : "Follow"}</button>
+                        <div>
+                            <button className="followUnfollow" onClick={handleFollowUser} >{isFollowing ? "Unfollow" : "Follow"}</button>
+                        </div>
                     </div>
-                    <div className="datePosted">
-                        <span className="date">{timeAgo(post.createdAt)}</span>
-                    </div>
-                    <div className="title">
-                        <h2>{post.title}</h2>
-                    </div>
-                    <div className="content">
-                        <p>{post.content}</p>
+                    <div className="subTitles">
+                        <div className="title">
+                            <h2>{post.title}</h2>
+                        </div>
+                        <div className="subContent">
+                            <p>{post.content}</p>
+                            <div className="datePosted">
+                                <span className="date">{timeAgo(post.createdAt)}</span>
+                            </div>
+                        </div>
                     </div>
                     <div className="image">
                         <img src={post.imageURL} alt="" />
                     </div>
-
-                    <div className="info">
-                        <div className="actionBtn">
+                    <div className="postInfo">
+                        <div className="postCTA">
                             <button onClick={handleLikePost}>{!isLiked ? <FavoriteBorderOutlinedIcon /> : <FavoriteOutlinedIcon />}</button>
                             <p>{likes} likes</p>
-
-                        </div>
-                        <div className="actionBtn">
                             <input type="text" placeholder="Add a comment..." value={comment} onChange={(e) => setComment(e.target.value)} />
                             <button onClick={handleSubmitComment} ><SendOutlinedIcon /></button>
                         </div>
                     </div>
-
-                </div>
-                <div className="commentsDiv">
-                    {post.comments.map(comment => (
-                        <Comments key={comment.id} comment={comment} />
-                    ))}
                 </div>
             </div>
-
-        </>
+            <div className="commentsDiv">
+                <div className="commentsTitle">
+                    <h3>Comments</h3>
+                </div>
+                {post.comments.map((comment, index) => (
+                    <Comments key={comment.id || index} comment={comment} />
+                ))}
+            </div>
+        </div>
     );
 }

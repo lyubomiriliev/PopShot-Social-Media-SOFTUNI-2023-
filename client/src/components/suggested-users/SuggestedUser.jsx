@@ -25,21 +25,23 @@ export default function SuggestedUser({ user, setUser }) {
     return (
         <>
             <div className="suggestedUserWrapper">
-                <div className="profilePic">
-                    <Link style={{ textDecoration: "none", color: "inherit" }} to={`/${user.username}`} >
-                        <img src={user.profilePicURL} alt="" />
-                    </Link>
-                </div>
                 <div className="userInfo">
-                    <Link style={{ textDecoration: "none", color: "inherit" }} to={`/${user.username}`}>
-                        <p>{user.fullName}</p>
-                    </Link>
-                    <p>{user.followers.length} followers</p>
-                </div>
-                <div className="actionBtn">
-                    {authUser.uid !== user.uid && (
-                        <button onClick={onFollowUser} >{isFollowing ? "Unfollow" : "Follow"}</button>
-                    )}
+                    <div className="profilePic">
+                        <Link to={`/${user.username}`} >
+                            <img src={user.profilePicURL} alt="" />
+                        </Link>
+                        <div className="profileInfo">
+                            <Link to={`/${user.username}`}>
+                                <p>{user.fullName}</p>
+                            </Link>
+                            <p>{user.followers.length} followers</p>
+                        </div>
+                        <div className="actionBtn">
+                            {authUser.uid !== user.uid && (
+                                <button onClick={onFollowUser} >{isFollowing ? "Unfollow" : "Follow"}</button>
+                            )}
+                        </div>
+                    </div>
                 </div>
             </div>
 

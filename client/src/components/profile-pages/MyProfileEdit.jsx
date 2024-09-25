@@ -6,6 +6,9 @@ import useAuthStore from "../../store/authStore";
 import usePreviewImage from "../../hooks/usePreviewImage";
 import useEditProfile from "../../hooks/useEditProfile";
 
+import CloseIcon from '@mui/icons-material/Close';
+import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
+
 const style = {
     position: 'absolute',
     top: '50%',
@@ -18,7 +21,7 @@ const style = {
     p: 4,
 };
 
-export default function MyProfileEdit({ open, handleClose }) {
+export default function MyProfileEdit({ open, handleClose, coverOpen, handleCoverClose }) {
 
     const [inputs, setInputs] = useState({
         fullName: "",
@@ -29,18 +32,19 @@ export default function MyProfileEdit({ open, handleClose }) {
     const authUser = useAuthStore((state) => state.user);
 
     const fileRef = useRef(null)
+    const coverRef = useRef(null)
 
-    const { handleImageChange, selectedFile, setSelectedFile } = usePreviewImage();
+    const { handleImageChange, selectedFile, selectedCoverFile, setSelectedFile, setSelectedCoverFile } = usePreviewImage();
 
     const { editProfile } = useEditProfile();
 
     const handleEditProfile = async () => {
 
         try {
-            await editProfile(inputs, selectedFile)
+            await editProfile(inputs, selectedFile, selectedCoverFile)
             setSelectedFile(null);
+            setSelectedCoverFile(null)
             handleClose();
-
         } catch (error) {
             alert("Error updating your profile")
         }
@@ -59,11 +63,11 @@ export default function MyProfileEdit({ open, handleClose }) {
                     <div className="myProfileEdit">
                         <div className="editHeading">
                             <h3>Edit Profile</h3>
-                            <button onClick={handleClose} >Close</button>
+                            <button onClick={handleClose} ><CloseIcon /></button>
                         </div>
                         <div className="profilePicEdit">
                             <img src={selectedFile || authUser.profilePicURL} alt="avatar" />
-                            <button onClick={() => fileRef.current.click()} >Edit profile picture</button>
+                            <button onClick={() => fileRef.current.click()} ><AddAPhotoIcon /></button>
                         </div>
                         <div className="editInputs">
                             <input type="file" hidden ref={fileRef} onChange={handleImageChange} />
@@ -90,7 +94,6 @@ export default function MyProfileEdit({ open, handleClose }) {
                             />
                             <div className="submitBtnEdit">
                                 <button onClick={handleEditProfile}>Submit</button>
-                                <button onClick={handleClose}>Cancel</button>
                             </div>
                         </div>
                     </div>

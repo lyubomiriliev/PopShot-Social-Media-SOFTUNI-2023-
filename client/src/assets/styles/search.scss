@@ -21,21 +21,19 @@
     padding-bottom: 20px;
 
     h2{
-        margin-top: -5px;
-    }
-
-    label{
-        margin-bottom: -5px;
+        margin-top: 0px;
     }
 
     input{
         margin-top: 10px;
         padding: 10px 20px;
+        border-radius: 10px;
+        border: 1px solid gray;
     }
 
     button{
         margin-top: 20px;
-        width: 80px;
+        width: 25%;
         padding: 10px 10px;
         background-color: #9d1b65;
         color: white;

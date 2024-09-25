@@ -44,9 +44,9 @@ export default function ExplorePage() {
         <div className="explore-main">
             <div className="explore-scroller">
                 <NavBar />
-                <div style={{ display: "flex" }}>
+                <div className="exploreInner">
                     <LeftBar />
-                    <div style={{ flex: 6 }}>
+                    <div className="exploreWrapper">
                         <div className="exploreGrid">
                             {posts.length === 0 && (
                                 <h1>Looks like you followed all users...</h1>

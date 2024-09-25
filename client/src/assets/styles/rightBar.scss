@@ -1,13 +1,16 @@
 .rightBar {
-    flex: 3;
+    width: 100%;
+    display: flex;
     position: sticky;
     top: 70px;
     height: calc(100vh - 70px);
-    margin-left: 20px;
+    border-left: 1px solid rgb(208, 208, 208);
+
 
     .container {
-        padding: 20px;
-
-        
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        width: 90%
     }
 }
